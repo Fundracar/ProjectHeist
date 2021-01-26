@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "PlayerSettings", menuName = "Heist/Settings/Character", order = 0)]
+[CreateAssetMenu(fileName = "CharacterSettings", menuName = "Heist/Settings/Character", order = 0)]
 public class CharacterSettings : ScriptableObject
 {
     [Range(1f, 100f)][SerializeField] private float _walkSpeed = 1f;
