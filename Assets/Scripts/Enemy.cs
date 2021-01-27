@@ -7,13 +7,7 @@ public class Enemy : MonoBehaviour
 {
     private float _detectionPercentage;
 
-    [SerializeField] private EnemySettings _settings;
-    
-
-    private void Update()
-    {
-        throw new NotImplementedException();
-    }
+    [SerializeField] protected EnemySettings _settings;
 
     protected virtual void Move()
     {
