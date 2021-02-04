@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13eb2c2b9a7f9a646b3a2081c89fae05, type: 3}
   m_Name: Guard
   m_EditorClassIdentifier: 
-  _angleDetection: 90
   _speed: 2.2
-  _distanceView: 7
+  _waitTime: 1.5
+  _angleDetection: 90
+  _distanceView: 8
   _detectionSpeed: 10

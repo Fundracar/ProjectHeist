@@ -8,6 +8,6 @@ public class SpawnPointData : ScriptableObject
     [SerializeField] private GameObject _point = default;
     public GameObject Point => _point;
     
-    [SerializeField] private GameObject _guardPrefab;
+    [Tooltip("The prefab of the Entity it needs to spawn")][SerializeField] private GameObject _guardPrefab;
     public GameObject GuardPrefab => _guardPrefab;
 }

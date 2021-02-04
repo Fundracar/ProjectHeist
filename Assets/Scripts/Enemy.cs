@@ -14,75 +14,104 @@ public class Enemy : MonoBehaviour
     int layerMask = 1 << 8;
 
     private Transform _characterTr;
-    private Vector3 _characterPos;
+    protected Vector3 _characterPos;
     private Vector3 _toCharacter;
-    private bool _characterInPoV;
+    protected bool _characterInFoV;
+
+    private Light _fov;
 
     private void Awake()
     {
         _characterTr = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        _fov = GetComponent<Light>();
+        _fov.spotAngle = _settings.AngleDetection;
+        _fov.range = _settings.DistanceView;
+    }
+
+    protected void Start()
+    {
+        StartCoroutine(Move());
     }
 
     private void Update()
     {
-        Move();
-        DetectCharacter();
+        if (GameManager.Instance.IsGameRunning)
+            DetectCharacter();
     }
 
-    protected virtual void Move()
+    // Move the this Entity
+    protected virtual IEnumerator Move()
     {
-        
+        yield return null;
     }
 
-    void DetectCharacter()
+    // Detects the Player 
+    private void DetectCharacter()
     {
-        _detectionPercentage = Mathf.Clamp(_detectionPercentage, 0, 100);
-        _toCharacter = _characterTr.position - transform.position;
+        // Update character position and the distance between the Enemy and the Player
+        _characterPos = _characterTr.position;
+        _toCharacter = _characterPos - transform.position;
         
-        if (!_characterInPoV && _detectionPercentage > 0)
+        if (!_characterInFoV && _detectionPercentage > 0)
             DecreasedPercentage();
-        else if (_characterInPoV)
-            IncreasedPercentage();
+        else if (_characterInFoV)
+        {
+            if (CalculateAngle() <= _settings.AngleDetection / 2)
+            {
+                RaycastHit hit;
+                Physics.Raycast(transform.position, _toCharacter.normalized, out hit, _settings.DistanceView, layerMask);
+                Debug.DrawRay(transform.position, _toCharacter.normalized * _settings.DistanceView, Color.red);
+
+                if (hit.collider.CompareTag("Player"))
+                {
+                    IncreasedPercentage();
+                    StartCoroutine(InvestigateAction());
+                }
+            }
+            else
+                DecreasedPercentage();
+        }
     }
 
+    // Decrease the detection percentage
     private void DecreasedPercentage()
     {
-        _detectionPercentage -= Time.deltaTime;
+        _detectionPercentage -= Time.deltaTime * _settings.DetectionSpeed;
+        _detectionPercentage = Mathf.Clamp(_detectionPercentage, 0, 100);
     }
 
+    // Increase the detection percentage
     private void IncreasedPercentage()
+    { 
+        _detectionPercentage += Time.deltaTime * _settings.DetectionSpeed;
+        _detectionPercentage = Mathf.Clamp(_detectionPercentage, 0, 100);
+        
+        if (_detectionPercentage == 100)
+            GameManager.Instance.GameOver();
+    }
+
+    // Active a action when the Player is detected
+    protected virtual IEnumerator InvestigateAction()
     {
-        if (CalculateAngle() <= _settings.AngleDetection / 2)
-        {
-             RaycastHit hit;
-             Physics.Raycast(transform.position, _toCharacter.normalized, out hit, _settings.DistanceView, layerMask);
-             Debug.DrawRay(transform.position, _toCharacter.normalized * _settings.DistanceView, Color.red);
-             
-             if (hit.collider.CompareTag("Player"))
-                 _detectionPercentage += Time.deltaTime;
-        }
-        else
-        {
-            DecreasedPercentage();
-        }
+        yield return null;
     }
     
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-            _characterInPoV = true;
+            _characterInFoV = true;
     }
 
-    private void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
-            _characterInPoV = false;
+            _characterInFoV = false;
     }
 
     private float CalculateAngle()
     {
         float angle = Vector3.Angle(transform.forward, _toCharacter);
-
         return angle;
     }
 }

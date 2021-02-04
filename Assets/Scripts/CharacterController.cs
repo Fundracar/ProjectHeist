@@ -33,24 +33,27 @@ public class CharacterController : MonoBehaviour
 
     private void Update()
     {
-        // Handle movement
-        _playerAxesInput.y = Input.GetAxis("Vertical");
-        _playerAxesInput.x = Input.GetAxis("Horizontal");
-        
-        _playerAxesInput = Vector2.ClampMagnitude(_playerAxesInput, 1f);
-        _desiredVelocity = _playerAxesInput * _speed;
+        if (GameManager.Instance.IsGameRunning)
+        {
+            // Handle movement
+            _playerAxesInput.y = Input.GetAxis("Vertical");
+            _playerAxesInput.x = Input.GetAxis("Horizontal");
 
-        if (Input.GetButtonDown("Interact") && _canInteract)
-            _interactive.OnInteraction();
-        
+            _playerAxesInput = Vector2.ClampMagnitude(_playerAxesInput, 1f);
+            _desiredVelocity = _playerAxesInput * _speed;
 
-        // Change the speed of the character according to the entry on the Run or Crouch keys
-        if (Input.GetButtonDown("Run"))
-            _speed = _settings.RunSpeed;
-        else if(Input.GetButtonDown("Crouch"))
-            _speed = _settings.CrouchSpeed;
-        else if(Input.GetButtonUp("Crouch") || Input.GetButtonUp("Run"))
-            _speed = _settings.WalkSpeed;
+            if (Input.GetButtonDown("Interact") && _canInteract)
+                _interactive.OnInteraction();
+
+
+            // Change the speed of the character according to the entry on the Run or Crouch keys
+            if (Input.GetButtonDown("Run"))
+                _speed = _settings.RunSpeed;
+            else if (Input.GetButtonDown("Crouch"))
+                _speed = _settings.CrouchSpeed;
+            else if (Input.GetButtonUp("Crouch") || Input.GetButtonUp("Run"))
+                _speed = _settings.WalkSpeed;
+        }
     }
 
     private void FixedUpdate()
@@ -64,6 +67,12 @@ public class CharacterController : MonoBehaviour
         if(_velocity.magnitude > 0) 
             transform.rotation = Quaternion.LookRotation(_velocity);
     }
+    
+    private void OnGameOver()
+    {
+        _desiredVelocity = Vector2.zero;
+        _rb.velocity = Vector2.zero;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -72,7 +81,6 @@ public class CharacterController : MonoBehaviour
             _canInteract = true;
             _interactive = other.GetComponent<InteractiveObject>();
         }
-        
     }
 
     private void OnTriggerExit(Collider other)
@@ -82,5 +90,15 @@ public class CharacterController : MonoBehaviour
             _canInteract = false;
             _interactive = null;
         }
+    }
+    
+    private void OnEnable()
+    {
+        GameManager.gameOverEvt += OnGameOver;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.gameOverEvt -= OnGameOver;
     }
 }
