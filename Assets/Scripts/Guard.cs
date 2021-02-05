@@ -74,12 +74,8 @@ public class Guard : Enemy
     
     protected override IEnumerator Move()
     {
-        Debug.Log("Start Move!");
-        
         while (GameManager.Instance.IsGameRunning)
         {
-            Debug.Log("Is Running!");
-            
             if (_states == States.Patrol)
             {
                 if (Math.Abs(_agent.remainingDistance) < 0.2f)
@@ -113,8 +109,6 @@ public class Guard : Enemy
 
             yield return null;
         }
-
-        Debug.Log("End Move!");
     }
 
     // Assign the next point 
