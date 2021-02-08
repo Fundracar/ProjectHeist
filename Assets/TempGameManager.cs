@@ -19,8 +19,7 @@ public class TempGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Dictionary<int, Contract> dictOfContracts =
-        new Dictionary<int, Contract>();
+        dictOfContracts = new Dictionary<int, Contract>();
 
         foreach (GameObject currentContractObject in listOfContractsPrefab)
         {

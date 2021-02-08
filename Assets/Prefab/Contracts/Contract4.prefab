@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1999752835697099762}
   - component: {fileID: 1999752835697099763}
   m_Layer: 0
-  m_Name: Contract2
+  m_Name: Contract4
   m_TagString: Contract
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edd283cf7cc78b49b29efbea352dd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contractName: Antwerp Jewelry Store
-  contractId: 1
-  vigilanceScore: 3
-  reputationBaseReward: 2
-  moneyBaseReward: 500000
-  reputationTreshold: 2
+  contractName: The Caffrey Museum
+  contractId: 3
+  vigilanceScore: 5
+  reputationBaseReward: 3
+  moneyBaseReward: 800000
+  reputationTreshold: 7
