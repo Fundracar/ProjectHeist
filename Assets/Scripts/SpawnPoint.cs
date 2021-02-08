@@ -12,13 +12,20 @@ public class SpawnPoint : MonoBehaviour
 
     void Awake()
     {
-        foreach (var point in _pathPoint)
-        {
-            point.GetComponent<Renderer>().enabled = false;
-        }
+        GetComponent<Renderer>().enabled = false;
 
         GameObject g = Instantiate(_data.GuardPrefab, transform.position, Quaternion.identity);
-        g.GetComponent<Guard>().Path = _pathPoint;
+        Guard guard = g.GetComponent<Guard>();
+
+        guard.Path = new Queue<Transform>(_pathPoint.Count);
+            
+        foreach (var point in _pathPoint)
+            guard.Path.Enqueue(point);
+        
+        
+        g.GetComponent<Guard>().StartPoint = transform.position;
+        
+        gameObject.SetActive(false);
     }
     
     // Create a new PathPoint
