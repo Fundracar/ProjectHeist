@@ -7,6 +7,9 @@ public class TempGameManager : MonoBehaviour
     public Dictionary<int, Contract> dictOfContracts;
     public List<GameObject> listOfContractsPrefab;
     public Contract storedContract;
+    public int currentPlayerRep;
+    public int playerRep;
+
 
 
     public Contract GetContractInDict(int linkedContractId)
@@ -15,6 +18,13 @@ public class TempGameManager : MonoBehaviour
         return foundContract;
 
     }
+
+    //Method to update the player reputation when going back to MainMenuScene from saved reward (int) if successfull heist
+    public void RaisePlayerRep()
+    {
+        currentPlayerRep = currentPlayerRep + playerRep;
+    }
+
 
     // Start is called before the first frame update
     void Start()

@@ -1918,7 +1918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &253045213
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1976,7 +1976,7 @@ MonoBehaviour:
         customNames:
         - 
         actionEnabled: 01
-        actionIsOpen: 01
+        actionIsOpen: 00
         actionStartIndex: 00000000
         actionHashCodes: 00000000
         unityObjectParams: []
@@ -9679,8 +9679,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 100
-        y: 140
+        x: 52
+        y: 124
         width: 100
         height: 32
       isBreakpoint: 0
@@ -9921,8 +9921,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 297
-        y: 156
+        x: 249
+        y: 140
         width: 100
         height: 48
       isBreakpoint: 0
@@ -10217,8 +10217,8 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 490
-        y: 100
+        x: 441
+        y: 109
         width: 100
         height: 32
       isBreakpoint: 0
@@ -10241,7 +10241,7 @@ MonoBehaviour:
         - 
         - 
         actionEnabled: 0101
-        actionIsOpen: 0101
+        actionIsOpen: 0000
         actionStartIndex: 0000000005000000
         actionHashCodes: b2cf100048c01101
         unityObjectParams: []
@@ -10321,7 +10321,13 @@ MonoBehaviour:
     globalTransitions: []
     variables:
       floatVariables: []
-      intVariables: []
+      intVariables:
+      - useVariable: 1
+        name: playerRep
+        tooltip: 
+        showInInspector: 0
+        networkSync: 0
+        value: 0
       boolVariables: []
       stringVariables: []
       vector2Variables: []
@@ -10337,7 +10343,7 @@ MonoBehaviour:
       enumVariables: []
       categories:
       - 
-      variableCategoryIDs: 
+      variableCategoryIDs: 00000000
     description: 
     docUrl: 
     showStateLabel: 0
@@ -12800,6 +12806,8 @@ MonoBehaviour:
   - {fileID: 1999752835697099756, guid: 6d65e54d735190e4fb78709e02fede54, type: 3}
   - {fileID: 1999752835697099756, guid: 3bce06401839d1c48bd822e1639a12ce, type: 3}
   storedContract: {fileID: 0}
+  currentPlayerRep: 1
+  playerRep: 0
 --- !u!4 &1275911792
 Transform:
   m_ObjectHideFlags: 0
@@ -27020,8 +27028,8 @@ MonoBehaviour:
       colorIndex: 3
       position:
         serializedVersion: 2
-        x: 825.8906
-        y: 279.53125
+        x: 825.8281
+        y: 274.54688
         width: 208
         height: 32
       isBreakpoint: 0
