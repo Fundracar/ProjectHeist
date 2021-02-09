@@ -13,11 +13,22 @@ public class Enemy : MonoBehaviour
 
     int layerMask = 1 << 8;
 
+    protected enum States
+    {
+        Patrol,
+        Chase,
+        Search
+    }
+    protected States _states = 0;
+    
     private Transform _characterTr;
     protected Vector3 _characterPos;
     private Vector3 _toCharacter;
     protected bool _characterInFoV;
 
+    protected IEnumerator cor;
+    protected IEnumerator move;
+    
     private Light _fov;
 
     private void Awake()
@@ -37,7 +48,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         if (GameManager.Instance.IsGameRunning)
-            DetectCharacter();
+            ChangeDetectPercentage();
     }
 
     // Move the this Entity
@@ -46,8 +57,14 @@ public class Enemy : MonoBehaviour
         yield return null;
     }
 
+    protected virtual IEnumerator Rotate()
+    {
+        yield return null;
+    }
+    
+    //TODO Voir avec le prof si + opti possible
     // Detects the Player 
-    private void DetectCharacter()
+    private void ChangeDetectPercentage()
     {
         // Update character position and the distance between the Enemy and the Player
         _characterPos = _characterTr.position;
@@ -59,14 +76,12 @@ public class Enemy : MonoBehaviour
         {
             if (CalculateAngle() <= _settings.AngleDetection / 2)
             {
-                RaycastHit hit;
-                Physics.Raycast(transform.position, _toCharacter.normalized, out hit, _settings.DistanceView, layerMask);
-                Debug.DrawRay(transform.position, _toCharacter.normalized * _settings.DistanceView, Color.red);
-
-                if (hit.collider.CompareTag("Player"))
+                if (SearchPlayer().collider.CompareTag("Player"))
                 {
                     IncreasedPercentage();
-                    StartCoroutine(InvestigateAction());
+                    
+                    if(_states == States.Patrol && _detectionPercentage > _settings.StartInvestigatePercentage)
+                        StartCoroutine(InvestigateAction());
                 }
             }
             else
@@ -74,9 +89,18 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Decrease the detection percentage
-    private void DecreasedPercentage()
+    protected RaycastHit SearchPlayer()
     {
+        RaycastHit hit;
+        Physics.Raycast(transform.position, _toCharacter.normalized, out hit, _settings.DistanceView, layerMask);
+        Debug.DrawRay(transform.position, _toCharacter.normalized * _settings.DistanceView, Color.red);
+        
+        return hit;
+    }
+
+    // Decrease the detection percentage
+    private void DecreasedPercentage(){
+        
         _detectionPercentage -= Time.deltaTime * _settings.DetectionSpeed;
         _detectionPercentage = Mathf.Clamp(_detectionPercentage, 0, 100);
     }
@@ -109,7 +133,7 @@ public class Enemy : MonoBehaviour
             _characterInFoV = false;
     }
 
-    private float CalculateAngle()
+    protected float CalculateAngle()
     {
         float angle = Vector3.Angle(transform.forward, _toCharacter);
         return angle;

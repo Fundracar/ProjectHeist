@@ -14,6 +14,8 @@ public class CharacterController : MonoBehaviour
     {
         set => _speed = value;
     }
+
+    private IEnumerator co;
     
     private Vector3 _playerAxesInput;
     private Vector3 _desiredVelocity;

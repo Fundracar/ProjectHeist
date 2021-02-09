@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.4
     agentHeight: 2
     agentSlope: 49
     agentClimb: 0.5
@@ -1903,7 +1903,7 @@ PrefabInstance:
     - target: {fileID: 2925733939297198322, guid: df4b302abea778e4aa310abf1d82d944,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8275727695433885666, guid: df4b302abea778e4aa310abf1d82d944,
         type: 3}
@@ -2072,7 +2072,7 @@ GameObject:
   - component: {fileID: 1726552880}
   - component: {fileID: 1726552881}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: Cam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
