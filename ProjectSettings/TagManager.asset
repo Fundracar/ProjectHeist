@@ -7,6 +7,10 @@ TagManager:
   - Interactive
   - TempGameManager
   - Contract
+  - ContractName
+  - VigilanceScore
+  - MoneyBaseRewardValue
+  - ReputationBaseRewardValue
   layers:
   - Default
   - TransparentFX
