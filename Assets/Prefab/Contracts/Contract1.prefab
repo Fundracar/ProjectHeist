@@ -48,4 +48,10 @@ MonoBehaviour:
   vigilanceScore: 1
   reputationBaseReward: 1
   moneyBaseReward: 200000
+  moneyBonusReward: 50000
+  reputationBonusReward: 0
   reputationTreshold: 1
+  contractDescription: aaaaa
+  contractMainObjective: bbbbb
+  contractBonusObjective: ccccc
+  contractConstraints: ddddd

@@ -11,6 +11,16 @@ TagManager:
   - VigilanceScore
   - MoneyBaseRewardValue
   - ReputationBaseRewardValue
+  - AllDisplay.ContractMainObjective
+  - AllDisplay.ContractName
+  - AllDisplay.ContractDescription
+  - AllDisplay.ContractConstraints
+  - AllDisplay.ContractBonusObjective
+  - AllDisplay.ContractBaseFundReward
+  - AllDisplay.ContractBaseReputationReward
+  - AllDisplay.ContractBonusFundReward
+  - AllDisplay.ContractBonusReputationReward
+  - AllDisplay.ContractReputationTreshold
   layers:
   - Default
   - TransparentFX

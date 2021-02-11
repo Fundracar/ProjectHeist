@@ -62,6 +62,47 @@ public class TempGameManager : MonoBehaviour
  
     }
 
+
+    public void ContractAllInfoDisplay(int linkedContractId)
+    {
+        Contract foundContract = dictOfContracts[linkedContractId];
+
+        GameObject allInfoDisplayContractName = GameObject.FindGameObjectWithTag("AllDisplay.ContractName");
+        GameObject allInfoDisplayContractDescription = GameObject.FindGameObjectWithTag("AllDisplay.ContractDescription");
+        GameObject allInfoDisplayContractMainObjective = GameObject.FindGameObjectWithTag("AllDisplay.ContractMainObjective");
+        GameObject allInfoDisplayContractConstraints = GameObject.FindGameObjectWithTag("AllDisplay.ContractConstraints");
+        GameObject allInfoDisplayContractBonusObjective = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusObjective");
+        GameObject allInfoDisplayContractBaseFundReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBaseFundReward");
+        GameObject allInfoDisplayContractBaseReputationReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBaseReputationReward");
+        GameObject allInfoDisplayContractBonusFundReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusFundReward");
+        GameObject allInfoDisplayContractBonusReputationReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusReputationReward");
+        GameObject allInfoDisplayContractReputationTreshold = GameObject.FindGameObjectWithTag("AllDisplay.ContractReputationTreshold");
+        
+        Text allDisplayToChangeContractName = allInfoDisplayContractName.GetComponent<Text>();
+        allDisplayToChangeContractName.text = foundContract.contractName;
+        Text allDisplayToChangeContractDescription = allInfoDisplayContractDescription.GetComponent<Text>();
+        allDisplayToChangeContractDescription.text = foundContract.contractDescription;
+        Text allDisplayToChangeContractMainObjective = allInfoDisplayContractMainObjective.GetComponent<Text>();
+        allDisplayToChangeContractMainObjective.text = foundContract.contractMainObjective;
+        Text allDisplayToChangeContractConstraints = allInfoDisplayContractConstraints.GetComponent<Text>();
+        allDisplayToChangeContractConstraints.text = foundContract.contractConstraints;
+        Text allDisplayToChangeContractBonusObjective = allInfoDisplayContractBonusObjective.GetComponent<Text>();
+        allDisplayToChangeContractBonusObjective.text = foundContract.contractBonusObjective;
+        Text allDisplayToChangeContractBaseFundReward = allInfoDisplayContractBaseFundReward.GetComponent<Text>();
+        allDisplayToChangeContractBaseFundReward.text = foundContract.moneyBaseReward.ToString();
+        Text allDisplayToChangeContractBaseReputationReward = allInfoDisplayContractBaseReputationReward.GetComponent<Text>();
+        allDisplayToChangeContractBaseReputationReward.text = foundContract.reputationBaseReward.ToString();
+        Text allDisplayToChangeContractBonusFundReward = allInfoDisplayContractBonusFundReward.GetComponent<Text>();
+        allDisplayToChangeContractBonusFundReward.text = foundContract.moneyBonusReward.ToString();
+        Text allDisplayToChangeContractBonusReputationReward = allInfoDisplayContractBonusReputationReward.GetComponent<Text>();
+        allDisplayToChangeContractBonusReputationReward.text = foundContract.reputationBonusReward.ToString();
+        Text allDisplayToChangeContractReputationTreshold = allInfoDisplayContractReputationTreshold.GetComponent<Text>();
+        allDisplayToChangeContractReputationTreshold.text = foundContract.reputationTreshold.ToString();
+
+        storedContract = foundContract; //Current selected contract to be used to display the right contract in the planning Menu
+
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -71,7 +112,7 @@ public class TempGameManager : MonoBehaviour
         {
             Contract currentContractComponent = currentContractObject.GetComponent<Contract>();
             dictOfContracts.Add(currentContractComponent.contractId, currentContractComponent);
-            Debug.Log("+1ContractInDict");
+            //Debug.Log("+1ContractInDict");
 
         }
 
