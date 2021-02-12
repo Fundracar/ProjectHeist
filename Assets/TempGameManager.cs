@@ -39,27 +39,18 @@ public class TempGameManager : MonoBehaviour
         Contract foundContract = dictOfContracts[linkedContractId];
 
         buttonPosition = contractButton.transform.position;
-        float infoBoxOffSetX = contractButton.transform.position.x + 260;
-        float infoBoxOffSetY = contractButton.transform.position.y;
-        float infoBoxOffSetZ = contractButton.transform.position.z;
-        infoBoxOffSet = new Vector3 (infoBoxOffSetX, infoBoxOffSetY, infoBoxOffSetZ);
-
+        infoBoxOffSet = buttonPosition + new Vector3(260, 0, 0);
         GameObject infoBoxPrefabClone = Instantiate(infoBoxPrefab, infoBoxOffSet, Quaternion.identity, canvas.transform);
 
-        GameObject infoBoxContractName = GameObject.FindGameObjectWithTag("ContractName");
-        GameObject infoBoxVigilanceScore = GameObject.FindGameObjectWithTag("VigilanceScore");
-        GameObject infoBoxMoneyBaseReward = GameObject.FindGameObjectWithTag("MoneyBaseRewardValue");
-        GameObject infoBoxReputationBaseReward = GameObject.FindGameObjectWithTag("ReputationBaseRewardValue");
+        Text infoBoxContractName = GameObject.FindGameObjectWithTag("ContractName").GetComponent<Text>();
+        infoBoxContractName.text = foundContract.contractName;
+        Text infoBoxVigilanceScore = GameObject.FindGameObjectWithTag("VigilanceScore").GetComponent<Text>();
+        infoBoxVigilanceScore.text = foundContract.vigilanceScore.ToString();
+        Text infoBoxMoneyBaseReward = GameObject.FindGameObjectWithTag("MoneyBaseRewardValue").GetComponent<Text>();
+        infoBoxMoneyBaseReward.text = foundContract.moneyBaseReward.ToString();
+        Text infoBoxReputationBaseReward = GameObject.FindGameObjectWithTag("ReputationBaseRewardValue").GetComponent<Text>();
+        infoBoxReputationBaseReward.text = foundContract.reputationBaseReward.ToString();
 
-        Text textToChangeContractName = infoBoxContractName.GetComponent<Text>();
-        textToChangeContractName.text = foundContract.contractName;
-        Text textToChangeVigilanceScore = infoBoxVigilanceScore.GetComponent<Text>();
-        textToChangeVigilanceScore.text = foundContract.vigilanceScore.ToString();
-        Text textToChangeMoneyBaseReward = infoBoxMoneyBaseReward.GetComponent<Text>();
-        textToChangeMoneyBaseReward.text = foundContract.moneyBaseReward.ToString();
-        Text textToChangeReputationBaseReward = infoBoxReputationBaseReward.GetComponent<Text>();
-        textToChangeReputationBaseReward.text = foundContract.reputationBaseReward.ToString();
- 
     }
 
 
@@ -67,37 +58,26 @@ public class TempGameManager : MonoBehaviour
     {
         Contract foundContract = dictOfContracts[linkedContractId];
 
-        GameObject allInfoDisplayContractName = GameObject.FindGameObjectWithTag("AllDisplay.ContractName");
-        GameObject allInfoDisplayContractDescription = GameObject.FindGameObjectWithTag("AllDisplay.ContractDescription");
-        GameObject allInfoDisplayContractMainObjective = GameObject.FindGameObjectWithTag("AllDisplay.ContractMainObjective");
-        GameObject allInfoDisplayContractConstraints = GameObject.FindGameObjectWithTag("AllDisplay.ContractConstraints");
-        GameObject allInfoDisplayContractBonusObjective = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusObjective");
-        GameObject allInfoDisplayContractBaseFundReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBaseFundReward");
-        GameObject allInfoDisplayContractBaseReputationReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBaseReputationReward");
-        GameObject allInfoDisplayContractBonusFundReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusFundReward");
-        GameObject allInfoDisplayContractBonusReputationReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusReputationReward");
-        GameObject allInfoDisplayContractReputationTreshold = GameObject.FindGameObjectWithTag("AllDisplay.ContractReputationTreshold");
-        
-        Text allDisplayToChangeContractName = allInfoDisplayContractName.GetComponent<Text>();
-        allDisplayToChangeContractName.text = foundContract.contractName;
-        Text allDisplayToChangeContractDescription = allInfoDisplayContractDescription.GetComponent<Text>();
-        allDisplayToChangeContractDescription.text = foundContract.contractDescription;
-        Text allDisplayToChangeContractMainObjective = allInfoDisplayContractMainObjective.GetComponent<Text>();
-        allDisplayToChangeContractMainObjective.text = foundContract.contractMainObjective;
-        Text allDisplayToChangeContractConstraints = allInfoDisplayContractConstraints.GetComponent<Text>();
-        allDisplayToChangeContractConstraints.text = foundContract.contractConstraints;
-        Text allDisplayToChangeContractBonusObjective = allInfoDisplayContractBonusObjective.GetComponent<Text>();
-        allDisplayToChangeContractBonusObjective.text = foundContract.contractBonusObjective;
-        Text allDisplayToChangeContractBaseFundReward = allInfoDisplayContractBaseFundReward.GetComponent<Text>();
-        allDisplayToChangeContractBaseFundReward.text = foundContract.moneyBaseReward.ToString();
-        Text allDisplayToChangeContractBaseReputationReward = allInfoDisplayContractBaseReputationReward.GetComponent<Text>();
-        allDisplayToChangeContractBaseReputationReward.text = foundContract.reputationBaseReward.ToString();
-        Text allDisplayToChangeContractBonusFundReward = allInfoDisplayContractBonusFundReward.GetComponent<Text>();
-        allDisplayToChangeContractBonusFundReward.text = foundContract.moneyBonusReward.ToString();
-        Text allDisplayToChangeContractBonusReputationReward = allInfoDisplayContractBonusReputationReward.GetComponent<Text>();
-        allDisplayToChangeContractBonusReputationReward.text = foundContract.reputationBonusReward.ToString();
-        Text allDisplayToChangeContractReputationTreshold = allInfoDisplayContractReputationTreshold.GetComponent<Text>();
-        allDisplayToChangeContractReputationTreshold.text = foundContract.reputationTreshold.ToString();
+        Text allInfoDisplayContractName = GameObject.FindGameObjectWithTag("AllDisplay.ContractName").GetComponent<Text>();
+        allInfoDisplayContractName.text = foundContract.contractName;
+        Text allInfoDisplayContractDescription = GameObject.FindGameObjectWithTag("AllDisplay.ContractDescription").GetComponent<Text>();
+        allInfoDisplayContractDescription.text = foundContract.contractDescription;
+        Text allInfoDisplayContractMainObjective = GameObject.FindGameObjectWithTag("AllDisplay.ContractMainObjective").GetComponent<Text>();
+        allInfoDisplayContractMainObjective.text = foundContract.contractMainObjective;
+        Text allInfoDisplayContractConstraints = GameObject.FindGameObjectWithTag("AllDisplay.ContractConstraints").GetComponent<Text>();
+        allInfoDisplayContractConstraints.text = foundContract.contractConstraints;
+        Text allInfoDisplayContractBonusObjective = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusObjective").GetComponent<Text>();
+        allInfoDisplayContractBonusObjective.text = foundContract.contractBonusObjective;
+        Text allInfoDisplayContractBaseFundReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBaseFundReward").GetComponent<Text>();
+        allInfoDisplayContractBaseFundReward.text = foundContract.moneyBaseReward.ToString();
+        Text allInfoDisplayContractBaseReputationReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBaseReputationReward").GetComponent<Text>();
+        allInfoDisplayContractBaseReputationReward.text = foundContract.reputationBaseReward.ToString();
+        Text allInfoDisplayContractBonusFundReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusFundReward").GetComponent<Text>();
+        allInfoDisplayContractBonusFundReward.text = foundContract.moneyBonusReward.ToString();
+        Text allInfoDisplayContractBonusReputationReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusReputationReward").GetComponent<Text>();
+        allInfoDisplayContractBonusReputationReward.text = foundContract.reputationBonusReward.ToString();
+        Text allInfoDisplayContractReputationTreshold = GameObject.FindGameObjectWithTag("AllDisplay.ContractReputationTreshold").GetComponent<Text>();
+        allInfoDisplayContractReputationTreshold.text = foundContract.reputationTreshold.ToString();
 
         storedContract = foundContract; //Current selected contract to be used to display the right contract in the planning Menu
 
