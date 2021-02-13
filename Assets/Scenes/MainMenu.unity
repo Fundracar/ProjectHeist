@@ -542,15 +542,15 @@ RectTransform:
   m_GameObject: {fileID: 107704117}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.8885, z: 1}
   m_Children: []
   m_Father: {fileID: 311486943}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 67.99, y: -53}
-  m_SizeDelta: {x: 242.12466, y: 61.972282}
+  m_AnchoredPosition: {x: 67.991, y: -51.2}
+  m_SizeDelta: {x: 242.12466, y: 35.071632}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &107704119
 MonoBehaviour:
@@ -7470,15 +7470,15 @@ RectTransform:
   m_GameObject: {fileID: 791179832}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.3547, z: 1}
   m_Children: []
   m_Father: {fileID: 1678713653}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38.13, y: -95.5}
-  m_SizeDelta: {x: 236.26062, y: 149.10379}
+  m_AnchoredPosition: {x: 38.3, y: -98}
+  m_SizeDelta: {x: 236.26062, y: 118.34366}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &791179834
 MonoBehaviour:
@@ -7548,15 +7548,15 @@ RectTransform:
   m_GameObject: {fileID: 794315497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.7166, z: 1}
   m_Children: []
   m_Father: {fileID: 202973706}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 60.34, y: -47.8}
-  m_SizeDelta: {x: 215.32446, y: 57.61236}
+  m_AnchoredPosition: {x: 60.34, y: -50.1}
+  m_SizeDelta: {x: 215.32446, y: 34.424774}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794315499
 MonoBehaviour:
@@ -11479,8 +11479,8 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
-    m_FontStyle: 0
+    m_FontSize: 30
+    m_FontStyle: 2
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 40

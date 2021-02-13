@@ -48,4 +48,15 @@ MonoBehaviour:
   vigilanceScore: 3
   reputationBaseReward: 2
   moneyBaseReward: 500000
+  moneyBonusReward: 100000
+  reputationBonusReward: 1
   reputationTreshold: 2
+  contractDescription: The Antwerp Jewelry Store is the most prestigious jewelry
+    store in the region and often recieve famous diamonds and pieces for auction
+    and authentification. For a few month, a number of high value items are stored
+    there.
+  contractMainObjective: Retrieve the heart of the ocean from the secure room of
+    the jewelry
+  contractBonusObjective: Get the red scarlett necklace from the display at the center
+    of the jewelry
+  contractConstraints: Plant fake evidence of an inside job in the director's office

@@ -48,4 +48,15 @@ MonoBehaviour:
   vigilanceScore: 2
   reputationBaseReward: 1
   moneyBaseReward: 350000
+  moneyBonusReward: 150000
+  reputationBonusReward: 1
   reputationTreshold: 2
+  contractDescription: Finally, the construction of this majestic casino is over
+    and launch is opening night soon. The casino is doing a soft open to feel the
+    last measures needed and it left some weaknesses in their security system. A
+    surgical incursion to get the right informations could tank the casino's reputation
+    before it's real opening
+  contractMainObjective: Get access to the high rollers private informations
+  contractBonusObjective: Rigg 10 gambling table to drain the casino's ressource
+    on his opening day
+  contractConstraints: Keep the anomaly level under 5

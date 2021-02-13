@@ -51,7 +51,12 @@ MonoBehaviour:
   moneyBonusReward: 50000
   reputationBonusReward: 0
   reputationTreshold: 1
-  contractDescription: aaaaa
-  contractMainObjective: bbbbb
-  contractBonusObjective: ccccc
-  contractConstraints: ddddd
+  contractDescription: 'The benevolent bank is located on the north side of the city.
+    It''s a small bank and doesn''t seem to be of any interest for profit. Luckily,
+    we have some information that it houses one of the biggest vault in the town
+    and could be filled with really interesting loot. '
+  contractMainObjective: 'Retrieve the precious ancient artefact (Uchigatana) at
+    the heart of the bank vault '
+  contractBonusObjective: Open all safes in the bank vault and extract with all the
+    money in it
+  contractConstraints: -------
