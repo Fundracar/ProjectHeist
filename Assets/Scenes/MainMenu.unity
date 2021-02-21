@@ -1799,7 +1799,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &161486448
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2008,7 +2008,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 179083633}
-  selectedTool: {fileID: 0}
+  selectedTool: {fileID: 228603572841733817, guid: c74570478341ab04ab9ff9bfcddeebee,
+    type: 3}
   selectedCrew: {fileID: 0}
 --- !u!1 &202973705
 GameObject:
@@ -2273,7 +2274,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 207967584}
-  selectedTool: {fileID: 0}
+  selectedTool: {fileID: 228603572841733817, guid: 737b0feaf709343458308a384cb2239c,
+    type: 3}
   selectedCrew: {fileID: 0}
 --- !u!1 &225587216
 GameObject:
@@ -2364,6 +2366,7 @@ GameObject:
   - component: {fileID: 244689696}
   - component: {fileID: 244689698}
   - component: {fileID: 244689697}
+  - component: {fileID: 244689699}
   m_Layer: 5
   m_Name: SelectedToolDisplay
   m_TagString: SelectedToolDisplayer
@@ -2427,6 +2430,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 244689695}
   m_CullTransparentMesh: 0
+--- !u!114 &244689699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 244689695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61d4b182282327741b7cd194dfff7b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolName: 
+  toolId: 0
+  toolReputationTreshold: 0
+  toolSprite: {fileID: 0}
 --- !u!1 &251440460
 GameObject:
   m_ObjectHideFlags: 0
@@ -5679,7 +5698,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 354136681}
-  selectedTool: {fileID: 0}
+  selectedTool: {fileID: 228603572841733817, guid: 90e32f1570833cd48afb2760f6cd08a4,
+    type: 3}
   selectedCrew: {fileID: 0}
 --- !u!1 &389466978
 GameObject:
@@ -7424,6 +7444,7 @@ GameObject:
   - component: {fileID: 660921063}
   - component: {fileID: 660921065}
   - component: {fileID: 660921064}
+  - component: {fileID: 660921066}
   m_Layer: 5
   m_Name: SelectedCrewDisplay
   m_TagString: SelectedCrewMemberDisplayer
@@ -7487,6 +7508,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 660921062}
   m_CullTransparentMesh: 0
+--- !u!114 &660921066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 660921062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f556dd3fb20b3747a2e9a892af9d9e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crewName: 
+  crewId: 0
+  crewReputationTreshold: 0
+  crewSprite: {fileID: 0}
 --- !u!1 &675445023
 GameObject:
   m_ObjectHideFlags: 0
@@ -8542,7 +8579,7 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
           objectType: 
@@ -12758,7 +12795,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonImage: {fileID: 1077363203}
-  selectedTool: {fileID: 0}
+  selectedTool: {fileID: 228603572841733817, guid: c9936fc8503c7f04999ff9c48b2d9e05,
+    type: 3}
   selectedCrew: {fileID: 0}
 --- !u!1 &1095684546
 GameObject:
@@ -13565,11 +13603,12 @@ MonoBehaviour:
   - {fileID: 1999752835697099756, guid: 6d65e54d735190e4fb78709e02fede54, type: 3}
   - {fileID: 1999752835697099756, guid: 3bce06401839d1c48bd822e1639a12ce, type: 3}
   storedContract: {fileID: 0}
-  infoBoxPrefab: {fileID: 0}
+  infoBoxPrefab: {fileID: 5790552183592275321, guid: cb14881195de6df498a48c50fa2c5453,
+    type: 3}
   buttonPosition: {x: 0, y: 0, z: 0}
   infoBoxOffSet: {x: 0, y: 0, z: 0}
-  currentPlayerRep: 0
-  playerRep: 0
+  currentPlayerRep: 1
+  playerRep: 1
   listOfToolsPrefab:
   - {fileID: 8851783445904784565, guid: 737b0feaf709343458308a384cb2239c, type: 3}
   - {fileID: 8851783445904784565, guid: 90e32f1570833cd48afb2760f6cd08a4, type: 3}
@@ -22818,7 +22857,7 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
           objectType: UnityEngine.Object
@@ -23156,10 +23195,10 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
-          objectType: 
+          objectType: UnityEngine.Object
           useVariable: 0
           type: 1
           floatValue: 0
@@ -23183,7 +23222,7 @@ MonoBehaviour:
             vector4Values: []
             objectReferences: []
         - variableName: 
-          objectType: 
+          objectType: UnityEngine.GameObject
           useVariable: 0
           type: 3
           floatValue: 0
@@ -23296,7 +23335,7 @@ MonoBehaviour:
         - Contract3-ColorChange
         - ExitHoveringContract3
         actionEnabled: 010101
-        actionIsOpen: 000000
+        actionIsOpen: 010000
         actionStartIndex: 00000000080000000a000000
         actionHashCodes: ca51e9005ac85204c6c21405
         unityObjectParams: []
@@ -23494,7 +23533,7 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
           objectType: UnityEngine.Object
@@ -23832,7 +23871,7 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
           objectType: UnityEngine.Object
@@ -23972,7 +24011,7 @@ MonoBehaviour:
         - Contract5-ColorChange
         - ExitHoveringContract5
         actionEnabled: 010101
-        actionIsOpen: 000000
+        actionIsOpen: 010000
         actionStartIndex: 00000000080000000a000000
         actionHashCodes: ca51e9005ac85204c6c21405
         unityObjectParams: []
@@ -24170,7 +24209,7 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
           objectType: UnityEngine.Object
@@ -24508,7 +24547,7 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
           objectType: UnityEngine.Object
@@ -24646,7 +24685,7 @@ MonoBehaviour:
         - 
         - 
         actionEnabled: 0101
-        actionIsOpen: 0001
+        actionIsOpen: 0000
         actionStartIndex: 0000000006000000
         actionHashCodes: ca51e90048c01101
         unityObjectParams: []
@@ -24672,7 +24711,7 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
           objectType: 
@@ -25488,10 +25527,10 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
-          objectType: UnityEngine.Object
+          objectType: 
           useVariable: 0
           type: 1
           floatValue: 0
@@ -25631,10 +25670,10 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
-          objectType: UnityEngine.Object
+          objectType: 
           useVariable: 0
           type: 1
           floatValue: 0
@@ -25774,7 +25813,7 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
           objectType: 
@@ -25917,10 +25956,10 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
-          objectType: UnityEngine.Object
+          objectType: 
           useVariable: 0
           type: 1
           floatValue: 0
@@ -26060,7 +26099,7 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
           objectType: UnityEngine.Object
@@ -26203,10 +26242,10 @@ MonoBehaviour:
           showInInspector: 0
           networkSync: 0
           typeName: TempGameManager
-          value: {fileID: 0}
+          value: {fileID: 1275911791}
         fsmVarParams:
         - variableName: 
-          objectType: UnityEngine.Object
+          objectType: 
           useVariable: 0
           type: 1
           floatValue: 0

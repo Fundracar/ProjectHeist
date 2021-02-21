@@ -23,10 +23,6 @@ public class TempGameManager : MonoBehaviour
     public List<GameObject> listOfCrewMemberButton;
     public Tools currentSelectedTool;
     public Crew currentSelectedCrew;
-    
-    //public Tools selectedTool
-    //public Crew selectedCrew
-    //When OnClickButton Method called, update selected
 
     //Method to Display all unlocked Crew Members
     public void DisplayUnlockedCrewMembers()
@@ -48,7 +44,7 @@ public class TempGameManager : MonoBehaviour
     {
         foreach (KeyValuePair<int, Crew> crewMemberIterator in dictOfAllCrewMembers)
         {
-            if (crewMemberIterator.Value.crewReputationTreshold <= playerRep)
+            if (crewMemberIterator.Value.crewReputationTreshold <= currentPlayerRep)
             {
                 dictOfUnlockedCrewMembers.Add(crewMemberIterator.Key, crewMemberIterator.Value);
                 Debug.Log("+1 crewMember unlocked");
@@ -77,7 +73,7 @@ public class TempGameManager : MonoBehaviour
     {
         foreach (KeyValuePair<int, Tools> toolIterator in dictOfAllTools)
         { 
-            if (toolIterator.Value.toolReputationTreshold <= playerRep)
+            if (toolIterator.Value.toolReputationTreshold <= currentPlayerRep)
             {
                 dictOfUnlockedTools.Add(toolIterator.Key, toolIterator.Value);
                 Debug.Log("+1 tool unlocked");
