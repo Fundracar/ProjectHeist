@@ -21,6 +21,14 @@ TagManager:
   - AllDisplay.ContractBonusFundReward
   - AllDisplay.ContractBonusReputationReward
   - AllDisplay.ContractReputationTreshold
+  - PlanningPhase.contractName
+  - PlanningPhase.contractVigilanceScoreValue
+  - PlanningPhase.contractMainObjective
+  - PlanningPhase.contractConstraints
+  - PlanningPhase.contractBonusObjective
+  - SelectedButton1
+  - SelectedToolDisplayer
+  - SelectedCrewMemberDisplayer
   layers:
   - Default
   - TransparentFX
