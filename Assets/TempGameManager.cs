@@ -27,6 +27,13 @@ public class TempGameManager : MonoBehaviour
     //Method to Display all unlocked Crew Members
     public void DisplayUnlockedCrewMembers()
     {
+        GameObject.FindGameObjectWithTag("CB1").SetActive(false);
+        GameObject.FindGameObjectWithTag("CB2").SetActive(false);
+        GameObject.FindGameObjectWithTag("CB3").SetActive(false);
+        GameObject.FindGameObjectWithTag("CB4").SetActive(false);
+        GameObject.FindGameObjectWithTag("CB5").SetActive(false);
+        GameObject.FindGameObjectWithTag("CB6").SetActive(false);
+        
         int i = 0;
         foreach (KeyValuePair<int, Crew> unlockedCrewMemberIterator in dictOfUnlockedCrewMembers)
         {
@@ -55,6 +62,13 @@ public class TempGameManager : MonoBehaviour
     //Method to Display all unlocked Tools
     public void DisplayUnlockedTools()
     {
+        GameObject.FindGameObjectWithTag("TB1").SetActive(false);
+        GameObject.FindGameObjectWithTag("TB2").SetActive(false);
+        GameObject.FindGameObjectWithTag("TB3").SetActive(false);
+        GameObject.FindGameObjectWithTag("TB4").SetActive(false);
+        GameObject.FindGameObjectWithTag("TB5").SetActive(false);
+        GameObject.FindGameObjectWithTag("TB6").SetActive(false);
+
         int i = 0;
         foreach (KeyValuePair<int, Tools> unlockedToolIterator in dictOfUnlockedTools)
         {
@@ -208,9 +222,9 @@ public class TempGameManager : MonoBehaviour
         //LoadSaveInfo();
         RaisePlayerRep();
         ResolveUnlockedTools();
-        DisplayUnlockedTools();
+        //DisplayUnlockedTools();
         ResolveUnlockedCrewMembers();
-        DisplayUnlockedCrewMembers();
+        //DisplayUnlockedCrewMembers();
     }
 
     // Update is called once per frame
