@@ -25,10 +25,11 @@ public class Enemy : MonoBehaviour
     protected Vector3 _characterPos;
     private Vector3 _toCharacter;
     protected bool _characterInFoV;
+
+    protected IEnumerator cor;
+    protected IEnumerator move;
     
     private Light _fov;
-
-    private bool anomalyUp = false;
 
     private void Awake()
     {
@@ -37,8 +38,11 @@ public class Enemy : MonoBehaviour
         _fov = GetComponent<Light>();
         _fov.spotAngle = _settings.AngleDetection;
         _fov.range = _settings.DistanceView;
+    }
 
-       GetComponent<CapsuleCollider>().radius = _settings.DistanceView;
+    protected void Start()
+    {
+        StartCoroutine(Move());
     }
 
     private void Update()
@@ -47,7 +51,7 @@ public class Enemy : MonoBehaviour
             ChangeDetectPercentage();
     }
 
-    // Move the Entity
+    // Move the this Entity
     protected virtual IEnumerator Move()
     {
         yield return null;
@@ -58,7 +62,8 @@ public class Enemy : MonoBehaviour
         yield return null;
     }
     
-    //TODO Voir avec le prof si + opti possible 
+    //TODO Voir avec le prof si + opti possible
+    // Detects the Player 
     private void ChangeDetectPercentage()
     {
         // Update character position and the distance between the Enemy and the Player
@@ -67,33 +72,30 @@ public class Enemy : MonoBehaviour
         
         if (!_characterInFoV && _detectionPercentage > 0)
             DecreasedPercentage();
-        else if (_characterInFoV && CalculateAngle() <= _settings.AngleDetection/2)
+        else if (_characterInFoV)
         {
-            if (FindPlayer())
+            if (CalculateAngle() <= _settings.AngleDetection / 2)
             {
-                IncreasedPercentage();
-
-                if (_states == States.Patrol && _detectionPercentage > _settings.StartInvestigatePercentage)
-                    StartCoroutine(InvestigateAction());
+                if (SearchPlayer().collider.CompareTag("Player"))
+                {
+                    IncreasedPercentage();
+                    
+                    if(_states == States.Patrol && _detectionPercentage > _settings.StartInvestigatePercentage)
+                        StartCoroutine(InvestigateAction());
+                }
             }
             else
                 DecreasedPercentage();
         }
     }
 
-    // Detects the Player 
-    protected bool FindPlayer()
+    protected RaycastHit SearchPlayer()
     {
-        bool success = false;
-        
         RaycastHit hit;
-        Physics.Raycast(transform.position, _toCharacter.normalized, out hit, _settings.DistanceView +1, layerMask);
+        Physics.Raycast(transform.position, _toCharacter.normalized, out hit, _settings.DistanceView, layerMask);
         Debug.DrawRay(transform.position, _toCharacter.normalized * _settings.DistanceView, Color.red);
         
-        if (hit.collider.CompareTag("Player"))
-                success = true;
-
-        return success;
+        return hit;
     }
 
     // Decrease the detection percentage
@@ -101,9 +103,6 @@ public class Enemy : MonoBehaviour
         
         _detectionPercentage -= Time.deltaTime * _settings.DetectionSpeed;
         _detectionPercentage = Mathf.Clamp(_detectionPercentage, 0, 100);
-
-        if (_detectionPercentage == 0)
-            anomalyUp = false;
     }
 
     // Increase the detection percentage
@@ -112,14 +111,8 @@ public class Enemy : MonoBehaviour
         _detectionPercentage += Time.deltaTime * _settings.DetectionSpeed;
         _detectionPercentage = Mathf.Clamp(_detectionPercentage, 0, 100);
         
-        if (_detectionPercentage >= 100)
+        if (_detectionPercentage == 100)
             GameManager.Instance.GameOver();
-
-        if (_detectionPercentage > 75)
-        {
-            GameManager.Instance.UpAnomaly(1);
-            anomalyUp = true;
-        }
     }
 
     // Active a action when the Player is detected
