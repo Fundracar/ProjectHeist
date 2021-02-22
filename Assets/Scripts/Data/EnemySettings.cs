@@ -22,5 +22,6 @@ public class EnemySettings : ScriptableObject
     [Range(1, 10)] [SerializeField] private float _detectionSpeed;
     public float DetectionSpeed => _detectionSpeed;
 
-    
+    [Range(10, 30)] [SerializeField] private float _startInvestigatePercentage;
+    public float StartInvestigatePercentage => _startInvestigatePercentage;
 }

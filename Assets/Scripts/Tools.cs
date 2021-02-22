@@ -1,24 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Tools : MonoBehaviour
+[CreateAssetMenu(fileName = "Tools", menuName = "Heist/item/Tool", order = 0)]
+public class Tools: ScriptableObject
 {
-    public string toolName;
-    public int toolId;
-    public int toolReputationTreshold;
-    public Image toolSprite;
+    [Range(100,200)][SerializeField] private int _toolsId;
+    public int ToolsId => _toolsId;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private int _anomalyCost;
+    public int AnomalyCost => _anomalyCost;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    [SerializeField] private Sprite _sprite;
+    public Sprite Sprite => _sprite;
+
+    [SerializeField] private float _waitTime;
+    public float WaitTime => _waitTime;
 }

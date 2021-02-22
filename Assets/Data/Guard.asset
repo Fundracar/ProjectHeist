@@ -17,3 +17,4 @@ MonoBehaviour:
   _angleDetection: 90
   _distanceView: 8
   _detectionSpeed: 10
+  _startInvestigatePercentage: 20.1

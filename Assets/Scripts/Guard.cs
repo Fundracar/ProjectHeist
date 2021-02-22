@@ -15,20 +15,11 @@ public class Guard : Enemy
         set => startPoint = value;
     }
 
-    enum States
-    {
-        Patrol = 0,
-        Purchase = 1
-    }
-
-    private States _states = 0;
-
     private int _pathIndex = 0;
     private int _maxIndex;
 
     private Queue<Transform> _path;
     private List<Transform> _stockedPoints = new List<Transform>();
-    //private Transform[] _stockedPoints;
 
     private bool returnAtSpawn = false;
 
@@ -50,8 +41,7 @@ public class Guard : Enemy
         _agent.destination = _path.Peek().position;
 
         _maxIndex = _path.Count - 1;
-
-        base.Start();
+        StartCoroutine(Move());
     }
 
     IEnumerator ResetState()
@@ -61,14 +51,75 @@ public class Guard : Enemy
     
     protected override IEnumerator InvestigateAction()
     {
-        _states = States.Purchase;
-        _lastCharPos = _characterPos;
-
-        while (Math.Abs(_agent.remainingDistance) < 0.2f)
-            yield return null;
+        _states = States.Chase;
         
-        yield return new WaitForSeconds(_settings.WaitTime * 2);
+        while (_characterInFoV && CalculateAngle() <= _settings.AngleDetection)
+        {
+            _lastCharPos = _characterPos;
+            yield return null;
+        }
+    }
 
+    protected override IEnumerator Rotate()
+    {
+        _states = States.Search;
+        
+        Vector3 startingPos = transform.rotation.eulerAngles;
+        Quaternion checkRight = Quaternion.Euler(0,startingPos.y + _settings.AngleDetection -1, 0);
+        Quaternion checkLeft = Quaternion.Euler(0,startingPos.y - _settings.AngleDetection -1 , 0);
+
+        float t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime / 2;
+            transform.rotation = Quaternion.Slerp(transform.rotation, checkLeft, t);
+            yield return null;
+
+            if (_characterInFoV && CalculateAngle() <= _settings.AngleDetection/2)
+            {
+               if (FindPlayer())
+               {
+                   StartCoroutine(InvestigateAction());
+                   yield break; 
+               } 
+            }
+        }
+
+        t = 0;
+        while (t < _settings.WaitTime)
+        {
+            t += Time.deltaTime;
+            
+            if (_characterInFoV && CalculateAngle() <= _settings.AngleDetection/2)
+            {
+                if (FindPlayer())
+                {
+                    StartCoroutine(InvestigateAction());
+                    yield break; 
+                } 
+            }
+        }
+        
+        
+        t = 0;
+        while (t < 1)
+        {
+            t += Time.deltaTime / 2;
+            transform.rotation = Quaternion.Slerp(transform.rotation, checkRight, t);
+            yield return null;
+            
+            if (_characterInFoV && CalculateAngle() <= _settings.AngleDetection/2)
+            {
+                if (FindPlayer())
+                {
+                    StartCoroutine(InvestigateAction());
+                    yield break; 
+                } 
+            }
+        }
+        
+        yield return new WaitForSeconds(_settings.WaitTime);
+        
         _states = States.Patrol;
     }
     
@@ -84,7 +135,6 @@ public class Guard : Enemy
                     
                     if (_pathIndex < _maxIndex)
                     {
-
                         if (!returnAtSpawn)
                             NextPatrolPoint();
                         
@@ -97,13 +147,19 @@ public class Guard : Enemy
                         ReturnSpawn();
                 }
             }
-            else
+            else if (_states == States.Chase)
             {
                 // Assign a new destination
                 _agent.destination = _lastCharPos;
+                if (Math.Abs(_agent.remainingDistance) < 0.2f)
+                {
+                    yield return Rotate();
+                }
+                   
             }
             
-            transform.rotation = Quaternion.Slerp(transform.rotation,
+            if(_agent.desiredVelocity.magnitude > 0)
+                transform.rotation = Quaternion.Slerp(transform.rotation,
                 Quaternion.LookRotation(_agent.velocity.normalized)
                 , Time.deltaTime * 8);
 
@@ -145,7 +201,7 @@ public class Guard : Enemy
         }
         _stockedPoints.Clear();
     }
-
+    
     private void OnGameOver()
     {
         _agent.destination = transform.position;

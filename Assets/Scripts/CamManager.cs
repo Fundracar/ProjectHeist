@@ -32,11 +32,11 @@ public class CamManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A))
             Rotate(1);
-        
         else if(Input.GetKeyDown(KeyCode.E))
             Rotate(-1);
     }
 
+    //Change the angle the view
     private void Rotate(int direction)
     {
         float target = _tr.rotation.eulerAngles.y + direction * 90;
@@ -51,4 +51,5 @@ public class CamManager : MonoBehaviour
 
         _actualPosition = _position[_positionIndex];
     }
+    
 }
