@@ -41,11 +41,7 @@ public class Guard : Enemy
         _agent.destination = _path.Peek().position;
 
         _maxIndex = _path.Count - 1;
-
-        cor = Rotate();
-        move = Move();
-        
-        base.Start();
+        StartCoroutine(Move());
     }
 
     IEnumerator ResetState()
@@ -59,7 +55,6 @@ public class Guard : Enemy
         
         while (_characterInFoV && CalculateAngle() <= _settings.AngleDetection)
         {
-            Debug.Log("I see you");
             _lastCharPos = _characterPos;
             yield return null;
         }
@@ -82,7 +77,7 @@ public class Guard : Enemy
 
             if (_characterInFoV && CalculateAngle() <= _settings.AngleDetection/2)
             {
-               if (SearchPlayer().collider.CompareTag("Player"))
+               if (FindPlayer())
                {
                    StartCoroutine(InvestigateAction());
                    yield break; 
@@ -97,7 +92,7 @@ public class Guard : Enemy
             
             if (_characterInFoV && CalculateAngle() <= _settings.AngleDetection/2)
             {
-                if (SearchPlayer().collider.CompareTag("Player"))
+                if (FindPlayer())
                 {
                     StartCoroutine(InvestigateAction());
                     yield break; 
@@ -115,7 +110,7 @@ public class Guard : Enemy
             
             if (_characterInFoV && CalculateAngle() <= _settings.AngleDetection/2)
             {
-                if (SearchPlayer().collider.CompareTag("Player"))
+                if (FindPlayer())
                 {
                     StartCoroutine(InvestigateAction());
                     yield break; 
@@ -132,8 +127,6 @@ public class Guard : Enemy
     {
         while (GameManager.Instance.IsGameRunning)
         {
-            Debug.Log("I move");
-            
             if (_states == States.Patrol)
             {
                 if (Math.Abs(_agent.remainingDistance) < 0.2f)

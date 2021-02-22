@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -12,8 +11,14 @@ public class GameManager : MonoBehaviour
     private bool _isGameRunning;
     public bool IsGameRunning => _isGameRunning;
 
+    private int _anomaly;
+
+    [SerializeField] private int necessaryToolId;
+
     public static event Action gameOverEvt;
 
+    public static event Action<Tools> toolSwapEvt;
+    
     void Awake()
     {
         _isGameRunning = true;
@@ -39,5 +44,24 @@ public class GameManager : MonoBehaviour
             gameOverEvt();
         else
             Debug.LogWarning("Stop! No subscriptions");
+    }
+
+    public void UpAnomaly(int i)
+    {
+        _anomaly += i;
+
+        if (_anomaly >= 100)
+            ActiveAlert();
+    }
+
+    private void ActiveAlert()
+    {
+        Debug.Log("Alarm Activated");
+    }
+    
+    public void OnToolSwap(Tools tools)
+    {
+        if (toolSwapEvt != null)
+            toolSwapEvt.Invoke(tools);
     }
 }
