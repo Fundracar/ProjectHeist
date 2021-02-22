@@ -7,6 +7,20 @@ public class CharacterController : MonoBehaviour
 {
     [SerializeField] private CharacterSettings _settings;
     [SerializeField] private GameObject _cam;
+    [SerializeField] private UIProgressBar _progressBar;
+
+    private float _currentProgress;
+
+    public float CurrentProgress
+    {
+        get => _currentProgress;
+        set 
+        { 
+            _currentProgress = value;
+            _progressBar.CurrentValue = value;
+        }
+    }
+
     private Rigidbody _rb = default;
 
     private float _speed = default;
@@ -78,9 +92,8 @@ public class CharacterController : MonoBehaviour
             }
             
             if (Input.GetMouseButtonDown(2))
-            {
                 SwapTool();
-            }
+            
         }
     }
 
@@ -117,6 +130,9 @@ public class CharacterController : MonoBehaviour
     //Use the equipped tool
     private IEnumerator UseTool()
     {
+        _progressBar.gameObject.SetActive(true);
+        CurrentProgress = 0;
+        
         Debug.Log("Start use tool");
         float t = 0;
         while (t < _equippedTool.WaitTime)
@@ -124,13 +140,18 @@ public class CharacterController : MonoBehaviour
             if (_velocity.magnitude > 0)
             {
                 Debug.Log("Stop use tool");
+                _progressBar.gameObject.SetActive(false);
                 yield break;
             }
+
+            CurrentProgress += 1f / _equippedTool.WaitTime * Time.deltaTime;
             
             t += Time.deltaTime;
             yield return null;
         }
 
+        _progressBar.gameObject.SetActive(false);
+        
         Debug.Log("Finishing use tool");
         _interactive.OnInteraction();
     }

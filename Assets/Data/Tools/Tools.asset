@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64d15f921c2940d459b88c8d7990c4e8, type: 3}
-  m_Name: Drill
+  m_Name: Tools
   m_EditorClassIdentifier: 
-  _toolsId: 106
-  _anomalyCost: 5
+  _toolsId: 124
+  _anomalyCost: 0
   _sprite: {fileID: 0}
-  _waitTime: 5
+  _waitTime: 0
