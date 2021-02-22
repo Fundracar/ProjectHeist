@@ -75,8 +75,8 @@ public class TempGameManager : MonoBehaviour
             listOfToolButtonPrefab[i].SetActive(true);
             Debug.Log(listOfToolButtonPrefab[i].activeSelf);
             Image img = listOfToolButtonPrefab[i].GetComponent<Image>();
-            img.sprite = unlockedToolIterator.Value.toolSprite.sprite;
-            img.color = unlockedToolIterator.Value.toolSprite.color;
+            img.sprite = unlockedToolIterator.Value.Sprite.sprite;
+            img.color = unlockedToolIterator.Value.Sprite.color;
             i += 1;
         }
     }
@@ -207,7 +207,7 @@ public class TempGameManager : MonoBehaviour
         foreach (GameObject availableTool in listOfToolsPrefab)
         {
             Tools t = availableTool.GetComponent<Tools>();
-            dictOfAllTools.Add(t.toolId, t);
+            dictOfAllTools.Add(t.ToolsId, t);
             Debug.Log("+1 tool");
         }
 

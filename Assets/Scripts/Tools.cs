@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "Tools", menuName = "Heist/item/Tool", order = 0)]
 public class Tools: ScriptableObject
@@ -12,9 +13,12 @@ public class Tools: ScriptableObject
     [SerializeField] private int _anomalyCost;
     public int AnomalyCost => _anomalyCost;
 
-    [SerializeField] private Sprite _sprite;
-    public Sprite Sprite => _sprite;
+    [SerializeField] private Image _sprite;
+    public Image Sprite => _sprite;
 
     [SerializeField] private float _waitTime;
     public float WaitTime => _waitTime;
+
+    [SerializeField] private int _toolReputationTreshold;
+    public int toolReputationTreshold => _toolReputationTreshold;
 }

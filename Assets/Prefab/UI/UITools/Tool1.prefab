@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 32623922169149779}
-  - component: {fileID: 228603572841733817}
   - component: {fileID: 7967195693216011569}
   - component: {fileID: 4755642995451646358}
   m_Layer: 0
@@ -38,22 +37,6 @@ RectTransform:
   m_AnchoredPosition: {x: 519.7148, y: 525.0932}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &228603572841733817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8851783445904784565}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61d4b182282327741b7cd194dfff7b05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  toolName: Crowbar
-  toolId: 0
-  toolReputationTreshold: 0
-  toolSprite: {fileID: 4755642995451646358}
 --- !u!222 &7967195693216011569
 CanvasRenderer:
   m_ObjectHideFlags: 0
