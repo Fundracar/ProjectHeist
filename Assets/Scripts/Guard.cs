@@ -55,7 +55,9 @@ public class Guard : Enemy
         
         while (_characterInFoV && CalculateAngle() <= _settings.AngleDetection)
         {
-            _lastCharPos = _characterPos;
+            if(FindPlayer())
+                _lastCharPos = _characterPos;
+            
             yield return null;
         }
     }
@@ -201,13 +203,65 @@ public class Guard : Enemy
         }
         _stockedPoints.Clear();
     }
+
+    private IEnumerator OpenDoor()
+    {
+        bool success = false;
+
+        while (seeDoor)
+        {
+             RaycastHit hit;
+             Physics.Raycast(transform.position, transform.forward, out hit, 1.5f);
+             Debug.DrawRay(transform.position, transform.forward, Color.blue);
+
+             if (hit.collider == null)
+             {
+                 
+             }
+             else if (hit.collider.CompareTag("Door"))
+                 hit.collider.GetComponentInParent<InteractiveObject>().OnInteraction();
+
+             yield return null;
+        }
+    }
     
     private void OnGameOver()
     {
         _agent.destination = transform.position;
         _agent.speed = 0;
     }
+
+    private bool seeDoor = false;
     
+    protected override void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+
+        if (other.CompareTag("Door"))
+        {
+            seeDoor = true;
+            StartCoroutine(OpenDoor());
+        }
+            
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+       /* if (other.CompareTag("Door"))
+            OpenDoor();*/
+    }
+
+    protected override void OnTriggerExit(Collider other)
+    {
+        base.OnTriggerExit(other);
+        
+        if (other.CompareTag("Interactive"))
+        {
+            seeDoor = false;
+            //StartCoroutine(OpenDoor());
+        }
+    }
+
     private void OnEnable()
     {
         GameManager.gameOverEvt += OnGameOver;

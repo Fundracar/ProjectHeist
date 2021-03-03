@@ -13,13 +13,14 @@ public class Bag : InteractiveObject
     private CharacterController _cc;
     private Transform _ccTr;
 
-    private enum eContain
+    [SerializeField] private bool isGoal;
+    public bool IsGoal
     {
-        Gold,
-        Jewel,
-        Money
+        get => isGoal;
+        set => isGoal = value;
     }
-    [SerializeField] private eContain _contain;
+
+    [SerializeField] private BagData _data;
 
     private void Awake()
     {
@@ -32,11 +33,14 @@ public class Bag : InteractiveObject
 
     protected override void ActiveObject()
     {
-        transform.parent = _ccTr;
-        _tr.localPosition = new Vector3(-1,0,0);
-        _tr.localRotation = Quaternion.Euler(0,0,0);
-        _cc.EquippedBag = this;
-
-        _collider.enabled = false;
+        if (_cc.EquippedBag == null)
+        {
+             transform.parent = _ccTr;
+             _tr.localPosition = new Vector3(-1,0,0);
+             _tr.localRotation = Quaternion.Euler(0,0,0);
+             _cc.EquippedBag = this;
+            
+             _collider.enabled = false;
+        }
     }
 }

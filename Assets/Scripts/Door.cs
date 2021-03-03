@@ -7,6 +7,7 @@ public class Door : InteractiveObject
 {
     [SerializeField] private bool isMoving;
     [SerializeField] private Transform pivot;
+    [SerializeField] private Collider _collider;
 
     private int _left = -90;
     private int _right = 90;
@@ -39,7 +40,8 @@ public class Door : InteractiveObject
     private IEnumerator Rotate(int sens)
     {
         isMoving = true;
-        
+        _collider.enabled = false;
+
         Quaternion newRotation = Quaternion.Euler(actualRotation.rotation.eulerAngles - new Vector3(0,sens,0));
         float t = 0;
       
@@ -50,6 +52,7 @@ public class Door : InteractiveObject
             yield return null;
         }
       
+        _collider.enabled = true;
         isMoving = false;
     }
 }

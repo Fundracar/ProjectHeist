@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 64d15f921c2940d459b88c8d7990c4e8, type: 3}
-  m_Name: Tools
+  m_Script: {fileID: 11500000, guid: 49d4f49ecf8520b40b934393110157a1, type: 3}
+  m_Name: GoldBag
   m_EditorClassIdentifier: 
-  _toolsId: 124
-  _anomalyCost: 0
-  _sprite: {fileID: 0}
-  _waitTime: 0
+  _contain: 0
+  _moneyValue: 0

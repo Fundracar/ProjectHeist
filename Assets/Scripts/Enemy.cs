@@ -128,7 +128,7 @@ public class Enemy : MonoBehaviour
         yield return null;
     }
     
-    private void OnTriggerEnter(Collider other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
             _characterInFoV = true;

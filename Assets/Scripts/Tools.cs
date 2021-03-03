@@ -13,12 +13,15 @@ public class Tools: ScriptableObject
     [SerializeField] private int _anomalyCost;
     public int AnomalyCost => _anomalyCost;
 
-    [SerializeField] private Image _sprite;
-    public Image Sprite => _sprite;
+    [SerializeField] private Sprite _sprite;
+    public Sprite Sprite => _sprite;
+    
+    [SerializeField] private Sprite _unlockedSprite;
+    public Sprite UnlockedSprite => _unlockedSprite;
 
     [SerializeField] private float _waitTime;
     public float WaitTime => _waitTime;
 
     [SerializeField] private int _toolReputationTreshold;
-    public int toolReputationTreshold => _toolReputationTreshold;
+    public int ToolReputationTreshold => _toolReputationTreshold;
 }

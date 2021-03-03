@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _toolsId: 100
   _anomalyCost: 15
-  _sprite: {fileID: 0}
+  _sprite: {fileID: 21300000, guid: 3185ca94580571a44a1ed51afd2a7459, type: 3}
+  _unlockedSprite: {fileID: 21300000, guid: 4ef6730823102294c86c679fb2fddad5, type: 3}
   _waitTime: 2
+  _toolReputationTreshold: 0

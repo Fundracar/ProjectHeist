@@ -7,6 +7,7 @@ public class UIProgressBar : MonoBehaviour
 {
     public Slider slider;
     private float currentValue = 0f;
+    [SerializeField] private Image _img;
 
     public float CurrentValue
     {
@@ -15,6 +16,11 @@ public class UIProgressBar : MonoBehaviour
             currentValue = value;
             slider.value = currentValue;
         }
+    }
+
+    public void SwitchSprite(Sprite sprite)
+    {
+        _img.sprite = sprite;
     }
     
     void Start () {

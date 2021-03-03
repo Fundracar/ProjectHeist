@@ -16,7 +16,7 @@ public class EnemySettings : ScriptableObject
     [Range(1,360)][SerializeField] private int _angleDetection;
     public int AngleDetection => _angleDetection;
 
-    [Range(0.1f, 10)][SerializeField] private float _distanceView;
+    [Range(0.1f, 20)][SerializeField] private float _distanceView;
     public float DistanceView => _distanceView;
 
     [Range(1, 10)] [SerializeField] private float _detectionSpeed;

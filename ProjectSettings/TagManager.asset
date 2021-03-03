@@ -41,6 +41,8 @@ TagManager:
   - CB4
   - CB5
   - CB6
+  - Bag
+  - Door
   layers:
   - Default
   - TransparentFX

@@ -107,6 +107,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 0
-  _necessaryToolsId: 0
   needTool: 0
-  _contain: 0
+  _firstTool: {fileID: 0}
+  _haveSecondTool: 0
+  _secondTool: {fileID: 0}
+  isObjective: 0
+  _data: {fileID: 11400000, guid: d0a9681c211dbf3469da873f5b7a5019, type: 2}

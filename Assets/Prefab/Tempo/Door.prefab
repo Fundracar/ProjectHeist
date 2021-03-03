@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 6356574346283418334}
   - component: {fileID: 6356574346283418333}
   - component: {fileID: 6356574346283418335}
+  - component: {fileID: -4747322973075255286}
   m_Layer: 0
   m_Name: Door
   m_TagString: Interactive
@@ -189,3 +190,20 @@ MonoBehaviour:
   _secondTool: {fileID: 11400000, guid: 493f602c49f77844b816bfaf53e311c2, type: 2}
   isMoving: 0
   pivot: {fileID: 6356574345999013952}
+  _collider: {fileID: 6356574344969146544}
+--- !u!54 &-4747322973075255286
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6356574346283418332}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class Safe : InteractiveObject
 {
+    [Header("Safe")]
     [SerializeField] private GameObject _bagGold;
     [SerializeField] private GameObject _bagJewel;
     [SerializeField] private GameObject _bagMoney;
@@ -13,6 +14,7 @@ public class Safe : InteractiveObject
     [SerializeField] private Transform _bagSpawnPoint;
 
     private GameObject bag;
+    [SerializeField] private bool _containGoal;
     
     private enum eContain
     {
@@ -37,6 +39,7 @@ public class Safe : InteractiveObject
     {
         bag = Instantiate(iBag, _bagSpawnPoint.position,   Quaternion.identity);
         bag.SetActive(false);
+        bag.GetComponent<Bag>().IsGoal = _containGoal;
     }
     
     protected override void ActiveObject()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Policy;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -13,15 +14,51 @@ public class GameManager : MonoBehaviour
 
     private int _anomaly;
 
+    [Header("Tools")]
+    [SerializeField] private List<Tools> listOfToolsPrefab;
+    private static Dictionary<int, Tools> _dictOfAllTools;
+    public static Dictionary<int, Tools> DictOfAllTools => _dictOfAllTools;
     [SerializeField] private int necessaryToolId;
 
-    public static event Action gameOverEvt;
-
-    public static event Action<Tools> toolSwapEvt;
+    [Header("Crew")]
+    [SerializeField] private List<Crew> listOfCrewPrefab;
+    private static Dictionary<int, Crew> _dictOfAllCrew;
+    public static Dictionary<int, Crew> DictOfAllCrew => _dictOfAllCrew;
     
+    public static event Action gameOverEvt;
+    public static event Action onVictoryEvt; 
+    public static event Action<Tools> toolSwapEvt;
+
+    [SerializeField]private Contract _contract;
+    public Contract Contract
+    {
+        get => _contract;
+        set => _contract = value;
+    }
+
+   /* private int _bonusReward;
+    public int BonusReward
+    {
+        get => _bonusReward;
+        set => _bonusReward = value;
+    }
+*/
+    private int _totalReward = 0;
+    public int TotalReward
+    {
+        get => _totalReward;
+        set
+        {
+            _totalReward += value;
+        } 
+    }
+
     void Awake()
     {
         _isGameRunning = true;
+
+        _dictOfAllTools = ToolsDictionary.InitializeDict(listOfToolsPrefab);
+        _dictOfAllCrew = CrewDict.InitializeDict(listOfCrewPrefab);
         
         if (_instance == null)
         {
@@ -33,6 +70,14 @@ public class GameManager : MonoBehaviour
             Destroy(this);
             return;
         }
+
+        TotalReward = Contract.moneyBaseReward;
+        TotalReward = Contract.moneyBonusReward;
+    }
+
+    private void Start()
+    {
+        SaveManager.LoadSave();
     }
 
     public void GameOver()
@@ -63,5 +108,13 @@ public class GameManager : MonoBehaviour
     {
         if (toolSwapEvt != null)
             toolSwapEvt.Invoke(tools);
+    }
+
+    public void OnVictory()
+    {
+        _isGameRunning = false;
+        
+        if(onVictoryEvt != null)
+            onVictoryEvt();
     }
 }
