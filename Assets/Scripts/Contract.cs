@@ -16,17 +16,4 @@ public class Contract : MonoBehaviour
     public string contractMainObjective;
     public string contractBonusObjective;
     public string contractConstraints;
-
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

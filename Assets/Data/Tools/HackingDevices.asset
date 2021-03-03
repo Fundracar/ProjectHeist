@@ -16,3 +16,4 @@ MonoBehaviour:
   _anomalyCost: 5
   _sprite: {fileID: 0}
   _waitTime: 5
+  _toolReputationTreshold: 1

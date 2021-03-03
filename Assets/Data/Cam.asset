@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1.1
   _waitTime: 1.8
-  _angleDetection: 95
-  _distanceView: 8
+  _angleDetection: 57
+  _distanceView: 20
   _detectionSpeed: 3.18
   _startInvestigatePercentage: 21.4

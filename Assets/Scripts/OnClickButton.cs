@@ -19,6 +19,11 @@ public class OnClickButton : MonoBehaviour
         //Debug.Log("test");
         GameObject.FindGameObjectWithTag("TempGameManager").GetComponent<TempGameManager>().currentSelectedTool = selectedTool;
         //Debug.Log("test1");
+        
+        PlayerPrefs.SetInt("toolId", selectedTool.ToolsId);
+        PlayerPrefs.Save();
+        
+        Debug.Log( $"{this.GetStamp("ffffff")} Tools id : " + PlayerPrefs.GetInt("toolId"), this);
     }
 
     //Method to display the clicked crew in the selected crew slot
@@ -28,6 +33,8 @@ public class OnClickButton : MonoBehaviour
         selectedCrewMemberImage.sprite = buttonImage.sprite;
         selectedCrewMemberImage.color = buttonImage.color;
         GameObject.FindGameObjectWithTag("TempGameManager").GetComponent<TempGameManager>().currentSelectedCrew = selectedCrew;
+        PlayerPrefs.SetInt("crewID", selectedCrew.crewId);
+        PlayerPrefs.Save();
     }
 
 

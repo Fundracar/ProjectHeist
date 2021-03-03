@@ -1,39 +1,49 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class TempGameManager : MonoBehaviour
 {
+    [Header("Contract")]
     public Dictionary<int, Contract> dictOfContracts;
     public List<GameObject> listOfContractsPrefab;
     public Contract storedContract;
-    public GameObject infoBoxPrefab;
+    
+    [Header("Info")]
+    [SerializeField] private GameObject infoBoxPrefab;
     public Vector3 buttonPosition;
-    public Vector3 infoBoxOffSet;
-    public int currentPlayerRep;
-    public int playerRep;
-    public List<GameObject> listOfToolsPrefab;
+    [SerializeField] private Vector3 infoBoxOffSet;
+
+    [Header("Rep")] 
+    [SerializeField] private Player _player;
+    [SerializeField] private int currentPlayerRep;
+    private int playerRep;
+    
+    [Header("Tools")]
+    [SerializeField] private List<Tools> listOfToolsPrefab;
     public Dictionary<int, Tools> dictOfAllTools;
     public Dictionary<int, Tools> dictOfUnlockedTools;
     public List<GameObject> listOfToolButtonPrefab;
+    public Tools currentSelectedTool;
+    
+    [Header ("Crew")]
     public List<GameObject> listOfCrewMemberPrefab;
     public Dictionary<int, Crew> dictOfAllCrewMembers;
     public Dictionary<int, Crew> dictOfUnlockedCrewMembers;
     public List<GameObject> listOfCrewMemberButton;
-    public Tools currentSelectedTool;
     public Crew currentSelectedCrew;
 
+    #region Crew
     //Method to Display all unlocked Crew Members
     public void DisplayUnlockedCrewMembers()
     {
-        GameObject.FindGameObjectWithTag("CB1").SetActive(false);
-        GameObject.FindGameObjectWithTag("CB2").SetActive(false);
-        GameObject.FindGameObjectWithTag("CB3").SetActive(false);
-        GameObject.FindGameObjectWithTag("CB4").SetActive(false);
-        GameObject.FindGameObjectWithTag("CB5").SetActive(false);
-        GameObject.FindGameObjectWithTag("CB6").SetActive(false);
+        foreach (var button in listOfCrewMemberButton)
+            button.SetActive(false);
         
+            
+
         int i = 0;
         foreach (KeyValuePair<int, Crew> unlockedCrewMemberIterator in dictOfUnlockedCrewMembers)
         {
@@ -42,41 +52,40 @@ public class TempGameManager : MonoBehaviour
             Image img = listOfCrewMemberButton[i].GetComponent<Image>();
             img.sprite = unlockedCrewMemberIterator.Value.crewSprite.sprite;
             img.color = unlockedCrewMemberIterator.Value.crewSprite.color;
-            i += 1;
+            i++;
         }
     }
 
     //Method to get all current unlocked CrewMembers
-    public void ResolveUnlockedCrewMembers()
+    private void ResolveUnlockedCrewMembers()
     {
         foreach (KeyValuePair<int, Crew> crewMemberIterator in dictOfAllCrewMembers)
         {
-            if (crewMemberIterator.Value.crewReputationTreshold <= currentPlayerRep)
+            if (crewMemberIterator.Value.crewReputationTreshold <= _player.PlayerRep)
             {
                 dictOfUnlockedCrewMembers.Add(crewMemberIterator.Key, crewMemberIterator.Value);
-                Debug.Log("+1 crewMember unlocked");
+                Debug.Log($"{this.GetStamp("5200ff")}+1 crewMember unlocked", this);
             }
         }
     }
+    #endregion
 
+    #region Tools
     //Method to Display all unlocked Tools
     public void DisplayUnlockedTools()
     {
-        GameObject.FindGameObjectWithTag("TB1").SetActive(false);
-        GameObject.FindGameObjectWithTag("TB2").SetActive(false);
-        GameObject.FindGameObjectWithTag("TB3").SetActive(false);
-        GameObject.FindGameObjectWithTag("TB4").SetActive(false);
-        GameObject.FindGameObjectWithTag("TB5").SetActive(false);
-        GameObject.FindGameObjectWithTag("TB6").SetActive(false);
-
+        foreach (var button in listOfToolButtonPrefab)
+            button.SetActive(false);
+        
         int i = 0;
         foreach (KeyValuePair<int, Tools> unlockedToolIterator in dictOfUnlockedTools)
         {
             listOfToolButtonPrefab[i].SetActive(true);
             Debug.Log(listOfToolButtonPrefab[i].activeSelf);
             Image img = listOfToolButtonPrefab[i].GetComponent<Image>();
-            img.sprite = unlockedToolIterator.Value.Sprite.sprite;
-            img.color = unlockedToolIterator.Value.Sprite.color;
+            img.sprite = unlockedToolIterator.Value.UnlockedSprite;
+            listOfToolButtonPrefab[i].GetComponent<OnClickButton>().selectedTool = unlockedToolIterator.Value;
+           //img.color = unlockedToolIterator.Value.Sprite.color;
             i += 1;
         }
     }
@@ -87,27 +96,15 @@ public class TempGameManager : MonoBehaviour
     {
         foreach (KeyValuePair<int, Tools> toolIterator in dictOfAllTools)
         { 
-            if (toolIterator.Value.toolReputationTreshold <= currentPlayerRep)
+            if (toolIterator.Value.ToolReputationTreshold <= _player.PlayerRep)
             {
                 dictOfUnlockedTools.Add(toolIterator.Key, toolIterator.Value);
-                Debug.Log("+1 tool unlocked");
+                Debug.Log($"{this.GetStamp("5200ff")}+1 tool unlocked", this);
             }
-                           
-        }
-        
-    }
-
-
-    //Method to destroy the info box clone after hovering
-    public void destroyInfoBox()
-    {
-        GameObject instantiatedInfoBox = GameObject.Find("Contract-InfoBox(Clone)");
-        if (instantiatedInfoBox)
-        {
-            Destroy(instantiatedInfoBox);
         }
     }
-
+    #endregion
+    
     //Method to update the player reputation when going back to MainMenuScene from saved reward (int) if successfull heist
     public void RaisePlayerRep()
     {
@@ -115,6 +112,7 @@ public class TempGameManager : MonoBehaviour
     }
 
 
+    #region InfoBox
     //Method used to display the contract informations on the InfoBox after hovering the button
     public void InfoBoxDisplay(int linkedContractId, GameObject contractButton)
     {
@@ -135,7 +133,19 @@ public class TempGameManager : MonoBehaviour
         infoBoxReputationBaseReward.text = foundContract.reputationBaseReward.ToString();
 
     }
+    
+     //Method to destroy the info box clone after hovering
+     public void destroyInfoBox()
+        {
+            GameObject instantiatedInfoBox = GameObject.Find("Contract-InfoBox(Clone)");
+            if (instantiatedInfoBox)
+            {
+                Destroy(instantiatedInfoBox);
+            }
+        }
+    #endregion
 
+    #region Contract
     //Method to display all the contract informations on the side and bottom description bar in the selectionContract Panel
     public void ContractAllInfoDisplay(int linkedContractId)
     {
@@ -163,7 +173,6 @@ public class TempGameManager : MonoBehaviour
         allInfoDisplayContractReputationTreshold.text = foundContract.reputationTreshold.ToString();
 
         storedContract = foundContract; //Current selected contract to be used to display the right contract in the planning Menu
-
     }
 
     //Method to display the needed contract informations in the planning phase
@@ -184,13 +193,14 @@ public class TempGameManager : MonoBehaviour
         planningDisplayContractBonusObjective.text = selectedContract.contractBonusObjective;
 
     }
+    #endregion
 
-
-
-
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        
         dictOfContracts = new Dictionary<int, Contract>();
         dictOfAllTools = new Dictionary<int, Tools>();
         dictOfUnlockedTools = new Dictionary<int, Tools>();
@@ -200,16 +210,12 @@ public class TempGameManager : MonoBehaviour
         foreach (GameObject currentContractObject in listOfContractsPrefab)
         {
             Contract currentContractComponent = currentContractObject.GetComponent<Contract>();
-            dictOfContracts.Add(currentContractComponent.contractId, currentContractComponent);
+            dictOfContracts.Add(currentContractComponent.contractId, currentContractComponent); 
             //Debug.Log("+1ContractInDict");
         }
 
-        foreach (GameObject availableTool in listOfToolsPrefab)
-        {
-            Tools t = availableTool.GetComponent<Tools>();
-            dictOfAllTools.Add(t.ToolsId, t);
-            Debug.Log("+1 tool");
-        }
+        dictOfAllTools = ToolsDictionary.InitializeDict(listOfToolsPrefab);
+        //dictOfAllCrewMembers = CrewDict.InitializeDict(listOfCrewMemberPrefab);
 
         foreach (GameObject availableCrewMember in listOfCrewMemberPrefab)
         {
@@ -219,17 +225,15 @@ public class TempGameManager : MonoBehaviour
         }
 
         //Add save informations before RaisePlayerRep and ResolveUnlockedTools
-        //LoadSaveInfo();
-        RaisePlayerRep();
-        ResolveUnlockedTools();
-        //DisplayUnlockedTools();
-        ResolveUnlockedCrewMembers();
-        //DisplayUnlockedCrewMembers();
+        SaveManager.LoadSave();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        RaisePlayerRep();
+        ResolveUnlockedTools();
+        DisplayUnlockedTools();
+        ResolveUnlockedCrewMembers();
+        DisplayUnlockedCrewMembers();
     }
 }

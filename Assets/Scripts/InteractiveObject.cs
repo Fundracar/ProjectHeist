@@ -5,7 +5,7 @@ using Unity.Collections;
 using UnityEngine;
 
 
-public class InteractiveObject : MonoBehaviour
+public abstract class InteractiveObject : MonoBehaviour
 {
     [SerializeField] protected bool isActive = false;
     
@@ -45,8 +45,5 @@ public class InteractiveObject : MonoBehaviour
     }
 
     // Active the object effect
-    protected virtual void ActiveObject()
-    {
-        
-    }
+    protected abstract void ActiveObject();
 }

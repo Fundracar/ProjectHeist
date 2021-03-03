@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -36,7 +37,7 @@ public class CharacterController : MonoBehaviour
     
      private Vector3 _moveDirection;
      
-     [Header("Interaction")]
+    [Header("Interaction")]
     private bool _interactInput;
     private bool _canInteract;
     private InteractiveObject _interactive;
@@ -47,6 +48,7 @@ public class CharacterController : MonoBehaviour
     private Bag _equippedBag;
     public Bag EquippedBag
     {
+        get => _equippedBag;
         set => _equippedBag = value;
     }
 
@@ -55,7 +57,12 @@ public class CharacterController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
 
         _speed = _settings.WalkSpeed;
-        
+    }
+
+    private void Start()
+    {
+        _equippedTool = GameManager.DictOfAllTools[PlayerPrefs.GetInt("toolId")];
+        Debug.Log( $"{this.GetStamp("00ff00")} Tools id : " + PlayerPrefs.GetInt("toolId"), this);
         GameManager.Instance.OnToolSwap(_equippedTool);
     }
 
@@ -67,11 +74,12 @@ public class CharacterController : MonoBehaviour
             _playerAxesInput.y = Input.GetAxis("Vertical");
             _playerAxesInput.x = Input.GetAxis("Horizontal");
             
-            _moveDirection = (_playerAxesInput.x * _cam.transform.right + _playerAxesInput.y * _cam.transform.forward);
+            _moveDirection = (_playerAxesInput.x * _cam.transform.right + 
+                              _playerAxesInput.y * _cam.transform.forward);
 
             _moveDirection = Vector3.ClampMagnitude(_moveDirection, 1f);
             _desiredVelocity = _moveDirection * _speed;
-
+            
             if (Input.GetButtonDown("Interact") && _canInteract)
                 OnInteraction();
 
@@ -85,15 +93,10 @@ public class CharacterController : MonoBehaviour
                 _speed = _settings.WalkSpeed;
 
             if (Input.GetKeyDown(KeyCode.W) && _equippedBag != null)
-            {
-                _equippedBag.transform.parent = null;
-                _equippedBag.Collider.enabled = true;
-                _equippedBag = null;
-            }
+                DropBag();
             
             if (Input.GetMouseButtonDown(2))
                 SwapTool();
-            
         }
     }
 
@@ -108,7 +111,13 @@ public class CharacterController : MonoBehaviour
         if(_velocity.magnitude > 0) 
             transform.rotation = Quaternion.LookRotation(_velocity);
     }
-    
+
+    public void DropBag()
+    {
+        _equippedBag.transform.parent = null;
+        _equippedBag.Collider.enabled = true;
+        _equippedBag = null;
+    }
     
     private void OnInteraction()
     {
@@ -130,7 +139,11 @@ public class CharacterController : MonoBehaviour
     //Use the equipped tool
     private IEnumerator UseTool()
     {
+        if(_equippedTool.Sprite != null)
+             _progressBar.SwitchSprite(_equippedTool.Sprite);
+        
         _progressBar.gameObject.SetActive(true);
+        
         CurrentProgress = 0;
         
         Debug.Log("Start use tool");
@@ -164,7 +177,7 @@ public class CharacterController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Interactive") || other.CompareTag("Bag"))
+        if (other.CompareTag("Interactive") || other.CompareTag("Bag") || other.CompareTag("Door"))
         {
             _canInteract = true;
             _interactive = other.GetComponent<InteractiveObject>();
@@ -173,7 +186,7 @@ public class CharacterController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Interactive") || other.CompareTag("Bag"))
+        if (other.CompareTag("Interactive") || other.CompareTag("Bag") || other.CompareTag("Door"))
         {
             _canInteract = false;
             _interactive = null;
