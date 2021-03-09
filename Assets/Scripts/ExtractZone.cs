@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class ExtractZone : InteractiveObject
 {
-    private bool _goalCompleted;
-
     private CharacterController _cc;
     
     private void Start()
@@ -22,7 +20,7 @@ public class ExtractZone : InteractiveObject
 
     protected override void ActiveObject()
     {
-        if(_goalCompleted)
+        if(GameManager.Instance.MainGoalCompleted)
             GameManager.Instance.OnVictory();
         else if (_cc.EquippedBag != null)
             _cc.DropBag();
@@ -32,6 +30,6 @@ public class ExtractZone : InteractiveObject
     {
         bag.SetActive(false);
         if (bag.GetComponent<Bag>().IsGoal)
-            _goalCompleted = true;
+            GameManager.Instance.MainGoalCompleted = true;
     }
 }

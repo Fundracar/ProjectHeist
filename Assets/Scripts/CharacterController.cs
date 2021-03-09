@@ -44,7 +44,9 @@ public class CharacterController : MonoBehaviour
     
     [SerializeField] private List<Tools> _tools;
     [SerializeField] private Tools _equippedTool = default;
-        
+
+    [SerializeField] private GameObject _crew;
+
     private Bag _equippedBag;
     public Bag EquippedBag
     {
@@ -62,8 +64,13 @@ public class CharacterController : MonoBehaviour
     private void Start()
     {
         _equippedTool = GameManager.DictOfAllTools[PlayerPrefs.GetInt("toolId")];
-        Debug.Log( $"{this.GetStamp("00ff00")} Tools id : " + PlayerPrefs.GetInt("toolId"), this);
+        Debug.Log( $"{this.GetStamp()} Tools id : " + PlayerPrefs.GetInt("toolId"), this);
         GameManager.Instance.OnToolSwap(_equippedTool);
+
+        _crew = GameManager.DictOfAllCrew[PlayerPrefs.GetInt("crewId")];
+        Debug.Log($"{this.GetStamp()} CrewId : " + PlayerPrefs.GetInt("crewId"), this);
+        
+        _crew.GetComponent<Crew>().ActiveIt();
     }
 
     private void Update()
@@ -139,8 +146,8 @@ public class CharacterController : MonoBehaviour
     //Use the equipped tool
     private IEnumerator UseTool()
     {
-        if(_equippedTool.Sprite != null)
-             _progressBar.SwitchSprite(_equippedTool.Sprite);
+        if(_equippedTool.UseSprite != null)
+             _progressBar.SwitchSprite(_equippedTool.UseSprite);
         
         _progressBar.gameObject.SetActive(true);
         
@@ -164,6 +171,8 @@ public class CharacterController : MonoBehaviour
         }
 
         _progressBar.gameObject.SetActive(false);
+        
+        GameManager.Instance.UpAnomaly(_equippedTool.AnomalyCost);
         
         Debug.Log("Finishing use tool");
         _interactive.OnInteraction();

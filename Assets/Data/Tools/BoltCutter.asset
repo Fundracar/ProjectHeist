@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64d15f921c2940d459b88c8d7990c4e8, type: 3}
-  m_Name: HackingDevices
+  m_Name: BoltCutter
   m_EditorClassIdentifier: 
-  _toolsId: 102
+  _toolsId: 101
   _anomalyCost: 5
-  _sprite: {fileID: 0}
+  _selectedSprite: {fileID: 21300000, guid: b6e54709a9820364985d6acb3d952d7d, type: 3}
+  _unlockedSprite: {fileID: 21300000, guid: 2803ea0489476834e91033be4f36fac5, type: 3}
+  _useSprite: {fileID: 21300000, guid: a52c342a2685da34a901f4f0e1b8ac3f, type: 3}
   _waitTime: 5
   _toolReputationTreshold: 1

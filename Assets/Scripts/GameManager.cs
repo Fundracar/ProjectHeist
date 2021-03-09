@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Security.Policy;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class GameManager : MonoBehaviour
 {
@@ -21,28 +21,66 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int necessaryToolId;
 
     [Header("Crew")]
-    [SerializeField] private List<Crew> listOfCrewPrefab;
-    private static Dictionary<int, Crew> _dictOfAllCrew;
-    public static Dictionary<int, Crew> DictOfAllCrew => _dictOfAllCrew;
+    [SerializeField] private List<GameObject> listOfCrewPrefab;
+    private static Dictionary<int, GameObject> _dictOfAllCrew;
+    public static Dictionary<int, GameObject> DictOfAllCrew => _dictOfAllCrew;
+
+    private float _moneyBonus = 0;
+    public float MoneyBonus
+    {
+        get => _moneyBonus;
+        set => _moneyBonus = value;
+    }
     
     public static event Action gameOverEvt;
     public static event Action onVictoryEvt; 
     public static event Action<Tools> toolSwapEvt;
 
     [SerializeField]private Contract _contract;
-    public Contract Contract
+
+    private List<EnemyCam> _enemyCams;
+    public List<EnemyCam> EnemyCams => _enemyCams;
+
+    private List<Guard> _guards;
+    public List<Guard> Guards
     {
-        get => _contract;
-        set => _contract = value;
+        get => _guards;
+        set => _guards = value;
     }
 
-   /* private int _bonusReward;
-    public int BonusReward
+    [SerializeField] private List<Door> _doors;
+
+    public List<Door> Doors => _doors;
+    public Contract Contract => _contract;
+
+    private bool _mainGoalCompleted;
+
+    public bool MainGoalCompleted
     {
-        get => _bonusReward;
-        set => _bonusReward = value;
+        get => _mainGoalCompleted;
+        set => _mainGoalCompleted = value;
     }
-*/
+    
+
+    private bool _bonusGoalCompleted;
+    public bool BonusGoalCompleted=> _bonusGoalCompleted;
+    
+    private int _bonusGoalProgression;
+    public int BonusGoalProgression
+    {
+        get => _bonusGoalProgression;
+        set => _bonusGoalProgression = value;
+    }
+    
+
+
+    /* private int _bonusReward;
+     public int BonusReward
+     {
+         get => _bonusReward;
+         set => _bonusReward = value;
+     }
+ */
     private int _totalReward = 0;
     public int TotalReward
     {
@@ -61,18 +99,19 @@ public class GameManager : MonoBehaviour
         _dictOfAllCrew = CrewDict.InitializeDict(listOfCrewPrefab);
         
         if (_instance == null)
-        {
             _instance = this;
-        }
         else
         {
-            Debug.LogWarning("instance already created");
+            Debug.LogWarning($"{this.GameManagerStamp()} instance already created");
             Destroy(this);
             return;
         }
 
-        TotalReward = Contract.moneyBaseReward;
-        TotalReward = Contract.moneyBonusReward;
+        _enemyCams = new List<EnemyCam>(FindObjectsOfType<EnemyCam>());
+        _doors = new List<Door>(FindObjectsOfType<Door>());
+        _guards = new List<Guard>(FindObjectsOfType<Guard>());
+        /*TotalReward = Contract.moneyBaseReward;
+        TotalReward = Contract.moneyBonusReward;*/
     }
 
     private void Start()
@@ -94,14 +133,17 @@ public class GameManager : MonoBehaviour
     public void UpAnomaly(int i)
     {
         _anomaly += i;
+        UIAnomalyBar.Instance.CurrentValue = _anomaly;
 
+        Debug.Log($"{this.GameManagerStamp()} Up Anomaly (anomaly + " + i + ")", this);
+        
         if (_anomaly >= 100)
             ActiveAlert();
     }
 
     private void ActiveAlert()
     {
-        Debug.Log("Alarm Activated");
+        Debug.Log($"{this.GameManagerStamp()}Alarm Activated");
     }
     
     public void OnToolSwap(Tools tools)

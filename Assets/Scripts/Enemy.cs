@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
     private Vector3 _toCharacter;
     protected bool _characterInFoV;
     
-    private Light _fov;
+    protected Light _fov;
 
     private bool anomalyUp = false;
 
@@ -115,10 +115,10 @@ public class Enemy : MonoBehaviour
         if (_detectionPercentage >= 100)
             GameManager.Instance.GameOver();
 
-        if (_detectionPercentage > 75)
+        if (_detectionPercentage > 75 && !anomalyUp)
         {
-            GameManager.Instance.UpAnomaly(1);
             anomalyUp = true;
+            GameManager.Instance.UpAnomaly(10);
         }
     }
 

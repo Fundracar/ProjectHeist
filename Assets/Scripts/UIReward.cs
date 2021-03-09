@@ -13,10 +13,21 @@ public class UIReward : MonoBehaviour
 
     private void OnVictory()
     {
-        _bonusRewardTMP.text = GameManager.Instance.Contract.moneyBonusReward + "$";
-        _contractRewardTMP.text =  "+" + GameManager.Instance.Contract.moneyBaseReward + "$";
-        _AnomalyRewardTMP.text = "+ 0$";
-        _totalRewardTMP.text = "=" + GameManager.Instance.TotalReward + "$";
+        _contractRewardTMP.text =  "+" + GameManager.Instance.Contract.MoneyBaseReward + "$";
+        _AnomalyRewardTMP.text = "x" +  (1f + GameManager.Instance.MoneyBonus / 100);
+
+        if (GameManager.Instance.BonusGoalCompleted)
+        {
+            _bonusRewardTMP.text = GameManager.Instance.Contract.MoneyBonusReward + "$";
+            _totalRewardTMP.text =
+                "=" + GameManager.Instance.TotalReward * (1f + GameManager.Instance.MoneyBonus / 100) + "$";
+        }
+        else
+        {
+            _bonusRewardTMP.text = "+0$";
+            _totalRewardTMP.text = "=" + GameManager.Instance.Contract.MoneyBaseReward *
+                (1f + GameManager.Instance.MoneyBonus / 100) + "$";
+        }
     }
 
     private void OnEnable()

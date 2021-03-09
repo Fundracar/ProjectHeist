@@ -3,11 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[CreateAssetMenu(fileName = "Crew", menuName = "Heist/item/Crew", order = 0)]
-public class Crew : MonoBehaviour
+
+public abstract class Crew : MonoBehaviour
 {
-    public string crewName;
-    public int crewId;
-    public int crewReputationTreshold;
-    public Image crewSprite;
+    [SerializeField][Range(200,299)] private int crewId;
+    public int CrewId => crewId;
+    
+    [SerializeField] private int crewReputationTreshold;
+    public int CrewReputationTreshold => crewReputationTreshold;
+    
+    [SerializeField] private Sprite crewSprite;
+    public Sprite CrewSprite => crewSprite;
+
+    [SerializeField] private bool isBonus;
+    public bool IsBonus => isBonus;
+
+    [SerializeField][Range(0,100)] private int _anomalyCost;
+    public int AnomalyCost => _anomalyCost;
+    
+    public abstract void ActiveIt();
 }

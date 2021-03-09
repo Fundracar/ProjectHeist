@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d15f921c2940d459b88c8d7990c4e8, type: 3}
   m_Name: Drill
   m_EditorClassIdentifier: 
-  _toolsId: 101
+  _toolsId: 104
   _anomalyCost: 0
-  _sprite: {fileID: 21300000, guid: eab5be1579aa4b54f81f46505c9294cf, type: 3}
+  _selectedSprite: {fileID: 21300000, guid: eab5be1579aa4b54f81f46505c9294cf, type: 3}
   _unlockedSprite: {fileID: 21300000, guid: 95b73b796f7068e449c5450cba176325, type: 3}
+  _useSprite: {fileID: 21300000, guid: 9187529d4a615c44eaff072e54b64e8c, type: 3}
   _waitTime: 0
-  _toolReputationTreshold: 0
+  _toolReputationTreshold: 5
