@@ -7,7 +7,7 @@ public class OnClickButton : MonoBehaviour
 {
     public Image buttonImage;
     public Tools selectedTool;
-    public Crew selectedCrew;
+    public GameObject selectedCrew;
 
 
     //Method to display the clicked tool in the selected tool slot
@@ -23,7 +23,7 @@ public class OnClickButton : MonoBehaviour
         PlayerPrefs.SetInt("toolId", selectedTool.ToolsId);
         PlayerPrefs.Save();
         
-        Debug.Log( $"{this.GetStamp("ffffff")} Tools id : " + PlayerPrefs.GetInt("toolId"), this);
+        Debug.Log( $"{this.GetStamp()} Tools id : " + PlayerPrefs.GetInt("toolId"), this);
     }
 
     //Method to display the clicked crew in the selected crew slot
@@ -32,9 +32,11 @@ public class OnClickButton : MonoBehaviour
         Image selectedCrewMemberImage = GameObject.FindGameObjectWithTag("SelectedCrewMemberDisplayer").GetComponent<Image>();
         selectedCrewMemberImage.sprite = buttonImage.sprite;
         selectedCrewMemberImage.color = buttonImage.color;
-        GameObject.FindGameObjectWithTag("TempGameManager").GetComponent<TempGameManager>().currentSelectedCrew = selectedCrew;
-        PlayerPrefs.SetInt("crewID", selectedCrew.crewId);
+        GameObject.FindGameObjectWithTag("TempGameManager").GetComponent<TempGameManager>().currentSelectedCrew = selectedCrew.GetComponent<Crew>();
+        PlayerPrefs.SetInt("crewId", selectedCrew.GetComponent<Crew>().CrewId);
         PlayerPrefs.Save();
+        Debug.Log($"{this.GetStamp()}" + selectedCrew.GetComponent<Crew>().CrewId, this);
+        Debug.Log( $"{this.GetStamp()} Crew id : " + PlayerPrefs.GetInt("crewId"), this);
     }
 
 

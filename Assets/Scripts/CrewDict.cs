@@ -15,14 +15,14 @@ public class CrewDict : MonoBehaviour
         return _instance;
     }
     
-    public static Dictionary<int,Crew> InitializeDict(List<Crew> crewList) 
+    public static Dictionary<int,GameObject> InitializeDict(List<GameObject> crewList) 
     {
-        Dictionary<int, Crew> crewDict = new Dictionary<int, Crew>();
+        Dictionary<int, GameObject> crewDict = new Dictionary<int, GameObject>();
         
-        foreach (Crew availableTool in crewList)
+        foreach (GameObject availableCrew in crewList)
         {
-            Crew t = availableTool;
-            crewDict.Add(t.crewId, t);
+            GameObject t = availableCrew;
+            crewDict.Add(availableCrew.GetComponent<Crew>().CrewId, t);
             Debug.Log("+1 tool");
         }
 

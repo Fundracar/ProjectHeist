@@ -13,8 +13,8 @@ public class UIEquipedTool : MonoBehaviour
     private void OnToolSwap(Tools tool)
     {
         _nameTxt.text = tool.name;
-        if(tool.Sprite != null)
-            _image.sprite = tool.Sprite;
+        if(tool.UnlockedSprite != null)
+            _image.sprite = tool.UnlockedSprite;
     }
 
     private void OnEnable()

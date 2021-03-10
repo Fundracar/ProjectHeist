@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64d15f921c2940d459b88c8d7990c4e8, type: 3}
   m_Name: Crowbar
   m_EditorClassIdentifier: 
-  _toolsId: 100
+  _toolsId: 102
   _anomalyCost: 15
-  _sprite: {fileID: 21300000, guid: 3185ca94580571a44a1ed51afd2a7459, type: 3}
+  _selectedSprite: {fileID: 21300000, guid: 3185ca94580571a44a1ed51afd2a7459, type: 3}
   _unlockedSprite: {fileID: 21300000, guid: 4ef6730823102294c86c679fb2fddad5, type: 3}
+  _useSprite: {fileID: 21300000, guid: f0b81ea96fbfa194f96923648e5a70f6, type: 3}
   _waitTime: 2
-  _toolReputationTreshold: 0
+  _toolReputationTreshold: 2

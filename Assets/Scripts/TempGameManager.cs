@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class TempGameManager : MonoBehaviour
 {
+    private static TempGameManager _instance;
+    public static TempGameManager Instance => _instance;
+    
     [Header("Contract")]
     public Dictionary<int, Contract> dictOfContracts;
     public List<GameObject> listOfContractsPrefab;
@@ -16,10 +19,6 @@ public class TempGameManager : MonoBehaviour
     public Vector3 buttonPosition;
     [SerializeField] private Vector3 infoBoxOffSet;
 
-    [Header("Rep")] 
-    [SerializeField] private Player _player;
-    [SerializeField] private int currentPlayerRep;
-    private int playerRep;
     
     [Header("Tools")]
     [SerializeField] private List<Tools> listOfToolsPrefab;
@@ -30,8 +29,8 @@ public class TempGameManager : MonoBehaviour
     
     [Header ("Crew")]
     public List<GameObject> listOfCrewMemberPrefab;
-    public Dictionary<int, Crew> dictOfAllCrewMembers;
-    public Dictionary<int, Crew> dictOfUnlockedCrewMembers;
+    public Dictionary<int, GameObject> dictOfAllCrewMembers;
+    public Dictionary<int, GameObject> dictOfUnlockedCrewMembers;
     public List<GameObject> listOfCrewMemberButton;
     public Crew currentSelectedCrew;
 
@@ -45,13 +44,14 @@ public class TempGameManager : MonoBehaviour
             
 
         int i = 0;
-        foreach (KeyValuePair<int, Crew> unlockedCrewMemberIterator in dictOfUnlockedCrewMembers)
+        foreach (KeyValuePair<int, GameObject> unlockedCrewMemberIterator in dictOfUnlockedCrewMembers)
         {
             listOfCrewMemberButton[i].SetActive(true);
             //Debug.Log(listOfCrewMemberButton[i].activeSelf);
             Image img = listOfCrewMemberButton[i].GetComponent<Image>();
-            img.sprite = unlockedCrewMemberIterator.Value.crewSprite.sprite;
-            img.color = unlockedCrewMemberIterator.Value.crewSprite.color;
+            img.sprite = unlockedCrewMemberIterator.Value.GetComponent<Crew>().CrewSprite;
+            listOfCrewMemberButton[i].GetComponent<OnClickButton>().selectedCrew = unlockedCrewMemberIterator.Value;
+            //img.color = unlockedCrewMemberIterator.Value.crewSprite.color;
             i++;
         }
     }
@@ -59,12 +59,12 @@ public class TempGameManager : MonoBehaviour
     //Method to get all current unlocked CrewMembers
     private void ResolveUnlockedCrewMembers()
     {
-        foreach (KeyValuePair<int, Crew> crewMemberIterator in dictOfAllCrewMembers)
+        foreach (KeyValuePair<int, GameObject> crewMemberIterator in dictOfAllCrewMembers)
         {
-            if (crewMemberIterator.Value.crewReputationTreshold <= _player.PlayerRep)
+            if (crewMemberIterator.Value.GetComponent<Crew>().CrewReputationTreshold <= Player.Instance.PlayerRep)
             {
                 dictOfUnlockedCrewMembers.Add(crewMemberIterator.Key, crewMemberIterator.Value);
-                Debug.Log($"{this.GetStamp("5200ff")}+1 crewMember unlocked", this);
+                Debug.Log($"{this.GameManagerStamp()}+1 crewMember unlocked", this);
             }
         }
     }
@@ -96,20 +96,16 @@ public class TempGameManager : MonoBehaviour
     {
         foreach (KeyValuePair<int, Tools> toolIterator in dictOfAllTools)
         { 
-            if (toolIterator.Value.ToolReputationTreshold <= _player.PlayerRep)
+            if (toolIterator.Value.ToolReputationTreshold <= Player.Instance.PlayerRep)
             {
                 dictOfUnlockedTools.Add(toolIterator.Key, toolIterator.Value);
-                Debug.Log($"{this.GetStamp("5200ff")}+1 tool unlocked", this);
+                Debug.Log($"{this.GameManagerStamp()}+1 tool unlocked", this);
             }
         }
     }
     #endregion
     
-    //Method to update the player reputation when going back to MainMenuScene from saved reward (int) if successfull heist
-    public void RaisePlayerRep()
-    {
-        currentPlayerRep = currentPlayerRep + playerRep;
-    }
+    
 
 
     #region InfoBox
@@ -128,9 +124,9 @@ public class TempGameManager : MonoBehaviour
         Text infoBoxVigilanceScore = GameObject.FindGameObjectWithTag("VigilanceScore").GetComponent<Text>();
         infoBoxVigilanceScore.text = foundContract.vigilanceScore.ToString();
         Text infoBoxMoneyBaseReward = GameObject.FindGameObjectWithTag("MoneyBaseRewardValue").GetComponent<Text>();
-        infoBoxMoneyBaseReward.text = foundContract.moneyBaseReward.ToString();
+        infoBoxMoneyBaseReward.text = foundContract.MoneyBaseReward.ToString();
         Text infoBoxReputationBaseReward = GameObject.FindGameObjectWithTag("ReputationBaseRewardValue").GetComponent<Text>();
-        infoBoxReputationBaseReward.text = foundContract.reputationBaseReward.ToString();
+        infoBoxReputationBaseReward.text = foundContract.ReputationBaseReward.ToString();
 
     }
     
@@ -154,23 +150,23 @@ public class TempGameManager : MonoBehaviour
         Text allInfoDisplayContractName = GameObject.FindGameObjectWithTag("AllDisplay.ContractName").GetComponent<Text>();
         allInfoDisplayContractName.text = foundContract.contractName;
         Text allInfoDisplayContractDescription = GameObject.FindGameObjectWithTag("AllDisplay.ContractDescription").GetComponent<Text>();
-        allInfoDisplayContractDescription.text = foundContract.contractDescription;
+        allInfoDisplayContractDescription.text = foundContract.ContractDescription;
         Text allInfoDisplayContractMainObjective = GameObject.FindGameObjectWithTag("AllDisplay.ContractMainObjective").GetComponent<Text>();
-        allInfoDisplayContractMainObjective.text = foundContract.contractMainObjective;
+        allInfoDisplayContractMainObjective.text = foundContract.ContractMainObjective;
         Text allInfoDisplayContractConstraints = GameObject.FindGameObjectWithTag("AllDisplay.ContractConstraints").GetComponent<Text>();
-        allInfoDisplayContractConstraints.text = foundContract.contractConstraints;
+        allInfoDisplayContractConstraints.text = foundContract.ContractConstraints;
         Text allInfoDisplayContractBonusObjective = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusObjective").GetComponent<Text>();
-        allInfoDisplayContractBonusObjective.text = foundContract.contractBonusObjective;
+        allInfoDisplayContractBonusObjective.text = foundContract.ContractBonusObjective;
         Text allInfoDisplayContractBaseFundReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBaseFundReward").GetComponent<Text>();
-        allInfoDisplayContractBaseFundReward.text = foundContract.moneyBaseReward.ToString();
+        allInfoDisplayContractBaseFundReward.text = foundContract.MoneyBaseReward.ToString();
         Text allInfoDisplayContractBaseReputationReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBaseReputationReward").GetComponent<Text>();
-        allInfoDisplayContractBaseReputationReward.text = foundContract.reputationBaseReward.ToString();
+        allInfoDisplayContractBaseReputationReward.text = foundContract.ReputationBaseReward.ToString();
         Text allInfoDisplayContractBonusFundReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusFundReward").GetComponent<Text>();
-        allInfoDisplayContractBonusFundReward.text = foundContract.moneyBonusReward.ToString();
+        allInfoDisplayContractBonusFundReward.text = foundContract.MoneyBonusReward.ToString();
         Text allInfoDisplayContractBonusReputationReward = GameObject.FindGameObjectWithTag("AllDisplay.ContractBonusReputationReward").GetComponent<Text>();
-        allInfoDisplayContractBonusReputationReward.text = foundContract.reputationBonusReward.ToString();
+        allInfoDisplayContractBonusReputationReward.text = foundContract.ReputationBonusReward.ToString();
         Text allInfoDisplayContractReputationTreshold = GameObject.FindGameObjectWithTag("AllDisplay.ContractReputationTreshold").GetComponent<Text>();
-        allInfoDisplayContractReputationTreshold.text = foundContract.reputationTreshold.ToString();
+        allInfoDisplayContractReputationTreshold.text = foundContract.ReputationTreshold.ToString();
 
         storedContract = foundContract; //Current selected contract to be used to display the right contract in the planning Menu
     }
@@ -186,11 +182,11 @@ public class TempGameManager : MonoBehaviour
         Text planningDisplayContractVigilanceScore = GameObject.FindGameObjectWithTag("PlanningPhase.contractVigilanceScoreValue").GetComponent<Text>();
         planningDisplayContractVigilanceScore.text = selectedContract.vigilanceScore.ToString();
         Text planningDisplayContractMainObjective = GameObject.FindGameObjectWithTag("PlanningPhase.contractMainObjective").GetComponent<Text>();
-        planningDisplayContractMainObjective.text = selectedContract.contractMainObjective;
+        planningDisplayContractMainObjective.text = selectedContract.ContractMainObjective;
         Text planningDisplayContractConstraints = GameObject.FindGameObjectWithTag("PlanningPhase.contractConstraints").GetComponent<Text>();
-        planningDisplayContractConstraints.text = selectedContract.contractConstraints;
+        planningDisplayContractConstraints.text = selectedContract.ContractConstraints;
         Text planningDisplayContractBonusObjective = GameObject.FindGameObjectWithTag("PlanningPhase.contractBonusObjective").GetComponent<Text>();
-        planningDisplayContractBonusObjective.text = selectedContract.contractBonusObjective;
+        planningDisplayContractBonusObjective.text = selectedContract.ContractBonusObjective;
 
     }
     #endregion
@@ -199,13 +195,20 @@ public class TempGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        
+        if (_instance == null)
+            _instance = this;
+        else
+        {
+            Debug.LogWarning($"{this.GameManagerStamp()} instance already created");
+            Destroy(this);
+            return;
+        }
+
         dictOfContracts = new Dictionary<int, Contract>();
         dictOfAllTools = new Dictionary<int, Tools>();
         dictOfUnlockedTools = new Dictionary<int, Tools>();
-        dictOfAllCrewMembers = new Dictionary<int, Crew>();
-        dictOfUnlockedCrewMembers = new Dictionary<int, Crew>();
+        dictOfAllCrewMembers = new Dictionary<int, GameObject>();
+        dictOfUnlockedCrewMembers = new Dictionary<int, GameObject>();
 
         foreach (GameObject currentContractObject in listOfContractsPrefab)
         {
@@ -215,14 +218,13 @@ public class TempGameManager : MonoBehaviour
         }
 
         dictOfAllTools = ToolsDictionary.InitializeDict(listOfToolsPrefab);
-        //dictOfAllCrewMembers = CrewDict.InitializeDict(listOfCrewMemberPrefab);
+        dictOfAllCrewMembers = CrewDict.InitializeDict(listOfCrewMemberPrefab);
 
-        foreach (GameObject availableCrewMember in listOfCrewMemberPrefab)
+        /*foreach (Crew availableCrewMember in listOfCrewMemberPrefab)
         {
-            Crew c = availableCrewMember.GetComponent<Crew>();
-            dictOfAllCrewMembers.Add(c.crewId, c);
+            dictOfAllCrewMembers.Add(c.CrewId, c);
             Debug.Log("+1 Crew Member");
-        }
+        }*/
 
         //Add save informations before RaisePlayerRep and ResolveUnlockedTools
         SaveManager.LoadSave();
@@ -230,7 +232,6 @@ public class TempGameManager : MonoBehaviour
 
     private void Start()
     {
-        RaisePlayerRep();
         ResolveUnlockedTools();
         DisplayUnlockedTools();
         ResolveUnlockedCrewMembers();

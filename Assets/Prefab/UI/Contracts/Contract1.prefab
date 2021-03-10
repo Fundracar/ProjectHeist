@@ -60,3 +60,4 @@ MonoBehaviour:
   contractBonusObjective: Open all safes in the bank vault and extract with all the
     money in it
   contractConstraints: -------
+  _sceneName: Level1

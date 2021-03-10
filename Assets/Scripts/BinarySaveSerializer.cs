@@ -35,12 +35,12 @@ public class BinarySaveSerializer : MonoBehaviour
         file.Close();
         
         
-        Debug.Log($"{this.GetStamp("ff0000")}Saved!", this);
+        Debug.Log($"{this.SaveStamp()}Saved!", this);
     }
 
     public Save Load()
     {
-        Debug.Log($"{this.GetStamp("ff0000")}Loading from: {Path}", this);
+        Debug.Log($"{this.SaveStamp()}Loading from: {Path}", this);
 
         if (File.Exists(Path))
         {
@@ -52,7 +52,7 @@ public class BinarySaveSerializer : MonoBehaviour
             FileStream file = File.Open(Path, FileMode.Open);
             var save =  (Save) bf.Deserialize(file);
             file.Close();
-            Debug.Log($"{this.GetStamp("ff0000")}Loaded!", this);
+            Debug.Log($"{this.SaveStamp()}Loaded!", this);
             return save;
         }
 

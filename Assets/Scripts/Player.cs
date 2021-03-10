@@ -6,14 +6,45 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private static Player _instance;
+    public static Player Instance => _instance;
+
+    [SerializeField] private bool _resetSave;
     
-    private int _money;
+    [SerializeField] private int _money;
+
+    private void Awake()
+    {
+        if (_instance == null)
+            _instance = this;
+        else
+        {
+            Debug.LogWarning($"{this.GetStamp()} instance already created");
+            Destroy(this);
+            return;
+        }
+    }
+
+    private void Update()
+    {
+        if (_resetSave)
+            Reset();
+    }
+
     public int Money
     {
         get => _money;
         set => _money += value;
     }
 
+    private void Reset()
+    {
+        _resetSave = false;
+        _playerRep = 1;
+        _money = 0;
+        
+        SaveManager.SaveSave();
+    }
+    
    [SerializeField] private int _playerRep;
     public int PlayerRep
     {
@@ -21,13 +52,13 @@ public class Player : MonoBehaviour
         set => _playerRep += value;
     }
 
-    public void OnSaveLoaded(Save save)
+    private void OnSaveLoaded(Save save)
     {
         _money = save.money;
         _playerRep = save.playerRep;
     }
 
-    public void OnSavePreparing(Save save)
+    private void OnSavePreparing(Save save)
     {
         save.playerRep = _playerRep;
         save.money = _money;
@@ -35,7 +66,9 @@ public class Player : MonoBehaviour
 
     private void OnVictory()
     {
-        Money = GameManager.Instance.TotalReward;
+        Money = (int) (GameManager.Instance.Contract.MoneyBaseReward * (1f +  GameManager.Instance.MoneyBonus /100));
+        if (GameManager.Instance.BonusGoalCompleted)
+            Money += (int) (GameManager.Instance.Contract.MoneyBonusReward * (1f +  GameManager.Instance.MoneyBonus /100));
         
         SaveManager.SaveSave();
     }

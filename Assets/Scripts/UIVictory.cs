@@ -30,7 +30,7 @@ public class UIVictory : MonoBehaviour
 
    public void OnReplayBtn()
    {
-      SceneManager.LoadScene("TestProg");
+      SceneManager.LoadScene(GameManager.Instance.Contract.SceneName);
    }
 
    public void OnMenuBtn()

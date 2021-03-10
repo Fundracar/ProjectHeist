@@ -10,9 +10,13 @@ public abstract class InteractiveObject : MonoBehaviour
     [SerializeField] protected bool isActive = false;
     
     [SerializeField]protected bool needTool;
-    public bool NeedTool => needTool;
+    public bool NeedTool
+    {
+        get => needTool;
+        set => needTool = value;
+    }
 
-    [SerializeField]private Tools _firstTool;
+    [SerializeField] private Tools _firstTool;
     private int _firstToolId;
     public int FirstToolId => _firstToolId;
     

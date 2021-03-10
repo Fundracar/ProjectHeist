@@ -81,6 +81,10 @@ public class EnemyCam : Enemy
         _isLeft = true;
         _pos = ePos.Left;
     }
-    
-    
+
+    public void SetActiveFalse()
+    {
+        _fov.enabled = false;
+        this.enabled = false;
+    }
 }
