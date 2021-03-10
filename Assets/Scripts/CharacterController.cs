@@ -3,13 +3,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterController : MonoBehaviour
 {
     [SerializeField] private CharacterSettings _settings;
     [SerializeField] private GameObject _cam;
     [SerializeField] private UIProgressBar _progressBar;
+    [SerializeField] private GameObject _interractiveImage;
+    [SerializeField] private CanvasGroup _interractiveCanvasGroup;
 
+    private CamManager _camManager;
+    
     private float _currentProgress;
 
     public float CurrentProgress
@@ -46,6 +51,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Tools _equippedTool = default;
 
     [SerializeField] private GameObject _crew;
+    
+    
 
     private Bag _equippedBag;
     public Bag EquippedBag
@@ -59,6 +66,10 @@ public class CharacterController : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
 
         _speed = _settings.WalkSpeed;
+
+        _interractiveCanvasGroup = _interractiveImage.GetComponent<CanvasGroup>();
+
+        _camManager = _cam.GetComponent<CamManager>();
     }
 
     private void Start()
@@ -77,16 +88,19 @@ public class CharacterController : MonoBehaviour
     {
         if (GameManager.Instance.IsGameRunning)
         {
-            // Handle movement
-            _playerAxesInput.y = Input.GetAxis("Vertical");
-            _playerAxesInput.x = Input.GetAxis("Horizontal");
-            
-            _moveDirection = (_playerAxesInput.x * _cam.transform.right + 
-                              _playerAxesInput.y * _cam.transform.forward);
+            if (!Input.GetButton("Interact"))
+            {
+                // Handle movement
+                _playerAxesInput.y = Input.GetAxis("Vertical");
+                _playerAxesInput.x = Input.GetAxis("Horizontal");
 
-            _moveDirection = Vector3.ClampMagnitude(_moveDirection, 1f);
-            _desiredVelocity = _moveDirection * _speed;
-            
+                _moveDirection = (_playerAxesInput.x * _cam.transform.right +
+                                  _playerAxesInput.y * _cam.transform.forward);
+
+                _moveDirection = Vector3.ClampMagnitude(_moveDirection, 1f);
+                _desiredVelocity = _moveDirection * _speed;
+            }
+
             if (Input.GetButtonDown("Interact") && _canInteract)
                 OnInteraction();
 
@@ -109,12 +123,15 @@ public class CharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Calculate and Apply the the velocity on the Character
-        _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, 2);
-        _velocity.z = Mathf.MoveTowards(_velocity.z, _desiredVelocity.z, 2);
+        if (!_camManager.IsMoving)
+        {
+            // Calculate and Apply the the velocity on the Character
+            _velocity.x = Mathf.MoveTowards(_velocity.x, _desiredVelocity.x, 2);
+            _velocity.z = Mathf.MoveTowards(_velocity.z, _desiredVelocity.z, 2);
 
-        _rb.velocity = _velocity;
-        
+            _rb.velocity = _velocity;
+        }
+
         if(_velocity.magnitude > 0) 
             transform.rotation = Quaternion.LookRotation(_velocity);
     }
@@ -138,9 +155,7 @@ public class CharacterController : MonoBehaviour
                 Debug.Log("Wrong tool");
         }
         else
-        {
             _interactive.OnInteraction();
-        }
     }
 
     //Use the equipped tool
@@ -150,6 +165,7 @@ public class CharacterController : MonoBehaviour
              _progressBar.SwitchSprite(_equippedTool.UseSprite);
         
         _progressBar.gameObject.SetActive(true);
+        _interractiveCanvasGroup.alpha = 0;
         
         CurrentProgress = 0;
         
@@ -157,9 +173,10 @@ public class CharacterController : MonoBehaviour
         float t = 0;
         while (t < _equippedTool.WaitTime)
         {
-            if (_velocity.magnitude > 0)
+            if (Input.GetButtonUp("Interact"))
             {
-                Debug.Log("Stop use tool");
+                Debug.Log($"{this.SoundManagerStamp()} Stop use tool");
+                _interractiveCanvasGroup.alpha = 1;
                 _progressBar.gameObject.SetActive(false);
                 yield break;
             }
@@ -173,6 +190,7 @@ public class CharacterController : MonoBehaviour
         _progressBar.gameObject.SetActive(false);
         
         GameManager.Instance.UpAnomaly(_equippedTool.AnomalyCost);
+        _interractiveCanvasGroup.alpha = 1;
         
         Debug.Log("Finishing use tool");
         _interactive.OnInteraction();
@@ -190,6 +208,7 @@ public class CharacterController : MonoBehaviour
         {
             _canInteract = true;
             _interactive = other.GetComponent<InteractiveObject>();
+            _interractiveImage.SetActive(true);
         }
     }
 
@@ -199,6 +218,7 @@ public class CharacterController : MonoBehaviour
         {
             _canInteract = false;
             _interactive = null;
+            _interractiveImage.SetActive(false);
         }
     }
     

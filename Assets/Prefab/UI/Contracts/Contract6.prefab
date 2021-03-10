@@ -46,13 +46,15 @@ MonoBehaviour:
   contractName: Terminal
   contractId: 5
   vigilanceScore: 5
+  _sceneName: Level1
+  _nbOfMainObjectives: 0
+  contractMainObjective: 
+  _nbOfBonusObjectives: 0
+  contractBonusObjective: 
   reputationBaseReward: 3
   moneyBaseReward: 1000000
   moneyBonusReward: 0
   reputationBonusReward: 0
-  reputationTreshold: 0
+  reputationTreshold: 5
   contractDescription: 
-  contractMainObjective: 
-  contractBonusObjective: 
   contractConstraints: 
-  _sceneName: Level1

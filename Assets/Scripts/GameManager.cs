@@ -37,7 +37,8 @@ public class GameManager : MonoBehaviour
     public static event Action<Tools> toolSwapEvt;
 
     [SerializeField]private Contract _contract;
-
+    public Contract Contract => _contract;
+    
     private List<EnemyCam> _enemyCams;
     public List<EnemyCam> EnemyCams => _enemyCams;
 
@@ -51,7 +52,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Door> _doors;
 
     public List<Door> Doors => _doors;
-    public Contract Contract => _contract;
+    
 
     private bool _mainGoalCompleted;
 
@@ -60,7 +61,17 @@ public class GameManager : MonoBehaviour
         get => _mainGoalCompleted;
         set => _mainGoalCompleted = value;
     }
-    
+    private int _mainGoalProgression;
+    public int MainGoalProgression
+    {
+        get => _mainGoalProgression;
+        set
+        {
+            _mainGoalProgression++;
+            if (_mainGoalProgression == Contract.NbOfMainObjectives)
+                _mainGoalCompleted = true;
+        } 
+    }
 
     private bool _bonusGoalCompleted;
     public bool BonusGoalCompleted=> _bonusGoalCompleted;
@@ -69,10 +80,13 @@ public class GameManager : MonoBehaviour
     public int BonusGoalProgression
     {
         get => _bonusGoalProgression;
-        set => _bonusGoalProgression = value;
+        set
+        {
+            _bonusGoalProgression++;
+            if (_bonusGoalProgression == Contract.NbOfBonusObjectives)
+                _bonusGoalCompleted = true;
+        } 
     }
-    
-
 
     /* private int _bonusReward;
      public int BonusReward

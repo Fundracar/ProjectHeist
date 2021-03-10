@@ -30,6 +30,8 @@ public class ExtractZone : InteractiveObject
     {
         bag.SetActive(false);
         if (bag.GetComponent<Bag>().IsGoal)
-            GameManager.Instance.MainGoalCompleted = true;
+            GameManager.Instance.MainGoalProgression++;
+        else
+            GameManager.Instance.BonusGoalProgression++;
     }
 }

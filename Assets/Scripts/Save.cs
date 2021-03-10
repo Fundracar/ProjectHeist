@@ -8,5 +8,4 @@ public class Save
 {
     public int playerRep;
     public int money;
-
 }

@@ -45,8 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crewId: 200
   crewReputationTreshold: 0
-  crewSprite: {fileID: 0}
+  crewSprite: {fileID: 21300000, guid: d9e6f28f7938b274e80021f3b30ec374, type: 3}
   isBonus: 1
+  _anomalyCost: 0
   _activeAt: 0
   _target: 0
   _bonusValue: 20

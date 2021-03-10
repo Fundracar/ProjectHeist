@@ -7,6 +7,7 @@ public static class MonoBehaviourExtensions
     private const string _monoStampCol = "5200ff";
     private const string _saveStampCol = "00ff00";
     private const string _gameManagerStampCol = "ff00000";
+    private const string _soundManagerStampCol = "00000ff";
         
     private static string BuildStamp(MonoBehaviour obj, string color)
     {
@@ -26,5 +27,10 @@ public static class MonoBehaviourExtensions
     public static string GameManagerStamp(this MonoBehaviour obj)
     {
         return BuildStamp(obj, _gameManagerStampCol);
+    }
+
+    public static string SoundManagerStamp(this MonoBehaviour obj)
+    {
+        return BuildStamp(obj, _soundManagerStampCol);
     }
 }
