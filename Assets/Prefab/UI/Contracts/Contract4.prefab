@@ -46,6 +46,21 @@ MonoBehaviour:
   contractName: The Caffrey Museum
   contractId: 3
   vigilanceScore: 5
-  reputationBaseReward: 3
+  _sceneName: 
+  _nbOfMainObjectives: 0
+  contractMainObjective: Switch the real Guernica with a forgery and go back to your
+    hiding place until the museum's opening the next morning
+  _nbOfBonusObjectives: 0
+  contractBonusObjective: Get into the museum's storage and leave your calling card
+    on the next piece presented for auction next week.
+  reputationBaseReward: 1
   moneyBaseReward: 800000
+  moneyBonusReward: 0
+  reputationBonusReward: 3
   reputationTreshold: 7
+  contractDescription: This museum is a place of wonder for art amateur with a diverse
+    and rare collection of paintings and statues. But with this rarity comes a tight
+    security, supposed impossible to beat. Well, here is your chance to prove them
+    wrong.
+  contractConstraints: You hid in the museum during the day because it's impossible
+    to break in at night. So no tools, no crew

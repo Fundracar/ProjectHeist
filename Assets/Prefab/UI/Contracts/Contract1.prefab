@@ -46,18 +46,21 @@ MonoBehaviour:
   contractName: Benevolent Bank
   contractId: 0
   vigilanceScore: 1
+  _sceneName: Level1
+  _nbOfMainObjectives: 0
+  contractMainObjective: 'Get out of the bank with 4 money bags undetected. The vault
+    door can only be opened from the security room. '
+  _nbOfBonusObjectives: 0
+  contractBonusObjective: Retrieve the precious ancient artefact at the heart of
+    the bank vault behind the laser grid. Maybe you can disable the grid from the
+    director's office.
   reputationBaseReward: 1
   moneyBaseReward: 200000
   moneyBonusReward: 50000
   reputationBonusReward: 0
-  reputationTreshold: 1
-  contractDescription: 'The benevolent bank is located on the north side of the city.
-    It''s a small bank and doesn''t seem to be of any interest for profit. Luckily,
+  reputationTreshold: 0
+  contractDescription: The benevolent bank is located on the north side of the city.
+    It's a small bank and doesn't seem to be of any interest for profit. Luckily,
     we have some information that it houses one of the biggest vault in the town
-    and could be filled with really interesting loot. '
-  contractMainObjective: 'Retrieve the precious ancient artefact (Uchigatana) at
-    the heart of the bank vault '
-  contractBonusObjective: Open all safes in the bank vault and extract with all the
-    money in it
-  contractConstraints: -------
-  _sceneName: Level1
+    and often stores smuggled items from the mob.
+  contractConstraints: 
