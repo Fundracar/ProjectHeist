@@ -531,7 +531,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _musicSlider: {fileID: 1873474508}
-  _fxSlider: {fileID: 528348215}
+  _sfxSlider: {fileID: 0}
+  _musicSource: {fileID: 0}
+  _SFXsources: []
 --- !u!1 &87989746
 GameObject:
   m_ObjectHideFlags: 0
