@@ -21765,6 +21765,7 @@ GameObject:
   - component: {fileID: 2038768565}
   - component: {fileID: 2038768567}
   - component: {fileID: 2038768564}
+  - component: {fileID: 2038768568}
   m_Layer: 5
   m_Name: ContractButtonManager
   m_TagString: Untagged
@@ -23059,20 +23060,30 @@ MonoBehaviour:
         colorIndex: 6
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.SetProperty
         - HutongGames.PlayMaker.Actions.UiOnPointerExitEvent
         customNames:
         - 
+        - 
         - Contract1-ColorChange
         - ExitHoveringContract1
-        actionEnabled: 010101
-        actionIsOpen: 000000
-        actionStartIndex: 00000000080000000a000000
-        actionHashCodes: ca51e9005ac85204c6c21405
+        actionEnabled: 01010101
+        actionIsOpen: 01000000
+        actionStartIndex: 00000000050000000d0000000f000000
+        actionHashCodes: 81294e04ca51e9005ac85204c6c21405
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         - ownerOption: 1
           gameObject:
             useVariable: 0
@@ -23264,6 +23275,13 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ecbd5492644e4d34aa29f859e2315373, type: 3}
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
           typeName: TempGameManager
           value: {fileID: 1275911791}
         fsmVarParams:
@@ -23341,15 +23359,28 @@ MonoBehaviour:
             objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams: []
+        fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 1
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - DestroyInfoBox
         byteData: 000000
         arrayParamSizes: 02000000
@@ -23357,8 +23388,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -23372,8 +23408,8 @@ MonoBehaviour:
         - onPointerExitEvent
         - gameObject
         - eventTarget
-        paramDataPos: 00000000000000000000000000000000010000000200000000000000010000000000000002000000000000000000000000000000
-        paramByteDataSize: 00000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000200000000000000010000000000000002000000010000000100000000000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
     - name: GetContract2Informations
       description: 
       colorIndex: 1
@@ -23397,20 +23433,30 @@ MonoBehaviour:
         colorIndex: 6
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.SetProperty
         - HutongGames.PlayMaker.Actions.UiOnPointerExitEvent
         customNames:
         - 
+        - 
         - Contract2-ColorChange
         - ExitHoveringContract2
-        actionEnabled: 010101
-        actionIsOpen: 000001
-        actionStartIndex: 00000000080000000a000000
-        actionHashCodes: ca51e9005ac85204c6c21405
+        actionEnabled: 01010101
+        actionIsOpen: 01000001
+        actionStartIndex: 00000000050000000d0000000f000000
+        actionHashCodes: 81294e04ca51e9005ac85204c6c21405
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         - ownerOption: 1
           gameObject:
             useVariable: 0
@@ -23602,6 +23648,13 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ecbd5492644e4d34aa29f859e2315373, type: 3}
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
           typeName: TempGameManager
           value: {fileID: 1275911791}
         fsmVarParams:
@@ -23679,15 +23732,28 @@ MonoBehaviour:
             objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams: []
+        fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 1
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - DestroyInfoBox
         byteData: 000000
         arrayParamSizes: 02000000
@@ -23695,8 +23761,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -23710,8 +23781,8 @@ MonoBehaviour:
         - onPointerExitEvent
         - gameObject
         - eventTarget
-        paramDataPos: 00000000000000000000000000000000010000000200000000000000010000000000000002000000000000000000000000000000
-        paramByteDataSize: 00000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000200000000000000010000000000000002000000010000000100000000000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
     - name: GetContract3Informations
       description: 
       colorIndex: 1
@@ -23735,20 +23806,30 @@ MonoBehaviour:
         colorIndex: 6
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.SetProperty
         - HutongGames.PlayMaker.Actions.UiOnPointerExitEvent
         customNames:
         - 
+        - 
         - Contract3-ColorChange
         - ExitHoveringContract3
-        actionEnabled: 010101
-        actionIsOpen: 010000
-        actionStartIndex: 00000000080000000a000000
-        actionHashCodes: ca51e9005ac85204c6c21405
+        actionEnabled: 01010101
+        actionIsOpen: 01010000
+        actionStartIndex: 00000000050000000d0000000f000000
+        actionHashCodes: 81294e04ca51e9005ac85204c6c21405
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         - ownerOption: 1
           gameObject:
             useVariable: 0
@@ -23940,6 +24021,13 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ecbd5492644e4d34aa29f859e2315373, type: 3}
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
           typeName: TempGameManager
           value: {fileID: 1275911791}
         fsmVarParams:
@@ -24017,15 +24105,28 @@ MonoBehaviour:
             objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams: []
+        fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 1
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - DestroyInfoBox
         byteData: 000000
         arrayParamSizes: 02000000
@@ -24033,8 +24134,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -24048,8 +24154,8 @@ MonoBehaviour:
         - onPointerExitEvent
         - gameObject
         - eventTarget
-        paramDataPos: 00000000000000000000000000000000010000000200000000000000010000000000000002000000000000000000000000000000
-        paramByteDataSize: 00000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000200000000000000010000000000000002000000010000000100000000000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
     - name: GetContract4Informations
       description: 
       colorIndex: 1
@@ -24073,20 +24179,30 @@ MonoBehaviour:
         colorIndex: 6
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.SetProperty
         - HutongGames.PlayMaker.Actions.UiOnPointerExitEvent
         customNames:
         - 
+        - 
         - Contract4-ColorChange
         - ExitHoveringContract4
-        actionEnabled: 010101
-        actionIsOpen: 000000
-        actionStartIndex: 00000000080000000a000000
-        actionHashCodes: ca51e9005ac85204c6c21405
+        actionEnabled: 01010101
+        actionIsOpen: 01000000
+        actionStartIndex: 00000000050000000d0000000f000000
+        actionHashCodes: 81294e04ca51e9005ac85204c6c21405
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         - ownerOption: 1
           gameObject:
             useVariable: 0
@@ -24278,6 +24394,13 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ecbd5492644e4d34aa29f859e2315373, type: 3}
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
           typeName: TempGameManager
           value: {fileID: 1275911791}
         fsmVarParams:
@@ -24355,15 +24478,28 @@ MonoBehaviour:
             objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams: []
+        fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 1
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - DestroyInfoBox
         byteData: 000000
         arrayParamSizes: 02000000
@@ -24371,8 +24507,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -24386,8 +24527,8 @@ MonoBehaviour:
         - onPointerExitEvent
         - gameObject
         - eventTarget
-        paramDataPos: 00000000000000000000000000000000010000000200000000000000010000000000000002000000000000000000000000000000
-        paramByteDataSize: 00000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000200000000000000010000000000000002000000010000000100000000000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
     - name: GetContract5Informations
       description: 
       colorIndex: 1
@@ -24411,20 +24552,30 @@ MonoBehaviour:
         colorIndex: 6
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.SetProperty
         - HutongGames.PlayMaker.Actions.UiOnPointerExitEvent
         customNames:
         - 
+        - 
         - Contract5-ColorChange
         - ExitHoveringContract5
-        actionEnabled: 010101
-        actionIsOpen: 010000
-        actionStartIndex: 00000000080000000a000000
-        actionHashCodes: ca51e9005ac85204c6c21405
+        actionEnabled: 01010101
+        actionIsOpen: 01010000
+        actionStartIndex: 00000000050000000d0000000f000000
+        actionHashCodes: 81294e04ca51e9005ac85204c6c21405
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         - ownerOption: 1
           gameObject:
             useVariable: 0
@@ -24616,6 +24767,13 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ecbd5492644e4d34aa29f859e2315373, type: 3}
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
           typeName: TempGameManager
           value: {fileID: 1275911791}
         fsmVarParams:
@@ -24693,15 +24851,28 @@ MonoBehaviour:
             objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams: []
+        fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 1
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - DestroyInfoBox
         byteData: 000000
         arrayParamSizes: 02000000
@@ -24709,8 +24880,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -24724,8 +24900,8 @@ MonoBehaviour:
         - onPointerExitEvent
         - gameObject
         - eventTarget
-        paramDataPos: 00000000000000000000000000000000010000000200000000000000010000000000000002000000000000000000000000000000
-        paramByteDataSize: 00000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000200000000000000010000000000000002000000010000000100000000000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
     - name: GetContract6Informations
       description: 
       colorIndex: 1
@@ -24749,20 +24925,30 @@ MonoBehaviour:
         colorIndex: 6
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.SetProperty
         - HutongGames.PlayMaker.Actions.UiOnPointerExitEvent
         customNames:
         - 
+        - 
         - Contract6-ColorChange
         - ExitHoveringContract6
-        actionEnabled: 010101
-        actionIsOpen: 000000
-        actionStartIndex: 00000000080000000a000000
-        actionHashCodes: ca51e9005ac85204c6c21405
+        actionEnabled: 01010101
+        actionIsOpen: 01000000
+        actionStartIndex: 00000000050000000d0000000f000000
+        actionHashCodes: 81294e04ca51e9005ac85204c6c21405
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         - ownerOption: 1
           gameObject:
             useVariable: 0
@@ -24954,6 +25140,13 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ecbd5492644e4d34aa29f859e2315373, type: 3}
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
           typeName: TempGameManager
           value: {fileID: 1275911791}
         fsmVarParams:
@@ -25031,15 +25224,28 @@ MonoBehaviour:
             objectReferences: []
         fsmArrayParams: []
         fsmEnumParams: []
-        fsmFloatParams: []
+        fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 1
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - DestroyInfoBox
         byteData: 000000
         arrayParamSizes: 02000000
@@ -25047,8 +25253,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c0000002700000027000000270000000100000001000000240000000100000017000000140000001f000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -25062,8 +25273,8 @@ MonoBehaviour:
         - onPointerExitEvent
         - gameObject
         - eventTarget
-        paramDataPos: 00000000000000000000000000000000010000000200000000000000010000000000000002000000000000000000000000000000
-        paramByteDataSize: 00000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000200000000000000010000000000000002000000010000000100000000000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000010000000000000001000000000000000000000000000000
     - name: DestroyInfoBox
       description: 
       colorIndex: 6
@@ -25903,18 +26114,28 @@ MonoBehaviour:
         colorIndex: 7
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
         - 
-        actionEnabled: 0101
-        actionIsOpen: 0000
-        actionStartIndex: 0000000007000000
-        actionHashCodes: ca51e90048c01101
+        - 
+        actionEnabled: 010101
+        actionIsOpen: 010000
+        actionStartIndex: 00000000050000000c000000
+        actionHashCodes: 81294e04ca51e90048c01101
         unityObjectParams: []
         fsmGameObjectParams: []
-        fsmOwnerDefaultParams: []
+        fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         animationCurveParams: []
         functionCallParams: []
         fsmTemplateControlParams: []
@@ -25929,6 +26150,13 @@ MonoBehaviour:
           networkSync: 0
           value: ContractAllInfoDisplay
         fsmObjectParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ea7600123f7eac6408f672b4cb1eea86, type: 3}
         - useVariable: 0
           name: 
           tooltip: 
@@ -25988,6 +26216,12 @@ MonoBehaviour:
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         - useVariable: 0
           name: 
           tooltip: 
@@ -25995,13 +26229,20 @@ MonoBehaviour:
           networkSync: 0
           value: 0.1
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - back
         byteData: 000001
         arrayParamSizes: 01000000
@@ -26009,8 +26250,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c000000270000002700000001000000010000000f0000001700000001000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c000000270000002700000001000000010000000f0000001700000001000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -26021,8 +26267,8 @@ MonoBehaviour:
         - time
         - finishEvent
         - realTime
-        paramDataPos: 00000000000000000000000000000000010000000000000001000000000000000000000002000000
-        paramByteDataSize: 00000000000000000000000000000000000000000100000001000000000000000000000001000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000000000001000000010000000100000002000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000000001000000
     - name: Contract2DisplayMethod
       description: 
       colorIndex: 3
@@ -26046,18 +26292,28 @@ MonoBehaviour:
         colorIndex: 7
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
         - 
-        actionEnabled: 0101
-        actionIsOpen: 0000
-        actionStartIndex: 0000000007000000
-        actionHashCodes: ca51e90048c01101
+        - 
+        actionEnabled: 010101
+        actionIsOpen: 010000
+        actionStartIndex: 00000000050000000c000000
+        actionHashCodes: 81294e04ca51e90048c01101
         unityObjectParams: []
         fsmGameObjectParams: []
-        fsmOwnerDefaultParams: []
+        fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         animationCurveParams: []
         functionCallParams: []
         fsmTemplateControlParams: []
@@ -26072,6 +26328,13 @@ MonoBehaviour:
           networkSync: 0
           value: ContractAllInfoDisplay
         fsmObjectParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ea7600123f7eac6408f672b4cb1eea86, type: 3}
         - useVariable: 0
           name: 
           tooltip: 
@@ -26131,6 +26394,12 @@ MonoBehaviour:
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         - useVariable: 0
           name: 
           tooltip: 
@@ -26138,13 +26407,20 @@ MonoBehaviour:
           networkSync: 0
           value: 0.1
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - back
         byteData: 000001
         arrayParamSizes: 01000000
@@ -26152,8 +26428,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c000000270000002700000001000000010000000f0000001700000001000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c000000270000002700000001000000010000000f0000001700000001000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -26164,8 +26445,8 @@ MonoBehaviour:
         - time
         - finishEvent
         - realTime
-        paramDataPos: 00000000000000000000000000000000010000000000000001000000000000000000000002000000
-        paramByteDataSize: 00000000000000000000000000000000000000000100000001000000000000000000000001000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000000000001000000010000000100000002000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000000001000000
     - name: Contract3DisplayMethod
       description: 
       colorIndex: 3
@@ -26189,18 +26470,28 @@ MonoBehaviour:
         colorIndex: 7
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
         - 
-        actionEnabled: 0101
-        actionIsOpen: 0000
-        actionStartIndex: 0000000007000000
-        actionHashCodes: ca51e90048c01101
+        - 
+        actionEnabled: 010101
+        actionIsOpen: 010000
+        actionStartIndex: 00000000050000000c000000
+        actionHashCodes: 81294e04ca51e90048c01101
         unityObjectParams: []
         fsmGameObjectParams: []
-        fsmOwnerDefaultParams: []
+        fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         animationCurveParams: []
         functionCallParams: []
         fsmTemplateControlParams: []
@@ -26215,6 +26506,13 @@ MonoBehaviour:
           networkSync: 0
           value: ContractAllInfoDisplay
         fsmObjectParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ea7600123f7eac6408f672b4cb1eea86, type: 3}
         - useVariable: 0
           name: 
           tooltip: 
@@ -26274,6 +26572,12 @@ MonoBehaviour:
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         - useVariable: 0
           name: 
           tooltip: 
@@ -26281,13 +26585,20 @@ MonoBehaviour:
           networkSync: 0
           value: 0.1
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - back
         byteData: 000001
         arrayParamSizes: 01000000
@@ -26295,8 +26606,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c000000270000002700000001000000010000000f0000001700000001000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c000000270000002700000001000000010000000f0000001700000001000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -26307,8 +26623,8 @@ MonoBehaviour:
         - time
         - finishEvent
         - realTime
-        paramDataPos: 00000000000000000000000000000000010000000000000001000000000000000000000002000000
-        paramByteDataSize: 00000000000000000000000000000000000000000100000001000000000000000000000001000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000000000001000000010000000100000002000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000000001000000
     - name: Contract4DisplayMethod
       description: 
       colorIndex: 3
@@ -26332,18 +26648,28 @@ MonoBehaviour:
         colorIndex: 7
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
         - 
-        actionEnabled: 0101
-        actionIsOpen: 0000
-        actionStartIndex: 0000000007000000
-        actionHashCodes: ca51e90048c01101
+        - 
+        actionEnabled: 010101
+        actionIsOpen: 010000
+        actionStartIndex: 00000000050000000c000000
+        actionHashCodes: 81294e04ca51e90048c01101
         unityObjectParams: []
         fsmGameObjectParams: []
-        fsmOwnerDefaultParams: []
+        fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         animationCurveParams: []
         functionCallParams: []
         fsmTemplateControlParams: []
@@ -26358,6 +26684,13 @@ MonoBehaviour:
           networkSync: 0
           value: ContractAllInfoDisplay
         fsmObjectParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ea7600123f7eac6408f672b4cb1eea86, type: 3}
         - useVariable: 0
           name: 
           tooltip: 
@@ -26417,6 +26750,12 @@ MonoBehaviour:
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         - useVariable: 0
           name: 
           tooltip: 
@@ -26424,13 +26763,20 @@ MonoBehaviour:
           networkSync: 0
           value: 0.1
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - back
         byteData: 000001
         arrayParamSizes: 01000000
@@ -26438,8 +26784,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c000000270000002700000001000000010000000f0000001700000001000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c000000270000002700000001000000010000000f0000001700000001000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -26450,8 +26801,8 @@ MonoBehaviour:
         - time
         - finishEvent
         - realTime
-        paramDataPos: 00000000000000000000000000000000010000000000000001000000000000000000000002000000
-        paramByteDataSize: 00000000000000000000000000000000000000000100000001000000000000000000000001000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000000000001000000010000000100000002000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000000001000000
     - name: Contract5DisplayMethod
       description: 
       colorIndex: 3
@@ -26475,18 +26826,28 @@ MonoBehaviour:
         colorIndex: 7
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
         - 
-        actionEnabled: 0101
-        actionIsOpen: 0000
-        actionStartIndex: 0000000007000000
-        actionHashCodes: ca51e90048c01101
+        - 
+        actionEnabled: 010101
+        actionIsOpen: 010000
+        actionStartIndex: 00000000050000000c000000
+        actionHashCodes: 81294e04ca51e90048c01101
         unityObjectParams: []
         fsmGameObjectParams: []
-        fsmOwnerDefaultParams: []
+        fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         animationCurveParams: []
         functionCallParams: []
         fsmTemplateControlParams: []
@@ -26501,6 +26862,13 @@ MonoBehaviour:
           networkSync: 0
           value: ContractAllInfoDisplay
         fsmObjectParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ea7600123f7eac6408f672b4cb1eea86, type: 3}
         - useVariable: 0
           name: 
           tooltip: 
@@ -26560,6 +26928,12 @@ MonoBehaviour:
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         - useVariable: 0
           name: 
           tooltip: 
@@ -26567,13 +26941,20 @@ MonoBehaviour:
           networkSync: 0
           value: 0.1
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - back
         byteData: 000001
         arrayParamSizes: 01000000
@@ -26581,8 +26962,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c000000270000002700000001000000010000000f0000001700000001000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c000000270000002700000001000000010000000f0000001700000001000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -26593,8 +26979,8 @@ MonoBehaviour:
         - time
         - finishEvent
         - realTime
-        paramDataPos: 00000000000000000000000000000000010000000000000001000000000000000000000002000000
-        paramByteDataSize: 00000000000000000000000000000000000000000100000001000000000000000000000001000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000000000001000000010000000100000002000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000000001000000
     - name: Contract6DisplayMethod
       description: 
       colorIndex: 3
@@ -26618,18 +27004,28 @@ MonoBehaviour:
         colorIndex: 7
       actionData:
         actionNames:
+        - HutongGames.PlayMaker.Actions.AudioPlay
         - HutongGames.PlayMaker.Actions.CallMethod
         - HutongGames.PlayMaker.Actions.Wait
         customNames:
         - 
         - 
-        actionEnabled: 0101
-        actionIsOpen: 0000
-        actionStartIndex: 0000000007000000
-        actionHashCodes: ca51e90048c01101
+        - 
+        actionEnabled: 010101
+        actionIsOpen: 010000
+        actionStartIndex: 00000000050000000c000000
+        actionHashCodes: 81294e04ca51e90048c01101
         unityObjectParams: []
         fsmGameObjectParams: []
-        fsmOwnerDefaultParams: []
+        fsmOwnerDefaultParams:
+        - ownerOption: 0
+          gameObject:
+            useVariable: 0
+            name: 
+            tooltip: 
+            showInInspector: 0
+            networkSync: 0
+            value: {fileID: 0}
         animationCurveParams: []
         functionCallParams: []
         fsmTemplateControlParams: []
@@ -26644,6 +27040,13 @@ MonoBehaviour:
           networkSync: 0
           value: ContractAllInfoDisplay
         fsmObjectParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          typeName: UnityEngine.AudioClip
+          value: {fileID: 8300000, guid: ea7600123f7eac6408f672b4cb1eea86, type: 3}
         - useVariable: 0
           name: 
           tooltip: 
@@ -26703,6 +27106,12 @@ MonoBehaviour:
         fsmArrayParams: []
         fsmEnumParams: []
         fsmFloatParams:
+        - useVariable: 1
+          name: EffectSoundValue
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         - useVariable: 0
           name: 
           tooltip: 
@@ -26710,13 +27119,20 @@ MonoBehaviour:
           networkSync: 0
           value: 0.1
         fsmIntParams: []
-        fsmBoolParams: []
+        fsmBoolParams:
+        - useVariable: 0
+          name: 
+          tooltip: 
+          showInInspector: 0
+          networkSync: 0
+          value: 0
         fsmVector2Params: []
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams:
+        - 
         - back
         byteData: 000001
         arrayParamSizes: 01000000
@@ -26724,8 +27140,13 @@ MonoBehaviour:
         - HutongGames.PlayMaker.FsmVar
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 18000000120000000c000000270000002700000001000000010000000f0000001700000001000000
+        paramDataType: 140000000f00000018000000110000001700000018000000120000000c000000270000002700000001000000010000000f0000001700000001000000
         paramName:
+        - gameObject
+        - volume
+        - oneShotClip
+        - WaitForEndOfClip
+        - finishedEvent
         - behaviour
         - methodName
         - parameters
@@ -26736,8 +27157,8 @@ MonoBehaviour:
         - time
         - finishEvent
         - realTime
-        paramDataPos: 00000000000000000000000000000000010000000000000001000000000000000000000002000000
-        paramByteDataSize: 00000000000000000000000000000000000000000100000001000000000000000000000001000000
+        paramDataPos: 000000000000000000000000000000000000000001000000000000000000000000000000010000000000000001000000010000000100000002000000
+        paramByteDataSize: 000000000000000000000000000000000000000000000000000000000000000000000000000000000100000001000000000000000000000001000000
     events:
     - name: Contract1Clicked
       isSystemEvent: 0
@@ -26824,6 +27245,102 @@ MonoBehaviour:
     handleAnimatorIK: 0
   fsmTemplate: {fileID: 0}
   eventHandlerComponentsAdded: 0
+--- !u!82 &2038768568
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2038768562}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2060296250
 GameObject:
   m_ObjectHideFlags: 0
