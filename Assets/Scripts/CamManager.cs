@@ -11,13 +11,20 @@ public class CamManager : MonoBehaviour
     [SerializeField] private List<Vector3> _position;
     [SerializeField] private int _positionIndex = 0;
 
-    [SerializeField] private float _orbitSpeed = 1f;
+    [Tooltip("Change the speed of the camera when she rotates")][Range(1,5)][SerializeField] private float _orbitSpeed = 1f;
+
+    private Camera _cam;
 
     private bool _isMoving = false;
     public bool IsMoving => _isMoving;
-    
-    private Vector3 _actualPosition;
+
+    private Vector3 _unZoomPosition;
+
+    private Vector3 _postionOffSet;
     private Vector3 _newPosition;
+    
+    [SerializeField] private Transform zoomTr;
+    [Tooltip("Change the speed for the zoom/unzoom")][Range(1,5)][SerializeField] private float _zoomSpeed;
     
     void Awake()
     {
@@ -26,9 +33,12 @@ public class CamManager : MonoBehaviour
 
     private void Start()
     {
-        _actualPosition = _position[_positionIndex];
-        _newPosition = _actualPosition + _characterTr.position;
+        _postionOffSet = _position[_positionIndex];
+        _newPosition = _postionOffSet + _characterTr.position;
         _tr.position = _newPosition;
+        
+        _cam = Camera.main;
+        
     }
 
     // Update is called once per frame
@@ -36,16 +46,29 @@ public class CamManager : MonoBehaviour
     {
         if (!_isMoving)
         {
-            _newPosition = _actualPosition + _characterTr.position;
+            _newPosition = _postionOffSet + _characterTr.position;
             _tr.position = _newPosition;
         }
-
+        
         if (Input.GetKeyDown(KeyCode.A) && !_isMoving)
             StartCoroutine(Rotate(1));
         else if (Input.GetKeyDown(KeyCode.E) && !_isMoving)
             StartCoroutine(Rotate(-1));
+        
+        if(Input.GetButton("Crouch"))
+            ChangeZoom(zoomTr.position);
+        else if( !Input.GetButton("Crouch"))
+            ChangeZoom(_tr.position);
     }
 
+    // Change the distance between the Character and the Camera
+    private void ChangeZoom(Vector3 target)
+    {
+        float dist = (_cam.transform.position - target).sqrMagnitude;
+        if (dist > 0)
+            _cam.transform.position = Vector3.Lerp(_cam.transform.position, target, Time.deltaTime * _zoomSpeed);
+    }
+    
     //Change the angle the view
     private IEnumerator Rotate(int direction)
     {
@@ -70,7 +93,7 @@ public class CamManager : MonoBehaviour
         else
             _positionIndex += direction;
 
-        _actualPosition = _position[_positionIndex];
+        _postionOffSet = _position[_positionIndex];
         
         
         while (Math.Abs(transform.eulerAngles.y - target) > 0.1)
@@ -88,6 +111,7 @@ public class CamManager : MonoBehaviour
         _isMoving = false;
 
         _tr.rotation = Quaternion.Euler(0, target, 0);
+        
     }
     
 }

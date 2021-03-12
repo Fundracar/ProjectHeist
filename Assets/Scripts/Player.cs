@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
 {
     private static Player _instance;
     public static Player Instance => _instance;
+    
+    
 
     [SerializeField] private bool _resetSave;
     

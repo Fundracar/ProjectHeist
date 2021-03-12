@@ -43,6 +43,7 @@ TagManager:
   - CB6
   - Bag
   - Door
+  - SFX
   layers:
   - Default
   - TransparentFX
