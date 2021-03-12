@@ -19,6 +19,8 @@ public class CharacterController : MonoBehaviour
 
     public float CurrentProgress
     {
+        
+        
         get => _currentProgress;
         set 
         { 
