@@ -116,7 +116,7 @@ public class TempGameManager : MonoBehaviour
         Contract foundContract = dictOfContracts[linkedContractId];
 
         buttonPosition = contractButton.transform.position;
-        infoBoxOffSet = buttonPosition + new Vector3(260, 0, 0);
+        infoBoxOffSet = buttonPosition + new Vector3(26, 0, 0);
         GameObject infoBoxPrefabClone = Instantiate(infoBoxPrefab, infoBoxOffSet, Quaternion.identity, canvas.transform);
 
         Text infoBoxContractName = GameObject.FindGameObjectWithTag("ContractName").GetComponent<Text>();
