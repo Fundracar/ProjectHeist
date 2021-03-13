@@ -46,6 +46,7 @@ MonoBehaviour:
   contractName: Benevolent Bank
   contractId: 0
   vigilanceScore: 1
+<<<<<<< HEAD
   _sceneName: Level1
   _nbOfMainObjectives: 4
   contractMainObjective: 'Get out of the bank with 4 money bags undetected. The vault
@@ -54,13 +55,21 @@ MonoBehaviour:
   contractBonusObjective: Retrieve the precious ancient artefact at the heart of
     the bank vault behind the laser grid. Maybe you can disable the grid from the
     director's office.
+=======
+  _sceneName: Level2
+  _nbOfMainObjectives: 1
+  contractMainObjective: Find the gold bag in the safe room, and the incriminating
+    folder in the director's office.
+  _nbOfBonusObjectives: 2
+  contractBonusObjective: Retrieve the content of at least two other safe in order
+    to gain a bonus reward !
+>>>>>>> Ryan1003/fromUpdateGeneral
   reputationBaseReward: 1
   moneyBaseReward: 200000
   moneyBonusReward: 50000
   reputationBonusReward: 0
   reputationTreshold: 0
-  contractDescription: The benevolent bank is located on the north side of the city.
-    It's a small bank and doesn't seem to be of any interest for profit. Luckily,
-    we have some information that it houses one of the biggest vault in the town
-    and often stores smuggled items from the mob.
-  contractConstraints: 
+  contractDescription: The director of this bank holds valuable intels about crooked
+    city officials. He also holds some gold in a safe somewhere. Find both the intel
+    folder and the gold.
+  contractConstraints: As usual, do not get caught otherwise the mission will fail.
