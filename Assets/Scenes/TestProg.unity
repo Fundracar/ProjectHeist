@@ -9490,6 +9490,11 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2004758125746457846, guid: 6cd1322a2422c8740b3d55e7405158c6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6356574344969146550, guid: 6cd1322a2422c8740b3d55e7405158c6,
         type: 3}
       propertyPath: m_Layer
@@ -9623,7 +9628,7 @@ PrefabInstance:
     - target: {fileID: 6356574346283418334, guid: 6cd1322a2422c8740b3d55e7405158c6,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.81
+      value: 1.52
       objectReference: {fileID: 0}
     - target: {fileID: 6356574346283418334, guid: 6cd1322a2422c8740b3d55e7405158c6,
         type: 3}

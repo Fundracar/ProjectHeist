@@ -190,7 +190,7 @@ MonoBehaviour:
   _secondTool: {fileID: 11400000, guid: 493f602c49f77844b816bfaf53e311c2, type: 2}
   isMoving: 0
   pivot: {fileID: 6356574345999013952}
-  _collider: {fileID: 6356574344969146544}
+  _collider: {fileID: 0}
 --- !u!54 &-4747322973075255286
 Rigidbody:
   m_ObjectHideFlags: 0
