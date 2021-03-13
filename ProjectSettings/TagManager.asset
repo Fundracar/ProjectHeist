@@ -44,6 +44,7 @@ TagManager:
   - Bag
   - Door
   - SFX
+  - ParticleSystem
   layers:
   - Default
   - TransparentFX
@@ -80,4 +81,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: particleSystem
+    uniqueID: 3522300243
     locked: 0
