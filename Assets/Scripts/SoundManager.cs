@@ -71,6 +71,8 @@ public class SoundManager : MonoBehaviour
     [ContextMenu("Add all SFX source")]
     private void ObtainsAllSFXsources()
     {
+        _SFXsources = new List<AudioSource>();
+        
         foreach (GameObject source in GameObject.FindGameObjectsWithTag("SFX"))
         {
             _SFXsources.Add(source.GetComponent<AudioSource>());
