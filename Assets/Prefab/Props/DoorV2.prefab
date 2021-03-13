@@ -182,6 +182,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Heist_Porte_Bureau_LowPoly_V2_0
       objectReference: {fileID: 0}
+    - target: {fileID: 8015955560208116611, guid: 2bf928324db1ec4459c6ce83671b29ec,
+        type: 3}
+      propertyPath: m_TagString
+      value: Door
+      objectReference: {fileID: 0}
+    - target: {fileID: 8015955560208116611, guid: 2bf928324db1ec4459c6ce83671b29ec,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bf928324db1ec4459c6ce83671b29ec, type: 3}
 --- !u!4 &3197294451171169875 stripped
