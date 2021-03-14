@@ -14263,7 +14263,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1232200080
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27634,8 +27634,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -741, y: 510}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -726, y: 500}
+  m_SizeDelta: {x: 190.16528, y: 56.962845}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2060963898
 MonoBehaviour:
@@ -27693,7 +27693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 0.07749496, g: 0.990566, b: 0, a: 0}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -27766,7 +27766,7 @@ MonoBehaviour:
         - 
         - 
         actionEnabled: 010101
-        actionIsOpen: 000000
+        actionIsOpen: 000001
         actionStartIndex: 00000000030000000a000000
         actionHashCodes: c6c21405afff11055ac85204
         unityObjectParams: []
@@ -28063,7 +28063,7 @@ MonoBehaviour:
         - 
         - 
         actionEnabled: 010101010101
-        actionIsOpen: 010000010000
+        actionIsOpen: 010100010000
         actionStartIndex: 0000000005000000070000000e0000001100000014000000
         actionHashCodes: 81294e045ac85204afff1105c6c21405c6c21405c6c21405
         unityObjectParams: []
@@ -29945,7 +29945,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -29953,15 +29953,15 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: fe20d81fe11f12342a1ed44c23be35a4, type: 3}
-    m_FontSize: 26
-    m_FontStyle: 0
+    m_FontSize: 32
+    m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
+    m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Back
