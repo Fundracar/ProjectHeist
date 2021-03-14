@@ -13034,7 +13034,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1102673920
 RectTransform:
   m_ObjectHideFlags: 0
@@ -22473,7 +22473,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 1, g: 1, b: 1, a: 1}
+            value: {r: 0.089952946, g: 1, b: 0, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -22605,7 +22605,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 1, g: 1, b: 1, a: 1}
+            value: {r: 0.3490566, g: 0.14983091, b: 0.14983091, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -22737,7 +22737,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 1, g: 1, b: 1, a: 1}
+            value: {r: 0.34901962, g: 0.14901961, b: 0.14901961, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -22869,7 +22869,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 1, g: 1, b: 1, a: 1}
+            value: {r: 0.34901962, g: 0.14901961, b: 0.14901961, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -23001,7 +23001,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 1, g: 1, b: 1, a: 1}
+            value: {r: 0.34901962, g: 0.14901961, b: 0.14901961, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -23133,7 +23133,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 1, g: 1, b: 1, a: 1}
+            value: {r: 0.34901962, g: 0.14901961, b: 0.14901961, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
