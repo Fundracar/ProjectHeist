@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edd283cf7cc78b49b29efbea352dd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contractName: Hardsuit Labs
+  contractName: Hardsuit Labs Inc
   contractId: 4
   vigilanceScore: 4
   _sceneName: 

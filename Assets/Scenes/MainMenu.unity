@@ -2395,7 +2395,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &161486448
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24110,16 +24110,16 @@ MonoBehaviour:
     dataVersion: 2
     usedInTemplate: {fileID: 0}
     name: ContractHovering&InfoBoxDisplay
-    startState: Reset&HoveringCheck
+    startState: ResetColor&HoveringCheck
     states:
-    - name: Reset&HoveringCheck
+    - name: ResetColor&HoveringCheck
       description: 
       colorIndex: 7
       position:
         serializedVersion: 2
         x: 57.320312
         y: 205.58594
-        width: 162
+        width: 193
         height: 112
       isBreakpoint: 0
       isSequence: 0
@@ -24201,7 +24201,7 @@ MonoBehaviour:
         - HoverContract5Button
         - HoverContract6Button
         actionEnabled: 010101010101010101010101
-        actionIsOpen: 000000000000000000000000
+        actionIsOpen: 010100000000000000000000
         actionStartIndex: 00000000020000000400000006000000080000000a0000000c0000000f0000001200000015000000180000001b000000
         actionHashCodes: 5ac852045ac852045ac852045ac852045ac852045ac85204c6c21405c6c21405c6c21405c6c21405c6c21405c6c21405
         unityObjectParams: []
@@ -24560,7 +24560,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 0.089952946, g: 1, b: 0, a: 1}
+            value: {r: 0.048501693, g: 0.5377358, b: 0, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -25504,7 +25504,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 0.25485048, g: 0.6527657, b: 0.7830189, a: 1}
+            value: {r: 0, g: 1, b: 0.1772747, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -25877,7 +25877,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 0.4245283, g: 0.12615699, b: 0.12615699, a: 1}
+            value: {r: 1, g: 0, b: 0, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -26250,7 +26250,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 0.42745098, g: 0.12941177, b: 0.12941177, a: 1}
+            value: {r: 1, g: 0, b: 0, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -26623,7 +26623,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 0.42745098, g: 0.12941177, b: 0.12941177, a: 1}
+            value: {r: 1, g: 0, b: 0, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -26996,7 +26996,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 0.42745098, g: 0.12941177, b: 0.12941177, a: 1}
+            value: {r: 1, g: 0, b: 0, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -27369,7 +27369,7 @@ MonoBehaviour:
             tooltip: 
             showInInspector: 0
             networkSync: 0
-            value: {r: 0.42745098, g: 0.12941177, b: 0.12941177, a: 1}
+            value: {r: 1, g: 0, b: 0, a: 1}
           EnumParameter:
             useVariable: 0
             name: 
@@ -27559,7 +27559,7 @@ MonoBehaviour:
           name: BackToHoveringCheck
           isSystemEvent: 0
           isGlobal: 0
-        toState: Reset&HoveringCheck
+        toState: ResetColor&HoveringCheck
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 7

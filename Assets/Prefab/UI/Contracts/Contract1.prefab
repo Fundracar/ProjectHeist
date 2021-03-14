@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edd283cf7cc78b49b29efbea352dd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contractName: Benevolent Bank
+  contractName: The Benevolent Bank
   contractId: 0
   vigilanceScore: 1
   _sceneName: Level2
