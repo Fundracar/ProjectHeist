@@ -11,7 +11,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] protected EnemySettings _settings;
 
-    int layerMask = 1 << 8;
+    private Transform _tr;
+
+    protected int layerMask = 1 << 8;
 
     protected enum States
     {
@@ -32,6 +34,8 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        _tr = GetComponent<Transform>();
+        
         _characterTr = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         _fov = GetComponent<Light>();
@@ -58,12 +62,13 @@ public class Enemy : MonoBehaviour
         yield return null;
     }
     
-    //TODO Voir avec le prof si + opti possible 
     private void ChangeDetectPercentage()
     {
         // Update character position and the distance between the Enemy and the Player
         _characterPos = _characterTr.position;
         _toCharacter = _characterPos - transform.position;
+
+        float dist = _toCharacter.sqrMagnitude;
         
         if (!_characterInFoV && _detectionPercentage > 0)
             DecreasedPercentage();
@@ -71,13 +76,15 @@ public class Enemy : MonoBehaviour
         {
             if (FindPlayer())
             {
-                IncreasedPercentage();
+                //IncreasedPercentage();
 
-                if (_states == States.Patrol && _detectionPercentage > _settings.StartInvestigatePercentage)
-                    StartCoroutine(InvestigateAction());
+                GameManager.Instance.GameOver();
+                
+               /* if (_states == States.Patrol && _detectionPercentage > _settings.StartInvestigatePercentage)
+                    StartCoroutine(InvestigateAction());*/
             }
-            else
-                DecreasedPercentage();
+           /* else
+                DecreasedPercentage();*/
         }
     }
 

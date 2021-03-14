@@ -23,7 +23,7 @@ public class CrewDict : MonoBehaviour
         {
             GameObject t = availableCrew;
             crewDict.Add(availableCrew.GetComponent<Crew>().CrewId, t);
-            Debug.Log("+1 tool");
+            Debug.Log("+1 crew");
         }
 
         return crewDict;

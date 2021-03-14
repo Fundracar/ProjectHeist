@@ -35,9 +35,9 @@ public class Bag : InteractiveObject
     {
         if (_cc.EquippedBag == null)
         {
-             transform.parent = _ccTr;
-             _tr.localPosition = new Vector3(-1,0,0);
-             _tr.localRotation = Quaternion.Euler(0,0,0);
+             transform.parent = _cc.BagParent;
+             _tr.localPosition= new Vector3(1.5f,0,0); 
+             _tr.localRotation = Quaternion.Euler(-90,90,0);
              _cc.EquippedBag = this;
             
              _collider.enabled = false;

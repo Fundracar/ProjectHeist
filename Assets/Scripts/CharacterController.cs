@@ -53,8 +53,11 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Tools _equippedTool = default;
 
     [SerializeField] private GameObject _crew;
-    
-    
+
+    private bool _isInteract = false;
+
+    private Transform _bagParent;
+    public Transform BagParent => _bagParent;
 
     private Bag _equippedBag;
     public Bag EquippedBag
@@ -72,6 +75,8 @@ public class CharacterController : MonoBehaviour
         _interractiveCanvasGroup = _interractiveImage.GetComponent<CanvasGroup>();
 
         _camManager = _cam.GetComponent<CamManager>();
+
+        _bagParent = GameObject.FindGameObjectWithTag("BagPosition").GetComponent<Transform>();
     }
 
     private void Start()
@@ -90,7 +95,7 @@ public class CharacterController : MonoBehaviour
     {
         if (GameManager.Instance.IsGameRunning)
         {
-            if (!Input.GetButton("Interact"))
+            if (!_isInteract)
             {
                 // Handle movement
                 _playerAxesInput.y = Input.GetAxis("Vertical");
@@ -102,6 +107,8 @@ public class CharacterController : MonoBehaviour
                 _moveDirection = Vector3.ClampMagnitude(_moveDirection, 1f);
                 _desiredVelocity = _moveDirection * _speed;
             }
+            else
+                _desiredVelocity = Vector3.zero;
 
             if (Input.GetButtonDown("Interact") && _canInteract)
                 OnInteraction();
@@ -141,6 +148,11 @@ public class CharacterController : MonoBehaviour
     public void DropBag()
     {
         _equippedBag.transform.parent = null;
+
+        Vector3 newPosition = _equippedBag.transform.position;
+        newPosition.y = -1;
+        _equippedBag.transform.position = newPosition;
+        
         _equippedBag.Collider.enabled = true;
         _equippedBag = null;
     }
@@ -163,9 +175,11 @@ public class CharacterController : MonoBehaviour
     //Use the equipped tool
     private IEnumerator UseTool()
     {
+        _isInteract = true;
+        
         if(_equippedTool.UseSprite != null)
              _progressBar.SwitchSprite(_equippedTool.UseSprite);
-        
+
         _progressBar.gameObject.SetActive(true);
         _interractiveCanvasGroup.alpha = 0;
         
@@ -180,6 +194,7 @@ public class CharacterController : MonoBehaviour
                 Debug.Log($"{this.SoundManagerStamp()} Stop use tool");
                 _interractiveCanvasGroup.alpha = 1;
                 _progressBar.gameObject.SetActive(false);
+                _isInteract = false;
                 yield break;
             }
 
@@ -190,12 +205,15 @@ public class CharacterController : MonoBehaviour
         }
 
         _progressBar.gameObject.SetActive(false);
+
+        _interactive.NeedTool = false;
         
         GameManager.Instance.UpAnomaly(_equippedTool.AnomalyCost);
         _interractiveCanvasGroup.alpha = 1;
         
         Debug.Log("Finishing use tool");
         _interactive.OnInteraction();
+        _isInteract = false;
     }
     
     private void OnGameOver()

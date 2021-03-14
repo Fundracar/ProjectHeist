@@ -846,10 +846,10 @@ MonoBehaviour:
   precision: 20
   material: {fileID: 2100000, guid: 461bc52544167684bb4fd3154b99514f, type: 2}
   debug: 0
-  freq: 0.05
+  freq: 0.1
   mask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
 --- !u!1001 &6374821474366554369
 PrefabInstance:
   m_ObjectHideFlags: 0

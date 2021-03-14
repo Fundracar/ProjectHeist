@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         _isGameRunning = false;
-        Debug.Log("Game Over!");
+        Debug.Log($"{this.GameManagerStamp()}Game Over!", this);
         
         if (gameOverEvt != null) 
             gameOverEvt();

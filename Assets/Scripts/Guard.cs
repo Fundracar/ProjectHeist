@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.ProBuilder.MeshOperations;
 using Random = UnityEngine.Random;
 
 public class Guard : Enemy
@@ -42,6 +43,7 @@ public class Guard : Enemy
 
         _maxIndex = _path.Count - 1;
         StartCoroutine(Move());
+        StartCoroutine(OpenDoor());
     }
 
     IEnumerator ResetState()
@@ -157,7 +159,6 @@ public class Guard : Enemy
                 {
                     yield return Rotate();
                 }
-                   
             }
             
             if(_agent.desiredVelocity.magnitude > 0)
@@ -206,25 +207,28 @@ public class Guard : Enemy
 
     private IEnumerator OpenDoor()
     {
-        bool success = false;
-
-        while (seeDoor)
+        while (GameManager.Instance.IsGameRunning)
         {
-             RaycastHit hit;
-             Physics.Raycast(transform.position, transform.forward, out hit, 1.5f);
-             Debug.DrawRay(transform.position, transform.forward, Color.blue);
+            RaycastHit hit;
+             Physics.Raycast(transform.position, transform.forward, out hit, 2f, layerMask);
+             Debug.DrawRay(transform.position, transform.forward * 2f, Color.blue);
 
              if (hit.collider == null)
              {
                  
              }
              else if (hit.collider.CompareTag("Door"))
-                 hit.collider.GetComponentInParent<InteractiveObject>().OnInteraction();
+             {
+                 hit.collider.GetComponentInParent<InteractiveObject>().OnGuardInteraction();
+             }
+                 
 
              yield return null;
         }
+
+        yield return null;
     }
-    
+
     private void OnGameOver()
     {
         _agent.destination = transform.position;
@@ -232,35 +236,6 @@ public class Guard : Enemy
     }
 
     private bool seeDoor = false;
-    
-    protected override void OnTriggerEnter(Collider other)
-    {
-        base.OnTriggerEnter(other);
-
-        if (other.CompareTag("Door"))
-        {
-            seeDoor = true;
-            StartCoroutine(OpenDoor());
-        }
-            
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-       /* if (other.CompareTag("Door"))
-            OpenDoor();*/
-    }
-
-    protected override void OnTriggerExit(Collider other)
-    {
-        base.OnTriggerExit(other);
-        
-        if (other.CompareTag("Interactive"))
-        {
-            seeDoor = false;
-            //StartCoroutine(OpenDoor());
-        }
-    }
 
     private void OnEnable()
     {
