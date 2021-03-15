@@ -48,6 +48,16 @@ public abstract class InteractiveObject : MonoBehaviour
         Debug.Log("Active Animation");
     }
 
+    public void OnGuardInteraction()
+    {
+        StartCoroutine(GuardActiveObject());
+    }
+
+    protected virtual IEnumerator GuardActiveObject()
+    {
+        yield return null;
+    }
+
     // Active the object effect
     protected abstract void ActiveObject();
 }

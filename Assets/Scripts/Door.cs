@@ -24,7 +24,7 @@ public class Door : InteractiveObject
     {
         if (!isMoving)
         {
-             isActive = !isActive;
+            isActive = !isActive;
             
             if (isActive)
                 StartCoroutine(Rotate(_left));
@@ -32,8 +32,22 @@ public class Door : InteractiveObject
                 StartCoroutine(Rotate(_right));
         }
 
-        if (needTool)
-            needTool = false;
+       /* if (needTool)
+            needTool = false;*/
+    }
+
+    protected override IEnumerator GuardActiveObject()
+    {
+        if (!isActive && !isMoving)
+        {
+            yield return Rotate(_left);
+            
+            yield return new WaitForSeconds(0.5f);
+
+            yield return Rotate(_right);
+        }
+        
+        yield return null;
     }
 
     // Rotate the object around the pivot

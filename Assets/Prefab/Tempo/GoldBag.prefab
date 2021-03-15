@@ -111,5 +111,5 @@ MonoBehaviour:
   _firstTool: {fileID: 0}
   _haveSecondTool: 0
   _secondTool: {fileID: 0}
-  isObjective: 0
+  isGoal: 0
   _data: {fileID: 11400000, guid: d0a9681c211dbf3469da873f5b7a5019, type: 2}

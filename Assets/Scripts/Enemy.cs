@@ -11,7 +11,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] protected EnemySettings _settings;
 
-    int layerMask = 1 << 8;
+    private Transform _tr;
+
+    protected LayerMask layerMask = 1 << 8;
 
     protected enum States
     {
@@ -32,13 +34,13 @@ public class Enemy : MonoBehaviour
 
     private void Awake()
     {
+        _tr = GetComponent<Transform>();
+        
         _characterTr = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
         _fov = GetComponent<Light>();
         _fov.spotAngle = _settings.AngleDetection;
         _fov.range = _settings.DistanceView;
-
-       GetComponent<CapsuleCollider>().radius = _settings.DistanceView;
     }
 
     private void Update()
@@ -58,42 +60,44 @@ public class Enemy : MonoBehaviour
         yield return null;
     }
     
-    //TODO Voir avec le prof si + opti possible 
     private void ChangeDetectPercentage()
     {
         // Update character position and the distance between the Enemy and the Player
         _characterPos = _characterTr.position;
         _toCharacter = _characterPos - transform.position;
+
+        float dist = _toCharacter.sqrMagnitude;
         
         if (!_characterInFoV && _detectionPercentage > 0)
             DecreasedPercentage();
-        else if (_characterInFoV && CalculateAngle() <= _settings.AngleDetection/2)
+        else if (dist <= _settings.DistanceView * _settings.DistanceView && CalculateAngle() <= _settings.AngleDetection/2)
         {
             if (FindPlayer())
             {
-                IncreasedPercentage();
+                //IncreasedPercentage();
 
-                if (_states == States.Patrol && _detectionPercentage > _settings.StartInvestigatePercentage)
-                    StartCoroutine(InvestigateAction());
+                GameManager.Instance.GameOver();
+                
+               /* if (_states == States.Patrol && _detectionPercentage > _settings.StartInvestigatePercentage)
+                    StartCoroutine(InvestigateAction());*/
             }
-            else
-                DecreasedPercentage();
+           /* else
+                DecreasedPercentage();*/
         }
     }
 
     // Detects the Player 
     protected bool FindPlayer()
     {
-        bool success = false;
         
         RaycastHit hit;
         Physics.Raycast(transform.position, _toCharacter.normalized, out hit, _settings.DistanceView +1, layerMask);
         Debug.DrawRay(transform.position, _toCharacter.normalized * _settings.DistanceView, Color.red);
-        
-        if (hit.collider.CompareTag("Player"))
-                success = true;
 
-        return success;
+        if (!hit.collider.CompareTag("Player"))
+            return false;
+
+        return true;
     }
 
     // Decrease the detection percentage
@@ -126,18 +130,6 @@ public class Enemy : MonoBehaviour
     protected virtual IEnumerator InvestigateAction()
     {
         yield return null;
-    }
-    
-    protected virtual void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            _characterInFoV = true;
-    }
-
-    protected virtual void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            _characterInFoV = false;
     }
 
     protected float CalculateAngle()
