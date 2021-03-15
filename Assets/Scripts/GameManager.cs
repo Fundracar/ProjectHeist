@@ -68,8 +68,11 @@ public class GameManager : MonoBehaviour
         set
         {
             _mainGoalProgression++;
+            Debug.Log($"{this.GameManagerStamp()} Main Goal Progression = " + _mainGoalProgression,this);
             if (_mainGoalProgression == Contract.NbOfMainObjectives)
                 _mainGoalCompleted = true;
+            
+            UIObjective.Instance.UpdateUI(true);
         } 
     }
 
@@ -85,6 +88,8 @@ public class GameManager : MonoBehaviour
             _bonusGoalProgression++;
             if (_bonusGoalProgression == Contract.NbOfBonusObjectives)
                 _bonusGoalCompleted = true;
+            
+            UIObjective.Instance.UpdateUI(false);
         } 
     }
 
@@ -124,8 +129,8 @@ public class GameManager : MonoBehaviour
         _enemyCams = new List<EnemyCam>(FindObjectsOfType<EnemyCam>());
         _doors = new List<Door>(FindObjectsOfType<Door>());
         _guards = new List<Guard>(FindObjectsOfType<Guard>());
-        /*TotalReward = Contract.moneyBaseReward;
-        TotalReward = Contract.moneyBonusReward;*/
+        TotalReward = Contract.MoneyBaseReward;
+        TotalReward = Contract.MoneyBonusReward;
     }
 
     private void Start()

@@ -47,10 +47,10 @@ MonoBehaviour:
   contractId: 0
   vigilanceScore: 1
   _sceneName: Level1
-  _nbOfMainObjectives: 0
+  _nbOfMainObjectives: 2
   contractMainObjective: 'Get out of the bank with 4 money bags undetected. The vault
     door can only be opened from the security room. '
-  _nbOfBonusObjectives: 0
+  _nbOfBonusObjectives: 2
   contractBonusObjective: Retrieve the precious ancient artefact at the heart of
     the bank vault behind the laser grid. Maybe you can disable the grid from the
     director's office.

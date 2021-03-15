@@ -27,14 +27,4 @@ public class UIVictory : MonoBehaviour
    {
       GameManager.onVictoryEvt -= OnVictory;
    }
-
-   public void OnReplayBtn()
-   {
-      SceneManager.LoadScene(GameManager.Instance.Contract.SceneName);
-   }
-
-   public void OnMenuBtn()
-   {
-      SceneManager.LoadScene("MainMenu");
-   }
 }

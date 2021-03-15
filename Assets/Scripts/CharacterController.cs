@@ -10,8 +10,9 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private CharacterSettings _settings;
     [SerializeField] private GameObject _cam;
     [SerializeField] private UIProgressBar _progressBar;
-    [SerializeField] private GameObject _interractiveImage;
-    [SerializeField] private CanvasGroup _interractiveCanvasGroup;
+    [SerializeField] private GameObject _interactiveObject; 
+    private Image _interactiveImage;
+    private CanvasGroup _interactiveCanvasGroup;
 
     private CamManager _camManager;
     
@@ -72,7 +73,8 @@ public class CharacterController : MonoBehaviour
 
         _speed = _settings.WalkSpeed;
 
-        _interractiveCanvasGroup = _interractiveImage.GetComponent<CanvasGroup>();
+        _interactiveImage = _interactiveObject.GetComponent<Image>();
+        _interactiveCanvasGroup = _interactiveObject.GetComponent<CanvasGroup>();
 
         _camManager = _cam.GetComponent<CamManager>();
 
@@ -112,8 +114,7 @@ public class CharacterController : MonoBehaviour
 
             if (Input.GetButtonDown("Interact") && _canInteract)
                 OnInteraction();
-
-
+            
             // Change the speed of the character according to the entry on the Run or Crouch keys
             if (Input.GetButtonDown("Run"))
                 _speed = _settings.RunSpeed;
@@ -124,9 +125,6 @@ public class CharacterController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.W) && _equippedBag != null)
                 DropBag();
-            
-            if (Input.GetMouseButtonDown(2))
-                SwapTool();
         }
     }
 
@@ -150,7 +148,7 @@ public class CharacterController : MonoBehaviour
         _equippedBag.transform.parent = null;
 
         Vector3 newPosition = _equippedBag.transform.position;
-        newPosition.y = -1;
+        //newPosition.y = -1;
         _equippedBag.transform.position = newPosition;
         
         _equippedBag.Collider.enabled = true;
@@ -166,12 +164,21 @@ public class CharacterController : MonoBehaviour
             else if (_interactive.HaveSecondTool && _equippedTool.ToolsId == _interactive.SecondToolId)
                 StartCoroutine(UseTool());
             else
-                Debug.Log("Wrong tool");
+                StartCoroutine(WrongTool());
         }
         else
             _interactive.OnInteraction();
     }
 
+    IEnumerator WrongTool()
+    {
+        _interactiveImage.color = Color.red;
+        
+        yield return new WaitForSeconds(1f);
+        
+        _interactiveImage.color = Color.white;
+    }
+    
     //Use the equipped tool
     private IEnumerator UseTool()
     {
@@ -181,7 +188,7 @@ public class CharacterController : MonoBehaviour
              _progressBar.SwitchSprite(_equippedTool.UseSprite);
 
         _progressBar.gameObject.SetActive(true);
-        _interractiveCanvasGroup.alpha = 0;
+        _interactiveCanvasGroup.alpha = 0;
         
         CurrentProgress = 0;
         
@@ -192,7 +199,7 @@ public class CharacterController : MonoBehaviour
             if (Input.GetButtonUp("Interact"))
             {
                 Debug.Log($"{this.SoundManagerStamp()} Stop use tool");
-                _interractiveCanvasGroup.alpha = 1;
+                _interactiveCanvasGroup.alpha = 1;
                 _progressBar.gameObject.SetActive(false);
                 _isInteract = false;
                 yield break;
@@ -209,7 +216,7 @@ public class CharacterController : MonoBehaviour
         _interactive.NeedTool = false;
         
         GameManager.Instance.UpAnomaly(_equippedTool.AnomalyCost);
-        _interractiveCanvasGroup.alpha = 1;
+        _interactiveCanvasGroup.alpha = 1;
         
         Debug.Log("Finishing use tool");
         _interactive.OnInteraction();
@@ -228,7 +235,7 @@ public class CharacterController : MonoBehaviour
         {
             _canInteract = true;
             _interactive = other.GetComponent<InteractiveObject>();
-            _interractiveImage.SetActive(true);
+            _interactiveObject.SetActive(true);
         }
     }
 
@@ -238,7 +245,7 @@ public class CharacterController : MonoBehaviour
         {
             _canInteract = false;
             _interactive = null;
-            _interractiveImage.SetActive(false);
+            _interactiveObject.SetActive(false);
         }
     }
     

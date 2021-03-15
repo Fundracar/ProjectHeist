@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     private Transform _tr;
 
-    protected int layerMask = 1 << 8;
+    protected LayerMask layerMask = 1 << 8;
 
     protected enum States
     {
@@ -89,16 +89,15 @@ public class Enemy : MonoBehaviour
     // Detects the Player 
     protected bool FindPlayer()
     {
-        bool success = false;
         
         RaycastHit hit;
         Physics.Raycast(transform.position, _toCharacter.normalized, out hit, _settings.DistanceView +1, layerMask);
         Debug.DrawRay(transform.position, _toCharacter.normalized * _settings.DistanceView, Color.red);
-        
-        if (hit.collider.CompareTag("Player"))
-                success = true;
 
-        return success;
+        if (!hit.collider.CompareTag("Player"))
+            return false;
+
+        return true;
     }
 
     // Decrease the detection percentage
