@@ -44,6 +44,7 @@ TagManager:
   - Bag
   - Door
   - SFX
+  - BagPosition
   layers:
   - Default
   - TransparentFX

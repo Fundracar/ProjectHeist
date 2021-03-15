@@ -55,9 +55,10 @@ public class CamManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.E) && !_isMoving)
             StartCoroutine(Rotate(-1));
         
-        if(Input.GetButton("Crouch"))
+        
+        if((Input.GetButton("Vertical") || Input.GetButton("Horizontal")) && !Input.GetButton("Run"))
             ChangeZoom(zoomTr.position);
-        else if( !Input.GetButton("Crouch"))
+        else
             ChangeZoom(_tr.position);
     }
 
