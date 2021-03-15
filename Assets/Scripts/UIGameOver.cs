@@ -11,11 +11,15 @@ public class UIGameOver : MonoBehaviour
     {
          _canvasGroup = GetComponent<CanvasGroup>();
          _canvasGroup.alpha = 0;
+         _canvasGroup.interactable = false;
+         _canvasGroup.blocksRaycasts = false;
     }
 
     private void OnGameOver()
     {
         _canvasGroup.alpha = 1;
+        _canvasGroup.interactable = true;
+        _canvasGroup.blocksRaycasts = true;
     }
     
     private void OnEnable()
