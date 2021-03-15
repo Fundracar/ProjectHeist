@@ -215,7 +215,7 @@ public class CharacterController : MonoBehaviour
 
         _interactive.NeedTool = false;
         
-        GameManager.Instance.UpAnomaly(_equippedTool.AnomalyCost);
+        //GameManager.Instance.UpAnomaly(_equippedTool.AnomalyCost);
         _interactiveCanvasGroup.alpha = 1;
         
         Debug.Log("Finishing use tool");
