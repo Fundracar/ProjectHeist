@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0edd283cf7cc78b49b29efbea352dd08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contractName: Benevolent Bank
+  contractName: The Benevolent Bank
   contractId: 0
   vigilanceScore: 1
   _sceneName: Level2
@@ -58,7 +58,8 @@ MonoBehaviour:
   moneyBonusReward: 50000
   reputationBonusReward: 0
   reputationTreshold: 0
-  contractDescription: The director of this bank holds valuable intels about crooked
+  contractDescription: From the outside it's just a bank. But it's the inside that
+    is of interest to us.The director of this bank holds valuable intels about crooked
     city officials. He also holds some gold in a safe somewhere. Find both the intel
     folder and the gold.
-  contractConstraints: As usual, do not get caught otherwise the mission will fail.
+  contractConstraints: Do not get caught otherwise the mission will fail.
