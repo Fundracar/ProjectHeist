@@ -58,7 +58,8 @@ MonoBehaviour:
   moneyBonusReward: 50000
   reputationBonusReward: 0
   reputationTreshold: 0
-  contractDescription: The director of this bank holds valuable intels about crooked
+  contractDescription: From the outside it's just a bank. But it's the inside that
+    is of interest to us.The director of this bank holds valuable intels about crooked
     city officials. He also holds some gold in a safe somewhere. Find both the intel
     folder and the gold.
-  contractConstraints: As usual, do not get caught otherwise the mission will fail.
+  contractConstraints: Do not get caught otherwise the mission will fail.
