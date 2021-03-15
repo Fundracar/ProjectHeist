@@ -58,8 +58,8 @@ MonoBehaviour:
   moneyBonusReward: 500000
   reputationBonusReward: 0
   reputationTreshold: 6
-  contractDescription: 'Hardsuit Labs is a cutting edge research lab focused on new
-    technologies and alternative energy sources. It is said that they are done with
-    a prototype for a new propulsion engine, the JPL lab would really like to get
-    this new prototype and you will get it for them. '
+  contractDescription: 'Hardsuit Labs is a cutting-edge research lab focused on new
+    technologies and alternative energy sources. The rumor is that they developped
+    a top-secret prototype for a new propulsion system. Our client wants us to steal
+    it from them. '
   contractConstraints: 
