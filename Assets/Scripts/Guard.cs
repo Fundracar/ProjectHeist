@@ -229,13 +229,16 @@ public class Guard : Enemy
         yield return null;
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        GameManager.Instance.GameOver();
+    }
+
     private void OnGameOver()
     {
         _agent.destination = transform.position;
         _agent.speed = 0;
     }
-
-    private bool seeDoor = false;
 
     private void OnEnable()
     {

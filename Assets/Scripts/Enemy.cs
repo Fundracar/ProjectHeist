@@ -41,8 +41,6 @@ public class Enemy : MonoBehaviour
         _fov = GetComponent<Light>();
         _fov.spotAngle = _settings.AngleDetection;
         _fov.range = _settings.DistanceView;
-
-       GetComponent<CapsuleCollider>().radius = _settings.DistanceView;
     }
 
     private void Update()
@@ -72,7 +70,7 @@ public class Enemy : MonoBehaviour
         
         if (!_characterInFoV && _detectionPercentage > 0)
             DecreasedPercentage();
-        else if (_characterInFoV && CalculateAngle() <= _settings.AngleDetection/2)
+        else if (dist <= _settings.DistanceView * _settings.DistanceView && CalculateAngle() <= _settings.AngleDetection/2)
         {
             if (FindPlayer())
             {
@@ -133,18 +131,6 @@ public class Enemy : MonoBehaviour
     protected virtual IEnumerator InvestigateAction()
     {
         yield return null;
-    }
-    
-    protected virtual void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            _characterInFoV = true;
-    }
-
-    protected virtual void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-            _characterInFoV = false;
     }
 
     protected float CalculateAngle()
