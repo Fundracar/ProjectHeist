@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -266410721278517868, guid: 2bf928324db1ec4459c6ce83671b29ec, type: 3}
+  - {fileID: 2100000, guid: 1891febab2fee704f9b9543370efaee6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -168,6 +168,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.0227273
       objectReference: {fileID: 0}
+    - target: {fileID: 1220985869698267647, guid: 4ce31de470d03fe41b4ca6978b2ec78f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1891febab2fee704f9b9543370efaee6, type: 2}
+    - target: {fileID: 1220985869698267647, guid: 4ce31de470d03fe41b4ca6978b2ec78f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 956cdf73ccdb6644f94a12fdce7d43e0, type: 2}
     - target: {fileID: 1252050198376237969, guid: 4ce31de470d03fe41b4ca6978b2ec78f,
         type: 3}
       propertyPath: _collider
