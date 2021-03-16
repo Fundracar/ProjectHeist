@@ -19,3 +19,5 @@ MonoBehaviour:
   _useSprite: {fileID: 21300000, guid: cb506ce21b824794bbb634fb7be73096, type: 3}
   _waitTime: 5
   _toolReputationTreshold: 1
+  toolDescription: Finesse and discretion are two features of this set of tools.
+  toolEffect: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
