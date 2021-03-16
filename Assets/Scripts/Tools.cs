@@ -27,4 +27,7 @@ public class Tools: ScriptableObject
 
     [SerializeField] private int _toolReputationTreshold;
     public int ToolReputationTreshold => _toolReputationTreshold;
+
+    [SerializeField] public string toolDescription;
+    [SerializeField] public string toolEffect;
 }

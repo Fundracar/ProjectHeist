@@ -50,6 +50,8 @@ TagManager:
   - Quote
   - CrewEffect
   - Payroll
+  - ToolEffect
+  - ToolDescription
   layers:
   - Default
   - TransparentFX

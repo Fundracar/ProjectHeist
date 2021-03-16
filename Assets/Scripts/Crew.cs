@@ -21,13 +21,13 @@ public abstract class Crew : MonoBehaviour
     [SerializeField][Range(0,100)] private int _anomalyCost;
     public int AnomalyCost => _anomalyCost;
 
-    public string crewEffect;
+    [SerializeField] public string crewEffect;
 
-     [SerializeField] public string crewDescription;
+    [SerializeField] public string crewDescription;
 
-    public string crewQuote;
+    [SerializeField] public string crewQuote;
 
-    public int crewPayroll;
+    [SerializeField] public int crewPayroll;
     
     public abstract void ActiveIt();
 }
