@@ -47,7 +47,7 @@ MonoBehaviour:
   contractId: 0
   vigilanceScore: 1
   _sceneName: Level2
-  _nbOfMainObjectives: 1
+  _nbOfMainObjectives: 2
   contractMainObjective: Find the gold bag in the safe room, and the incriminating
     folder in the director's office.
   _nbOfBonusObjectives: 2
