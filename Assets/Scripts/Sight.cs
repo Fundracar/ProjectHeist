@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
+//using UnityEngine.Experimental.GlobalIllumination;
 
 public class Sight : MonoBehaviour
 {
@@ -10,7 +10,7 @@ public class Sight : MonoBehaviour
 	public int precision = 20;
 	public Material material;
 	public bool debug = false;
-	public float freq = 0.05F;
+	public float freq = 0.1F;
 	public LayerMask mask;
 	
 	Vector3[] _directions;
@@ -106,5 +106,6 @@ public class Sight : MonoBehaviour
 		// We reassign the vertices
 		_sightMesh.vertices = _points;		
 		_sightMesh.RecalculateNormals();
+		_sightMesh.RecalculateBounds();
 	}
 }
