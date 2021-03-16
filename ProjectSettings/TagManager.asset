@@ -46,6 +46,10 @@ TagManager:
   - SFX
   - BagPosition
   - HideoutToolReputationTreshold
+  - Lore
+  - Quote
+  - CrewEffect
+  - Payroll
   layers:
   - Default
   - TransparentFX

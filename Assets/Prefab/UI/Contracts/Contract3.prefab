@@ -48,18 +48,18 @@ MonoBehaviour:
   vigilanceScore: 2
   _sceneName: 
   _nbOfMainObjectives: 0
-  contractMainObjective: Get access to the high rollers private informations
+  contractMainObjective: Gain  access to the high rollers private informations
   _nbOfBonusObjectives: 0
-  contractBonusObjective: Rigg 10 gambling table to drain the casino's ressource
-    on his opening day
+  contractBonusObjective: Rig 10 gambling table to drain the casino's ressources
+    on it's opening day
   reputationBaseReward: 2
   moneyBaseReward: 350000
   moneyBonusReward: 200000
   reputationBonusReward: 0
   reputationTreshold: 2
-  contractDescription: Finally, the construction of this majestic casino is over
-    and launch is opening night soon. The casino is doing a soft opening to feel
-    the last measures needed and it left some weaknesses in their security system.
-    A surgical incursion to get the right informations could tank the casino's reputation
-    before it's real opening
+  contractDescription: 'Finally, the construction of this majestic casino is over.
+    It will be inaugurated soon. There will be a small comittee before the real opening
+    so the security should be more lax. A surgical "incision" will get us through
+    : They won''t even know we were there. How about we tank the casino''s reputation
+    before it even opens ?'
   contractConstraints: Keep the anomaly level under 5

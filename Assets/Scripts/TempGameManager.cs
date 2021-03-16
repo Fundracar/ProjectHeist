@@ -187,6 +187,8 @@ public class TempGameManager : MonoBehaviour
         GameObject hideoutCrewInfoBoxPrefabClone = Instantiate(hideoutCrewInfoBoxPrefab, hideoutCrewInfoBoxOffSet, Quaternion.identity, hideoutCanvas.transform);
 
         //Elements of crew info box to display needed to add on 16/03
+       // Text displayedCrewLore = GameObject.FindGameObjectWithTag("Lore").GetComponent<Text>();
+       // displayedCrewLore.text = foundCrewMember.crewDescription;
     }
 
     //Method to destroy the hideout crew info box clone after hovering

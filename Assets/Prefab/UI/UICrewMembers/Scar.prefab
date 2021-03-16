@@ -48,6 +48,12 @@ MonoBehaviour:
   crewSprite: {fileID: 21300000, guid: d9e6f28f7938b274e80021f3b30ec374, type: 3}
   isBonus: 1
   _anomalyCost: 0
+  crewEffect: Extracted Bag value +20%
+  crewDescription: 'The Syndicate isn''t an elite corporation : it''s strength comes
+    from the variety of acquaintances made over time. "Scar" is one of them. Coming
+    from the Baltimore''s projects, he knows how to turn your silver into gold. '
+  crewQuote: "Quote : \u201CMan, money ain't got no owners, only spenders\u201D"
+  crewPayroll: 15000
   _activeAt: 0
   _target: 0
   _bonusValue: 20

@@ -47,14 +47,19 @@ MonoBehaviour:
   contractId: 5
   vigilanceScore: 5
   _sceneName: Level1
-  _nbOfMainObjectives: 0
-  contractMainObjective: 
-  _nbOfBonusObjectives: 0
-  contractBonusObjective: 
+  _nbOfMainObjectives: 1
+  contractMainObjective: Gain access to the server and get all the passengers identities.
+    Any money is a plus, but don't let them trace the deed back to the Syndicate.
+  _nbOfBonusObjectives: 1
+  contractBonusObjective: Disguise yourself and win a poker game in the main lounge.
   reputationBaseReward: 3
   moneyBaseReward: 1000000
-  moneyBonusReward: 0
-  reputationBonusReward: 0
+  moneyBonusReward: 290000
+  reputationBonusReward: 1
   reputationTreshold: 5
-  contractDescription: 
-  contractConstraints: 
+  contractDescription: 'Have you ever heard about the "money plane" ? It departs
+    each month full of the wealthiest most dangerous criminals on the planet. While
+    in the air, they gamble, feast and mock the weak. We located the plane''s next
+    departure point : we want you to board it and gather intels about the passengers
+    identity.'
+  contractConstraints: You must be gone before the plane lands.
