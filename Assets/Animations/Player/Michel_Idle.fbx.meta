@@ -6,7 +6,22 @@ ModelImporter:
   - first:
       74: 1827226128182048838
     second: Take 001
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert2
+    second: {fileID: 2100000, guid: 63e81bab86525664dafa8b0d3d560bab, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tete3_lambert1
+    second: {fileID: 2100000, guid: ed80488e19af8db4baab11157d5e1106, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: tete3_lambert2
+    second: {fileID: 2100000, guid: 2d5aeeaeb0c0d854f831d511c560cd84, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
