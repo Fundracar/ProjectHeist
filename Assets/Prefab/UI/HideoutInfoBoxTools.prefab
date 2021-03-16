@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 2376128476692703806}
   m_Layer: 5
   m_Name: EffectStringValue
-  m_TagString: Untagged
+  m_TagString: ToolEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -401,7 +401,7 @@ GameObject:
   - component: {fileID: 7717611988781192612}
   m_Layer: 5
   m_Name: DescriptionStringValue
-  m_TagString: Untagged
+  m_TagString: ToolDescription
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

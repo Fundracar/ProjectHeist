@@ -160,7 +160,10 @@ public class TempGameManager : MonoBehaviour
 
         Text hideoutInfoBoxReputationTreshold = GameObject.FindGameObjectWithTag("HideoutToolReputationTreshold").GetComponent<Text>();
         hideoutInfoBoxReputationTreshold.text = foundTool.ToolReputationTreshold.ToString();
-        //Elements of info box of tools to display
+        Text hideoutInfoBoxToolEffect = GameObject.FindGameObjectWithTag("ToolEffect").GetComponent<Text>();
+        hideoutInfoBoxToolEffect.text = foundTool.toolEffect;
+        Text hideoutInfoBoxToolDescription = GameObject.FindGameObjectWithTag("ToolDescription").GetComponent<Text>();
+        hideoutInfoBoxToolDescription.text = foundTool.toolDescription;
     }
 
 
@@ -180,15 +183,20 @@ public class TempGameManager : MonoBehaviour
     public void HideoutCrewInfoBoxDisplay(int linkedCrewId, GameObject hideoutCrewButton)
     {
         Canvas hideoutCanvas = FindObjectOfType<Canvas>();
-        GameObject foundCrewMember = dictOfAllCrewMembers[linkedCrewId];
+        Crew foundCrewMember = dictOfAllCrewMembers[linkedCrewId].GetComponent<Crew>();
 
         hideoutCrewButtonPosition = hideoutCrewButton.transform.position;
         hideoutCrewInfoBoxOffSet = hideoutCrewButtonPosition + new Vector3(350, 0, 0);
         GameObject hideoutCrewInfoBoxPrefabClone = Instantiate(hideoutCrewInfoBoxPrefab, hideoutCrewInfoBoxOffSet, Quaternion.identity, hideoutCanvas.transform);
 
-        //Elements of crew info box to display needed to add on 16/03
-       // Text displayedCrewLore = GameObject.FindGameObjectWithTag("Lore").GetComponent<Text>();
-       // displayedCrewLore.text = foundCrewMember.crewDescription;
+        Text displayedCrewPayroll = GameObject.FindGameObjectWithTag("Payroll").GetComponent<Text>();
+        displayedCrewPayroll.text = foundCrewMember.crewPayroll.ToString();
+        Text displayedCrewLore = GameObject.FindGameObjectWithTag("Lore").GetComponent<Text>();
+        displayedCrewLore.text = foundCrewMember.crewDescription;
+        Text displayedCrewEffect = GameObject.FindGameObjectWithTag("CrewEffect").GetComponent<Text>();
+        displayedCrewEffect.text = foundCrewMember.crewEffect;
+        Text displayedCrewQuote = GameObject.FindGameObjectWithTag("Quote").GetComponent<Text>();
+        displayedCrewQuote.text = foundCrewMember.crewQuote;
     }
 
     //Method to destroy the hideout crew info box clone after hovering
