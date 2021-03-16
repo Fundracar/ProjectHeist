@@ -19,3 +19,7 @@ MonoBehaviour:
   _useSprite: {fileID: 21300000, guid: 11b88661a0f3465479666c28aadd75c0, type: 3}
   _waitTime: 2
   _toolReputationTreshold: 4
+  toolDescription: Some prisoners would pay very good money to own one of these.
+    Can you see why ?
+  toolEffect: 
+  toolName: SawBlade

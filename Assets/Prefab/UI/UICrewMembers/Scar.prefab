@@ -52,7 +52,7 @@ MonoBehaviour:
   crewDescription: 'The Syndicate isn''t an elite corporation : it''s strength comes
     from the variety of acquaintances made over time. "Scar" is one of them. Coming
     from the Baltimore''s projects, he knows how to turn your silver into gold. '
-  crewQuote: "Quote : \u201CMan, money ain't got no owners, only spenders\u201D"
+  crewQuote: Man, money ain't got no owners, only spenders
   crewPayroll: 15000
   _activeAt: 0
   _target: 0

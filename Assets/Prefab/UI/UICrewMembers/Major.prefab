@@ -48,4 +48,11 @@ MonoBehaviour:
   crewSprite: {fileID: 21300000, guid: 1b3f9131a6e6d3c4d9322e656560f4bd, type: 3}
   isBonus: 0
   _anomalyCost: 0
+  crewEffect: Opens one random locked door
+  crewDescription: No one ever pay attention to employees. They are considered tools
+    by the rich members of the highest circles of society.  Them being discreet and
+    unseen is not a suspiscious behavior, which is exactly what makes them valuable
+    to us.
+  crewQuote: Welcome sir, may I take your jacket ?
+  crewPayroll: 25000
   _target: 0

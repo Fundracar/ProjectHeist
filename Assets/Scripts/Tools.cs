@@ -30,4 +30,5 @@ public class Tools: ScriptableObject
 
     [SerializeField] public string toolDescription;
     [SerializeField] public string toolEffect;
+    [SerializeField] public string toolName;
 }
