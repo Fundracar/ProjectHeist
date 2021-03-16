@@ -18,6 +18,9 @@ public class TempGameManager : MonoBehaviour
     [SerializeField] private GameObject infoBoxPrefab;
     public Vector3 buttonPosition;
     [SerializeField] private Vector3 infoBoxOffSet;
+    [SerializeField] private GameObject hideoutInfoBoxPrefab;
+    public Vector3 hideoutToolButtonPosition;
+    [SerializeField] private Vector3 hideoutInfoBoxOffSet;
 
     
     [Header("Tools")]
@@ -140,6 +143,34 @@ public class TempGameManager : MonoBehaviour
             }
         }
     #endregion
+
+    #region HideoutInfoBox
+    //Method to display the tool description on the hideout info box while hovering the tool in the hideout Panel
+    public void HideoutInfoBoxDisplay(int linkedToolId, GameObject hideoutToolButton)
+    {
+        Canvas hideoutCanvas = FindObjectOfType<Canvas>();
+        Tools foundTool = dictOfAllTools[linkedToolId];
+
+        hideoutToolButtonPosition = hideoutToolButton.transform.position;
+        hideoutInfoBoxOffSet = hideoutToolButtonPosition + new Vector3(180, 0, 0);
+        GameObject hideoutInfoBoxPrefabClone = Instantiate(hideoutInfoBoxPrefab, hideoutInfoBoxOffSet, Quaternion.identity, hideoutCanvas.transform);
+
+        Text hideoutInfoBoxReputationTreshold = GameObject.FindGameObjectWithTag("HideoutToolReputationTreshold").GetComponent<Text>();
+        hideoutInfoBoxReputationTreshold.text = foundTool.ToolReputationTreshold.ToString();
+    }
+
+
+    //Method to destroy the hideout info box clone after hovering
+    public void destroyHideoutInfoBox()
+    {
+        GameObject instantiatedHideoutInfoBox= GameObject.Find("HideoutInfoBoxTools");
+        if (instantiatedHideoutInfoBox)
+        {
+            Destroy(instantiatedHideoutInfoBox);
+        }
+    }
+    #endregion
+
 
     #region Contract
     //Method to display all the contract informations on the side and bottom description bar in the selectionContract Panel

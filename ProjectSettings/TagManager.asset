@@ -45,6 +45,7 @@ TagManager:
   - Door
   - SFX
   - BagPosition
+  - HideoutToolReputationTreshold
   layers:
   - Default
   - TransparentFX
