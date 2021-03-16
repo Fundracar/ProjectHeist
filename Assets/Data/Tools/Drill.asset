@@ -20,5 +20,5 @@ MonoBehaviour:
   _waitTime: 0
   _toolReputationTreshold: 5
   toolDescription: Efficient, but you WILL be heard using this.
-  toolEffect: 
+  toolEffect: Useful to pierce safes.
   toolName: Drill
