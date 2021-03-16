@@ -21,5 +21,5 @@ MonoBehaviour:
   _toolReputationTreshold: 4
   toolDescription: Some prisoners would pay very good money to own one of these.
     Can you see why ?
-  toolEffect: 
+  toolEffect: Can cut through most materials.
   toolName: SawBlade

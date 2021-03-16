@@ -20,5 +20,5 @@ MonoBehaviour:
   _waitTime: 3
   _toolReputationTreshold: 1
   toolDescription: Finesse and discretion are two features of this set of tools.
-  toolEffect: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  toolEffect: This tool opens standard doors as well as reinforced ones.
   toolName: Lockpicks
