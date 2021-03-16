@@ -48,4 +48,10 @@ MonoBehaviour:
   crewSprite: {fileID: 21300000, guid: 22bfc4742b8e00d4dbeeea877d688e49, type: 3}
   isBonus: 0
   _anomalyCost: 15
+  crewEffect: Permanently disable  1 specific camera on use
+  crewDescription: 'There are people that don''t live : they watch others live, 
+    hidden in the shadows and lightened by the blue lights of their screens. Where
+    those people are, a gun isn''t needed.'
+  crewQuote: Give me an hour and a keyboard, and I can move the World.
+  crewPayroll: 20000
   _target: 1

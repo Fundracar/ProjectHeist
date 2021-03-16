@@ -19,3 +19,7 @@ MonoBehaviour:
   _useSprite: {fileID: 21300000, guid: f0b81ea96fbfa194f96923648e5a70f6, type: 3}
   _waitTime: 2
   _toolReputationTreshold: 1
+  toolDescription: This tool can be considered an easy but noisy replacement for
+    the key you're missing. Try not to break skulls with it.
+  toolEffect: 
+  toolName: CrowBar

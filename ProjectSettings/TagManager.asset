@@ -52,6 +52,7 @@ TagManager:
   - Payroll
   - ToolEffect
   - ToolDescription
+  - ToolName
   layers:
   - Default
   - TransparentFX

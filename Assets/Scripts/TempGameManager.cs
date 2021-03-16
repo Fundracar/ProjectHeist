@@ -164,6 +164,8 @@ public class TempGameManager : MonoBehaviour
         hideoutInfoBoxToolEffect.text = foundTool.toolEffect;
         Text hideoutInfoBoxToolDescription = GameObject.FindGameObjectWithTag("ToolDescription").GetComponent<Text>();
         hideoutInfoBoxToolDescription.text = foundTool.toolDescription;
+        Text hideoutInfoBoxToolName = GameObject.FindGameObjectWithTag("ToolName").GetComponent<Text>();
+        hideoutInfoBoxToolName.text = foundTool.toolName;
     }
 
 
