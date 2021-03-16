@@ -17,7 +17,7 @@ MonoBehaviour:
   _selectedSprite: {fileID: 21300000, guid: 1a6a5040e7b811244b5a96e03118dd60, type: 3}
   _unlockedSprite: {fileID: 21300000, guid: 0fddc5388bf26db41a08bd0bab2a36c9, type: 3}
   _useSprite: {fileID: 21300000, guid: cb506ce21b824794bbb634fb7be73096, type: 3}
-  _waitTime: 5
+  _waitTime: 3
   _toolReputationTreshold: 1
   toolDescription: Finesse and discretion are two features of this set of tools.
   toolEffect: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

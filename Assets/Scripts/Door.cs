@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Door : InteractiveObject
 {
-    [SerializeField] private bool isMoving;
+    [SerializeField] public bool isMoving;
     [SerializeField] private Transform pivot;
     [SerializeField] private Collider _collider;
 
