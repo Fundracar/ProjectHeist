@@ -21,6 +21,9 @@ public class TempGameManager : MonoBehaviour
     [SerializeField] private GameObject hideoutInfoBoxPrefab;
     public Vector3 hideoutToolButtonPosition;
     [SerializeField] private Vector3 hideoutInfoBoxOffSet;
+    [SerializeField] private GameObject hideoutCrewInfoBoxPrefab;
+    public Vector3 hideoutCrewButtonPosition;
+    [SerializeField] private Vector3 hideoutCrewInfoBoxOffSet;
 
     
     [Header("Tools")]
@@ -144,7 +147,7 @@ public class TempGameManager : MonoBehaviour
         }
     #endregion
 
-    #region HideoutInfoBox
+    #region HideoutInfoBoxTools
     //Method to display the tool description on the hideout info box while hovering the tool in the hideout Panel
     public void HideoutInfoBoxDisplay(int linkedToolId, GameObject hideoutToolButton)
     {
@@ -152,21 +155,47 @@ public class TempGameManager : MonoBehaviour
         Tools foundTool = dictOfAllTools[linkedToolId];
 
         hideoutToolButtonPosition = hideoutToolButton.transform.position;
-        hideoutInfoBoxOffSet = hideoutToolButtonPosition + new Vector3(180, 0, 0);
+        hideoutInfoBoxOffSet = hideoutToolButtonPosition + new Vector3(0, 200, 0);
         GameObject hideoutInfoBoxPrefabClone = Instantiate(hideoutInfoBoxPrefab, hideoutInfoBoxOffSet, Quaternion.identity, hideoutCanvas.transform);
 
         Text hideoutInfoBoxReputationTreshold = GameObject.FindGameObjectWithTag("HideoutToolReputationTreshold").GetComponent<Text>();
         hideoutInfoBoxReputationTreshold.text = foundTool.ToolReputationTreshold.ToString();
+        //Elements of info box of tools to display
     }
 
 
     //Method to destroy the hideout info box clone after hovering
     public void destroyHideoutInfoBox()
     {
-        GameObject instantiatedHideoutInfoBox= GameObject.Find("HideoutInfoBoxTools");
+        GameObject instantiatedHideoutInfoBox = GameObject.Find("HideoutInfoBoxTools(Clone)");
         if (instantiatedHideoutInfoBox)
         {
             Destroy(instantiatedHideoutInfoBox);
+        }
+    }
+    #endregion
+
+    #region HideoutInfoBoxCrew
+    //Method to display the Crew Description on the hideout info box while hovering the crew member in the hideout panel
+    public void HideoutCrewInfoBoxDisplay(int linkedCrewId, GameObject hideoutCrewButton)
+    {
+        Canvas hideoutCanvas = FindObjectOfType<Canvas>();
+        GameObject foundCrewMember = dictOfAllCrewMembers[linkedCrewId];
+
+        hideoutCrewButtonPosition = hideoutCrewButton.transform.position;
+        hideoutCrewInfoBoxOffSet = hideoutCrewButtonPosition + new Vector3(350, 0, 0);
+        GameObject hideoutCrewInfoBoxPrefabClone = Instantiate(hideoutCrewInfoBoxPrefab, hideoutCrewInfoBoxOffSet, Quaternion.identity, hideoutCanvas.transform);
+
+        //Elements of crew info box to display needed to add on 16/03
+    }
+
+    //Method to destroy the hideout crew info box clone after hovering
+    public void destroyHideoutCrewInfoBox()
+    {
+        GameObject instantiatedHideoutCrewInfoBox = GameObject.Find("HideoutInfoBoxCrew(Clone)");
+        if (instantiatedHideoutCrewInfoBox)
+        {
+            Destroy(instantiatedHideoutCrewInfoBox);
         }
     }
     #endregion
